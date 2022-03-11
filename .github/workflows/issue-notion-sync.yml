@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   issues:
     types:
-        [
+      [
           opened,
           edited,
           labeled,
@@ -14,7 +14,7 @@ on:
           demilestoned,
           reopened,
           closed,
-        ]
+      ]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,6 +22,6 @@ jobs:
       - name: Add GitHub Issues to Notion
         uses: instantish/notion-github-action@v1.2.0
         with:
-          notion-token: ${{ secrets.NOTION_TOKEN }}
-          notion-db: ${{ secrets.NOTION_DATABASE }}
+          notion-token: ${{ secrets.FE_NOTION_TOKEN }}
+          notion-db: ${{ secrets.FE_NOTION_ISSUE_DATABASE }}
           github-token: ${{ secrets.PAT_TOKEN }}
