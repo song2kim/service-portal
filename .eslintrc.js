@@ -24,12 +24,6 @@ module.exports = {
         '@typescript-eslint',
     ],
     rules: {
-        'react/react-in-jsx-scope': 'off',
-        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-        'react/jsx-props-no-spreading': 'off',
-        'react/function-component-definition': 'off',
-        'react/jsx-indent': ['error', 4],
-        'react/jsx-indent-props': ['error', 4],
         'import/extensions': [
             'error',
             'ignorePackages',
@@ -42,5 +36,13 @@ module.exports = {
         ],
         indent: ['error', 4],
         camelcase: 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+        'react/jsx-props-no-spreading': 'off',
+        'react/function-component-definition': 'off',
+        'react/jsx-indent': ['error', 4],
+        'react/jsx-indent-props': ['error', 4],
+        'react/no-danger': 'off',
+        'no-tabs': 0,
     },
 };

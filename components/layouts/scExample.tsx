@@ -6,13 +6,13 @@ const Container = styled.div`
   font-size: large;
 `;
 
-const Example: FC = () => {
+const ScExample: FC = () => {
     console.log('detached');
     return (
-        <Container className="underline">
-            <h1>hello servicePortal</h1>
+        <Container>
+            <h1 className="underline">I am styled-component</h1>
         </Container>
     );
 };
 
-export default Example;
+export default ScExample;
