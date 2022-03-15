@@ -1,8 +1,14 @@
 import { FC } from 'react';
-import 'twin.macro';
+import tw from 'twin.macro';
+import styled from 'styled-components';
 
-const TwExample: FC = () => (
-    <h1 tw="text-center">I am twin.macro</h1>
-);
+const Heading = styled.h1`
+  ${tw`underline`}
+`;
+
+const TwExample: FC = () => {
+    console.log('TW detached');
+    return <Heading>I am twin.macro</Heading>;
+};
 
 export default TwExample;

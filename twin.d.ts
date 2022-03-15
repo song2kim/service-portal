@@ -1,6 +1,6 @@
+// twin.d.ts
 import 'twin.macro';
-import styledImport from '@emotion/styled';
-import { css as cssImport } from '@emotion/react';
+import styledImport, { CSSProp, css as cssImport } from 'styled-components';
 
 declare module 'twin.macro' {
 	// The styled and css imports
@@ -11,13 +11,11 @@ declare module 'react' {
 	// The css prop
 	// eslint-disable-next-line no-undef
 	interface HTMLAttributes<T> extends DOMAttributes<T> {
-		// eslint-disable-next-line no-undef
 		css?: CSSProp
 	}
 	// The inline svg css prop
 	// eslint-disable-next-line no-unused-vars
 	interface SVGProps<T> extends SVGProps<SVGSVGElement> {
-		// eslint-disable-next-line no-undef
 		css?: CSSProp
 	}
 }

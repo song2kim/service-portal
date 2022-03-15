@@ -1,18 +1,13 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  text-align: center;
-  font-size: large;
+const Heading = styled.h1`
+  text-decoration: underline;
 `;
 
 const ScExample: FC = () => {
-    console.log('detached');
-    return (
-        <Container>
-            <h1 className="underline">I am styled-component</h1>
-        </Container>
-    );
+    console.log('SC detached');
+    return <Heading>I am styled-component</Heading>;
 };
 
 export default ScExample;
