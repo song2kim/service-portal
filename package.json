@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "icons": "npx @svgr/cli --out-dir src/assets/icons --ignore-existing -- public/icons"
   },
   "dependencies": {
     "next": "12.1.0",
