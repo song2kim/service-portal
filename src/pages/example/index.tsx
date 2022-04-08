@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import ScExample from '../../components/examples/scExample';
-import TwExample from '../../components/examples/twExample';
+import ScExample from '../../components/layouts/scExample';
+import TwExample from '../../components/layouts/twExample';
 
 const Main: FC = () => {
     const router = useRouter();
