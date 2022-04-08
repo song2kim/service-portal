@@ -4,7 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const screens = require('./src/styles/screens');
 
 module.exports = {
-    purge: [],
+    content: [],
     theme: {
         fontFamily: {
             sans: ['Pretendard', ...defaultTheme.fontFamily.sans],
