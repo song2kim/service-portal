@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires,import/no-extraneous-dependencies
 const defaultTheme = require('tailwindcss/defaultTheme');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const screens = require('./styles/screens');
+const screens = require('./src/styles/screens');
 
 module.exports = {
     purge: [],
