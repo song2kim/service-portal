@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "npx @svgr/cli --out-dir src/assets/icons --typescript --ignore-existing public/icons"
+    "icon": "npx @svgr/cli --out-dir src/assets/icons --typescript --ignore-existing public/assets/icons"
   },
   "dependencies": {
     "next": "12.1.0",
