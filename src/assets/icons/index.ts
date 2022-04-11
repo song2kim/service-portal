@@ -1,3 +1,4 @@
+export { default as Check } from './Check';
 export { default as IcArrowDown } from './IcArrowDown';
 export { default as IcArrowDownLg } from './IcArrowDownLg';
 export { default as IcArrowRight } from './IcArrowRight';
