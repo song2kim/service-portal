@@ -10,6 +10,18 @@ module.exports = {
             sans: ['Pretendard', ...defaultTheme.fontFamily.sans],
             serif: ['Work Sans', ...defaultTheme.fontFamily.serif],
         },
+        fontSize: {
+            sm: ['14px', { lineHeight: '1.4', letterSpacing: '-0.04em' }],
+            md: ['16px', { lineHeight: '1', letterSpacing: '-0.02em' }],
+            lg: ['17px', { lineHeight: '1.4', letterSpacing: '0' }],
+            xl: ['19px', { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+            '2xl': ['24px', { lineHeight: '1.4', letterSpacing: '-0.01em' }],
+            '3xl': ['32px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+            '4xl': ['40px', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
+            '5xl': ['48px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+            '6xl': ['56px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+            '7xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        },
         screens: {
             desktop: { min: `${screens.desktop.min}px` },
             laptop: { min: `${screens.laptop.min}px`, max: `${screens.laptop.max}px` },
