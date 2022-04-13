@@ -5,12 +5,10 @@ import LinkText from '../../components/linkText';
 const Main: FC = () => {
     const router = useRouter();
     return (
-        <div style={{ padding: '10px' }}>
-            <LinkText href="/example/linkButton">linkButton</LinkText>
-            <br />
-            <LinkText href="/example/linkText">linkText</LinkText>
+        <>
+            <LinkText>default button</LinkText>
             <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
-        </div>
+        </>
     );
 };
 
