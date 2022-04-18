@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { IcArrowRight } from '../assets/icons';
 
 interface LinkTextProps {
-    href?: string,
-    children?: string,
+    href: string;
+    children: string;
 }
 
 const StyledLinkText = styled.a`
@@ -27,20 +27,11 @@ const StyledSVGWrapper = styled.span`
   }
 `;
 
-const LinkText = (props: LinkTextProps) => {
-    const { href, children } = props;
-
-    return (
-        <StyledLinkText href={href}>
-            <StyledText>{children}</StyledText>
-            <StyledSVGWrapper><IcArrowRight color="#6638B6" /></StyledSVGWrapper>
-        </StyledLinkText>
-    );
-};
-
-LinkText.defaultProps = {
-    href: '/',
-    children: 'link',
-};
+const LinkText = ({ href = '/', children = 'link' }: LinkTextProps) => (
+    <StyledLinkText href={href}>
+        <StyledText>{children}</StyledText>
+        <StyledSVGWrapper><IcArrowRight color="#6638B6" /></StyledSVGWrapper>
+    </StyledLinkText>
+);
 
 export default LinkText;
