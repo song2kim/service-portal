@@ -6,9 +6,11 @@ const Main: FC = () => {
     const router = useRouter();
     return (
         <div style={{ padding: '10px' }}>
-            <LinkText href="/example/linkButton">linkButton</LinkText>
-            <br />
-            <LinkText href="/example/linkText">linkText</LinkText>
+            <ul>
+                <li><LinkText href="/example/font">font</LinkText></li>
+                <li><LinkText href="/example/linkButton">linkButton</LinkText></li>
+                <li><LinkText href="/example/linkText">linkText</LinkText></li>
+            </ul>
             <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
         </div>
     );

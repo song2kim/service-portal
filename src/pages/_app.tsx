@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
         <>
             <Head>
                 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
-                <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500;600;700&display=swap" />
+                <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" />
             </Head>
             <Component {...pageProps} />
             <GlobalStyles />
