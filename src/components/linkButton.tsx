@@ -21,20 +21,14 @@ const linkButtonSizeStyle: Record<linkButtonSize, string> = {
 
 const styles = {
     style: ({ color = 'violet-400', size = 'medium' }: LinkButtonProps) => [
-        tw`inline-block`,
+        tw`inline-block text-lg`,
         linkButtonColorStyle[color],
         linkButtonSizeStyle[size],
     ],
 };
 
-const linkButton = ({ color, size, children }: LinkButtonProps) => (
+const linkButton = ({ color = 'violet-400', size = 'medium', children = 'Button' }: LinkButtonProps) => (
     <a href="/" css={styles.style({ color, size })}>{children}</a>
 );
-
-linkButton.defaultProps = {
-    color: 'violet-400',
-    size: 'medium',
-    children: 'Button',
-};
 
 export default linkButton;
