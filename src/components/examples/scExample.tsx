@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Check } from '../../assets/icons';
+import { Check } from 'assets/icons';
 
 const Heading = styled.h1`
   text-decoration: underline;
