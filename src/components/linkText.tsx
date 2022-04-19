@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { IcArrowRight } from '../assets/icons';
+import { IcArrowRight } from 'assets/icons';
 
 interface LinkTextProps {
     href: string;

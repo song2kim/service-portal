@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import LinkButton from '../../components/linkButton';
+import LinkButton from 'components/linkButton';
 
 const StyledContainer = styled.ul`
   ${tw`bg-violet-200`}

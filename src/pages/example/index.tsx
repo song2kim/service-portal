@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import LinkText from '../../components/linkText';
+import LinkText from 'components/linkText';
 
 const Main: FC = () => {
     const router = useRouter();
