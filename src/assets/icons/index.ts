@@ -12,3 +12,4 @@ export { default as IcGithub } from './IcGithub';
 export { default as IcGlobal } from './IcGlobal';
 export { default as IcMenu } from './IcMenu';
 export { default as IcYoutube } from './IcYoutube';
+export { default as Logo } from './Logo';
