@@ -1,5 +1,5 @@
-import tw from 'twin.macro';
-import styled from 'styled-components';
+import tw, { styled, css } from 'twin.macro';
+// import styled from 'styled-components';
 import { Logo, IcExternal } from 'assets/icons';
 import LinkButton from 'components/linkButton';
 
@@ -46,13 +46,6 @@ const StyledIcExternal = styled(IcExternal)`
   }
 `;
 
-const StyledLinkButtonWrapper = styled.div`
-  margin: 0 16px;
-`;
-
-// const StyledLinkButton = styled(LinkButton)`
-// `
-
 const Header = () => (
     <StyledHeader>
         <h1 className="border border-gray-600"><Logo /></h1>
@@ -63,9 +56,7 @@ const Header = () => (
                 <li><StyledNavItem href="/">FAQ</StyledNavItem></li>
                 <li><StyledNavItem href="/">Contact</StyledNavItem></li>
             </ul>
-            <StyledLinkButtonWrapper>
-                <LinkButton color="violet-400" size="medium">Talk to Sales</LinkButton>
-            </StyledLinkButtonWrapper>
+                <LinkButton color="violet-400" size="medium" tw="mx-4">Talk to Sales</LinkButton>
             <StyledNavItem href="/">
                 Docs
                 <StyledIcExternal />

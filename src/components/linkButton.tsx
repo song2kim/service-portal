@@ -1,5 +1,6 @@
 import tw, { TwStyle } from 'twin.macro';
 import styled from 'styled-components';
+import {ReactNode} from 'react';
 
 type linkButtonColor = 'violet-400' | 'white'
 type linkButtonSize = 'medium' | 'large'
@@ -7,7 +8,7 @@ type linkButtonSize = 'medium' | 'large'
 interface LinkButtonProps {
     color: linkButtonColor;
     size: linkButtonSize;
-    children: string;
+    children?: ReactNode;
 }
 
 type LinkStyle = Partial<LinkButtonProps>
@@ -35,9 +36,9 @@ const styles = {
 };
 
 const LinkButton = ({
-    color = 'violet-400', size = 'medium', children = 'Button',
+    color = 'violet-400', size = 'medium', children, ...props
 }: LinkButtonProps) => (
-    <StyledLinkButton href="/" css={styles.style({ color, size, children })}>{children}</StyledLinkButton>
+    <StyledLinkButton {...props} href="/" css={styles.style({ color, size })}>{children}</StyledLinkButton>
 );
 
 export default LinkButton;
