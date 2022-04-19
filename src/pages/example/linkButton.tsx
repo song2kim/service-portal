@@ -23,7 +23,7 @@ const Main: FC = () => {
     return (
         <>
             <StyledContainer>
-                <StyledItemRow><LinkButton>default button</LinkButton></StyledItemRow>
+                <StyledItemRow><LinkButton href="/">default button</LinkButton></StyledItemRow>
                 <StyledItemRow>
                     <LinkButton color="violet-400" size="medium">violet / medium</LinkButton>
                     <LinkButton color="violet-400" size="large">violet / large</LinkButton>

@@ -6,7 +6,7 @@ const Main: FC = () => {
     const router = useRouter();
     return (
         <>
-            <LinkText>default button</LinkText>
+            <LinkText href="">default button</LinkText>
             <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
         </>
     );
