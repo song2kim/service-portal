@@ -1,8 +1,20 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
 import LinkText from 'components/linkText';
+import styled from 'styled-components';
+import tw from 'twin.macro';
 
-const Main: FC = () => {
+const StyledGoBack = styled.button`
+  ${tw`bg-violet-300`}
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+const ExIndex: FC = () => {
     const router = useRouter();
     return (
         <div style={{ padding: '10px' }}>
@@ -11,9 +23,9 @@ const Main: FC = () => {
                 <li><LinkText href="/example/linkButton">linkButton</LinkText></li>
                 <li><LinkText href="/example/linkText">linkText</LinkText></li>
             </ul>
-            <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
+            <StyledGoBack onClick={() => router.back()}>go Back</StyledGoBack>
         </div>
     );
 };
 
-export default Main;
+export default ExIndex;
