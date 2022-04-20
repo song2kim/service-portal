@@ -23,8 +23,4 @@ const SvgIcArrowRight = (props: Props) => {
     );
 };
 
-SvgIcArrowRight.defaultProps = {
-    color: '#fff',
-};
-
 export default SvgIcArrowRight;
