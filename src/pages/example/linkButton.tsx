@@ -10,6 +10,7 @@ const StyledContainer = styled.ul`
   flex-direction: column;
   row-gap: 10px;
   padding: 20px;
+  min-height: calc(100vh - 64px);
 `;
 
 const StyledItemRow = styled.li`
@@ -18,12 +19,21 @@ const StyledItemRow = styled.li`
     } 
 `;
 
-const Main: FC = () => {
+const StyledGoBack = styled.button`
+  ${tw`bg-violet-300`}
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+const ExLinkButton: FC = () => {
     const router = useRouter();
     return (
         <>
             <StyledContainer>
-                <StyledItemRow><LinkButton href="/">default button</LinkButton></StyledItemRow>
                 <StyledItemRow>
                     <LinkButton color="violet-400" size="medium">violet / medium</LinkButton>
                     <LinkButton color="violet-400" size="large">violet / large</LinkButton>
@@ -33,9 +43,9 @@ const Main: FC = () => {
                     <LinkButton color="white" size="large">white / large</LinkButton>
                 </StyledItemRow>
             </StyledContainer>
-            <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
+            <StyledGoBack type="button" onClick={() => router.back()}>go Back</StyledGoBack>
         </>
     );
 };
 
-export default Main;
+export default ExLinkButton;

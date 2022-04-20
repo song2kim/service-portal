@@ -1,6 +1,6 @@
 import tw, { TwStyle } from 'twin.macro';
 import styled from 'styled-components';
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 
 type linkButtonColor = 'violet-400' | 'white'
 type linkButtonSize = 'medium' | 'large'
@@ -8,10 +8,10 @@ type linkButtonSize = 'medium' | 'large'
 interface LinkButtonProps {
     color: linkButtonColor;
     size: linkButtonSize;
-    children?: ReactNode;
+    children: ReactNode;
 }
 
-type LinkStyle = Partial<LinkButtonProps>
+type LinkButtonStyle = Partial<LinkButtonProps>
 
 const StyledLinkButton = styled.a`
     border-radius: 4px;
@@ -28,7 +28,7 @@ const linkButtonSizeStyle: Record<linkButtonSize, (string | TwStyle)[]> = {
 };
 
 const styles = {
-    style: ({ color = 'violet-400', size = 'medium' }: LinkStyle) => [
+    style: ({ color = 'violet-400', size = 'medium' }: LinkButtonStyle) => [
         tw`inline-block`,
         linkButtonColorStyle[color],
         linkButtonSizeStyle[size],
@@ -36,9 +36,9 @@ const styles = {
 };
 
 const LinkButton = ({
-    color = 'violet-400', size = 'medium', children, ...props
+    color = 'violet-400', size = 'medium', children = 'Button', ...props
 }: LinkButtonProps) => (
-    <StyledLinkButton {...props} href="/" css={styles.style({ color, size })}>{children}</StyledLinkButton>
+    <StyledLinkButton href="/" css={styles.style({ color, size, children })} {...props}>{children}</StyledLinkButton>
 );
 
 export default LinkButton;

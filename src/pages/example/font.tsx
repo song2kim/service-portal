@@ -15,7 +15,17 @@ const StyledContainer = styled.div`
   }
 `;
 
-const Main: FC = () => {
+const StyledGoBack = styled.button`
+  ${tw`bg-violet-300`}
+  position: fixed;
+  top: 80px;
+  right: 30px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+`;
+
+const ExFont: FC = () => {
     const router = useRouter();
     return (
         <StyledContainer>
@@ -63,9 +73,9 @@ const Main: FC = () => {
                     <li tw="font-serif text-9xl">Work Sans 1234567890 Lorem ipsum dolor sit am</li>
                 </ul>
             </section>
-            <button style={{ width: '100%' }} type="button" onClick={() => router.back()}>go Back</button>
+            <StyledGoBack onClick={() => router.back()}>go Back</StyledGoBack>
         </StyledContainer>
     );
 };
 
-export default Main;
+export default ExFont;
