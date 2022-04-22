@@ -9,6 +9,7 @@ interface LinkButtonProps {
     color: linkButtonColor;
     size: linkButtonSize;
     children: ReactNode;
+    href: string;
 }
 
 type LinkButtonStyle = Partial<LinkButtonProps>
@@ -36,9 +37,15 @@ const styles = {
 };
 
 const LinkButton = ({
-    color = 'violet-400', size = 'medium', children = 'Button', ...props
+    color = 'violet-400', size = 'medium', children = 'Button', href = '/', ...props
 }: LinkButtonProps) => (
-    <StyledLinkButton href="/" css={styles.style({ color, size, children })} {...props}>{children}</StyledLinkButton>
+    <StyledLinkButton
+        css={styles.style({ color, size, children })}
+        href={href}
+        {...props}
+    >
+        {children}
+    </StyledLinkButton>
 );
 
 export default LinkButton;

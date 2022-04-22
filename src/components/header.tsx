@@ -147,7 +147,7 @@ const Header = () => (
                         <li><a className="nav-item" href="/">FAQ</a></li>
                         <li><a className="nav-item" href="/">Contact</a></li>
                     </ul>
-                    <StyledLinkButton color="violet-400" size="medium">Talk to Sales</StyledLinkButton>
+                    <StyledLinkButton color="violet-400" size="medium" href="">Talk to Sales</StyledLinkButton>
                     <a className="nav-item" href="/">
                         Docs
                         <StyledIcExternal />
@@ -159,17 +159,17 @@ const Header = () => (
                 </StyledNav>
             </div>
         </StyledHeader>
-        <StyledSubNav>
-            <div className="inner">
-                <span className="nav-title">Product</span>
-                <ul className="sub-nav-list">
-                    <li className="sub-nav-item"><a href="/product/assetInventory">Asset Inventory</a></li>
-                    <li className="sub-nav-item"><a href="/product/costExplorer">CostExplorer</a></li>
-                    <li className="sub-nav-item"><a href="/product/alertManager">AlertManager</a></li>
-                    <li className="sub-nav-item"><a href="/product/IAM">IAM</a></li>
-                </ul>
-            </div>
-        </StyledSubNav>
+         {/*<StyledSubNav>*/}
+         {/*   <div className="inner">*/}
+         {/*       <span className="nav-title">Product</span>*/}
+         {/*       <ul className="sub-nav-list">*/}
+         {/*           <li className="sub-nav-item"><a href="/product/assetInventory">Asset Inventory</a></li>*/}
+         {/*           <li className="sub-nav-item"><a href="/product/costExplorer">CostExplorer</a></li>*/}
+         {/*           <li className="sub-nav-item"><a href="/product/alertManager">AlertManager</a></li>*/}
+         {/*           <li className="sub-nav-item"><a href="/product/IAM">IAM</a></li>*/}
+         {/*       </ul>*/}
+         {/*   </div>*/}
+         {/*</StyledSubNav>*/}
     </>
 );
 
