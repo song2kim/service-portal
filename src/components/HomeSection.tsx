@@ -1,176 +1,71 @@
-import tw, { styled } from 'twin.macro';
-// import styled from 'styled-components';
-import { Logo, IcExternal } from 'assets/icons';
-import LinkButton from 'components/linkButton';
+import tw from 'twin.macro';
+import styled from 'styled-components';
+import LinkText from './linkText';
 
-const StyledHeader = styled.header`
-  ${tw`bg-violet-100`}
-  .inner {
-    display: flex;
-    align-items: center;
-    flex-wrap:wrap;
-    max-width: 1120px;
-    margin: 0 auto;
-  }
-`;
+interface HomeSectionProps {
+    imgSrc: string;
+    iconSrc: string;
+    title: string;
+    href: string;
+    linkText: string;
+    text: string;
+    hasBg?: boolean;
+}
 
-const StyledNav = styled.nav`
+const StyledHomeSection = styled.section<HomeSectionProps>`
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  ul {
-    display: flex;
-    height: 100%;
-    margin-left: auto;
-    li {
-      position: relative;
-      &:hover {
-        nav {
-          display: block;
-        }
-      }
-    }
-  }
-  .nav-item {
-    ${tw`text-gray-500`}
-    display: flex;
-    align-items: center;
-    min-height: 64px;
-    padding-right: 16px;
-    padding-left: 16px;
-    &:hover {
-      ${tw`text-violet-400`}
-      > svg path {
-        ${tw`text-violet-500 fill-current`}
-      }
-    }
-  }
-`;
+  min-height: 624px;
 
-const StyledIcExternal = styled(IcExternal)`
-  margin-left: 4px;
-  > path {
-    ${tw`text-gray-500 fill-current`}
-  }
-`;
-
-const StyledLinkButton = styled(LinkButton)`
-  ${tw`mx-4`}
-`;
-
-const StylednavItemsGroup = styled.nav`
-  ${tw`bg-violet-100`}
-  display: none;
-  position: absolute;
-  z-index: 100;
-  left: -16px;
-  min-width: 200px;
-  box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
-  border-radius: 0 0 16px 16px;
-  > a {
-    ${tw`border-gray-200`}
-    display: flex;
-    align-items: center;
-    height: 52px;
-    padding-left: 32px;
-    padding-right: 32px;
-    border-top-width: 1px;
-    &:first-child {
-      border-top-width: 0;
-    }
-    &:hover {
-      ${tw`text-violet-400`}
-    }
-  }
-`;
-
-const StyledSubNav = styled.nav`
-  box-shadow: 0 2px 4px 4px rgba(183, 183, 183, 0.25);
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  ${(props) => (props.hasBg ? tw`bg-gray-100` : tw`bg-white`)
+};
+  
+  .section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 40px;
     max-width: 1120px;
     margin: 0 auto;
-  }
-  .nav-title {
-    ${tw`text-lg text-gray-500`}
-  }
-  .sub-nav-list {
-    display: flex;
-    .sub-nav-item {
-      ${tw`text-md`}
-      a {
-        ${tw`text-gray-600`}
-        display: flex;
-        align-items: center;
-        height: 48px;
-        padding-right: 20px;
-        padding-left: 20px;
-        &:hover {
-          ${tw`text-violet-400`}
-        }
+    .thumbnail {
+      grid-column: 1 / span 7;
+      min-height: 512px;
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      grid-column: span 5 / -1;
+      &__icon {
+        flex-grow: 0;
+      }
+      &__title {
+        ${tw`font-serif text-4xl text-gray-600`};
+        margin-top: 8px;
+        margin-bottom: 20px;
+      }
+      &__text {
+        ${tw`text-xl text-gray-500`};
+        margin-bottom: 24px;
       }
     }
   }
 `;
 
-const Header = () => (
-    <>
-        <StyledHeader>
-            <div className="inner">
-                <h1>
-                    <a href="/">
-                        <Logo />
-                    </a>
-                </h1>
-                <StyledNav>
-                    <ul>
-                        <li>
-                            <a className="nav-item" href="/example">Example</a>
-                            <StylednavItemsGroup>
-                                <a href="/example/font">Font</a>
-                                <a href="/example/linkButton">LinkButton</a>
-                                <a href="/example/linkText">LinkText</a>
-                            </StylednavItemsGroup>
-                        </li>
-                        <li>
-                            <a className="nav-item" href="/">Products</a>
-                            <StylednavItemsGroup>
-                                <a href="/product/assetInventory">Asset Inventory</a>
-                                <a href="/product/costExplorer">CostExplorer</a>
-                                <a href="/product/alertManager">AlertManager</a>
-                                <a href="/product/IAM">IAM</a>
-                            </StylednavItemsGroup>
-                        </li>
-                        <li><a className="nav-item" href="/">Pricing</a></li>
-                        <li><a className="nav-item" href="/">FAQ</a></li>
-                        <li><a className="nav-item" href="/">Contact</a></li>
-                    </ul>
-                    <StyledLinkButton color="violet-400" size="medium">Talk to Sales</StyledLinkButton>
-                    <a className="nav-item" href="/">
-                        Docs
-                        <StyledIcExternal />
-                    </a>
-                    <a className="nav-item" href="/">
-                        Community
-                        <StyledIcExternal />
-                    </a>
-                </StyledNav>
+const HomeSection = ({
+    imgSrc, iconSrc, title, href, linkText, text, hasBg,
+}: HomeSectionProps) => (
+    <StyledHomeSection hasBg={hasBg}>
+        <div className="section">
+            <img className="thumbnail" src={`/assets/images/${imgSrc}.svg`} alt="" />
+            <div className="description">
+                <div className="description__inner">
+                    <img className="description__icon" src={`/assets/images/${iconSrc}.svg`} alt="icon" />
+                    <h4 className="description__title">{title}</h4>
+                    <p className="description__text">{text}</p>
+                    <LinkText href={href}>{linkText}</LinkText>
+                </div>
             </div>
-        </StyledHeader>
-        {/* <StyledSubNav> */}
-        {/*    <div className="inner"> */}
-        {/*        <span className="nav-title">Product</span> */}
-        {/*        <ul className="sub-nav-list"> */}
-        {/*            <li className="sub-nav-item"><a href="/product/assetInventory">Asset Inventory</a></li> */}
-        {/*            <li className="sub-nav-item"><a href="/product/costExplorer">CostExplorer</a></li> */}
-        {/*            <li className="sub-nav-item"><a href="/product/alertManager">AlertManager</a></li> */}
-        {/*            <li className="sub-nav-item"><a href="/product/IAM">IAM</a></li> */}
-        {/*        </ul> */}
-        {/*    </div> */}
-        {/* </StyledSubNav> */}
-    </>
+        </div>
+    </StyledHomeSection>
 );
 
-export default Header;
+export default HomeSection;
