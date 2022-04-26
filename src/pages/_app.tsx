@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import { ReactElement } from 'react';
 import { GlobalStyles } from 'twin.macro';
 import Header from 'components/header';
+import Footer from 'components/footer';
 
 function MyApp({ Component, pageProps }: AppProps): ReactElement {
     return (
@@ -16,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps): ReactElement {
             <Header />
             <Component {...pageProps} />
             <GlobalStyles />
+            <Footer />
         </>
     );
 }

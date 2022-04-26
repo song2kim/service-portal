@@ -31,7 +31,7 @@ const HomeSectionDate = [
         imgSrc: 'img_home_cost',
         iconSrc: 'ic_home_cost',
         href: '/',
-        linkText: '',
+        linkText: 'Learn about Cost Explorer',
         hasBg: false,
     },
     {
@@ -49,14 +49,14 @@ const HelpSectionDate = [
     {
         title: 'Documentation',
         text: 'Find the best ways to start managing cloud infrastructure with CloudForet’s easy-to-follow documentation.',
-        iconSrc: 'ic_home_documentation',
+        iconSrc: 'ic_home_community',
         href: '/',
         linkText: 'Visit the Documentation',
     },
     {
         title: 'CloudForet Community',
         text: 'Join our forum and share your knowledge with the broader community. Connect with fellow users and learn new skills.',
-        iconSrc: 'ic_home_community',
+        iconSrc: 'ic_home_documentation',
         href: '/',
         linkText: 'Visit the Community',
     },
@@ -195,8 +195,9 @@ const Home: NextPage = () => (
         </StyledTopicSection>
         <StyledH3>We make multicloud managed</StyledH3>
         {HomeSectionDate.map(
-            (item) => (
+            (item, index) => (
                 <HomeSection
+                    key={index}
                     title={item.title}
                     text={item.text}
                     imgSrc={item.imgSrc}
@@ -212,8 +213,8 @@ const Home: NextPage = () => (
             <StyledH3>We’ll help you</StyledH3>
             <div className="help">
                 {HelpSectionDate.map(
-                    (item) => (
-                        <div className="help__item">
+                    (item, index) => (
+                        <div className="help__item" key={index}>
                             <img className="help__left help__icon" src={`/assets/images/${item.iconSrc}.svg`} alt="" />
                             <div className="help__right ">
                                 <strong className="help__title">{item.title}</strong>
