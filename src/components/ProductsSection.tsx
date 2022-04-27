@@ -66,7 +66,7 @@ function ProductSection({
                 <img className="section__thumbnail" src={`/assets/images/${imgSrc}.svg`} alt={title} />
                 <div className="section__text">
                     <em className="section__corevalue">{coreValue}</em>
-                    <h2 className="section__title">{title}</h2>
+                    <h3 className="section__title">{title}</h3>
                     <p className="section__description">{description}</p>
                 </div>
             </div>

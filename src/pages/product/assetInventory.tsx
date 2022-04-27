@@ -1,6 +1,7 @@
 import ProductTopic from 'components/ProductsTopic';
 import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
+import FAQSection from 'components/FAQ';
 
 const AssetInventory = () => {
     const TopicData = {
@@ -15,7 +16,7 @@ const AssetInventory = () => {
             coreValue: 'Cloud Inventory',
             title: 'Discover and scan all your assets in cloud',
             description: 'Integrate all your cloud service accounts and scan all existing resources. All cloud resources are collected through SpaceONE collector plugins based on cloud-platform-native APIs.',
-            imgSrc: 'img_product_inventory',
+            imgSrc: 'img_products_inventory',
             hasBg: true,
             isReverse: false,
         },
@@ -23,7 +24,7 @@ const AssetInventory = () => {
             coreValue: 'Search Engine',
             title: 'Search your assets based on powerful query engine',
             description: 'Search with SpaceONE query engine based on raw resource data SpaceONE collected. SpaceONE provides various data including OS-level metrics, hardware information, connectivity information between cloud services, performance metrics, and tags you customized.',
-            imgSrc: 'img_product_inventory',
+            imgSrc: 'img_products_inventory',
             hasBg: false,
             isReverse: true,
         },
@@ -47,6 +48,7 @@ const AssetInventory = () => {
                     isReverse={item.isReverse}
                 />
             ))}
+            <FAQSection title="Want to learn more about Asset Inventory?" />
             <ProductsHelp />
         </>
     );
