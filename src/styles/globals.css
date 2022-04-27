@@ -13,22 +13,23 @@ html:lang(en), body:lang(en) {
 }
  */
 
+:root {
+    --gnb-height: 64px;
+}
+
 html, body {
     font-family: 'Pretendard', 'Roboto', arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     word-wrap: break-word;
     word-break: keep-all;
-    overflow: hidden;
 }
 
 body {
     line-height: 16.8px;
-    color: #222532;
-    overflow-x: hidden;
-    overflow-y: auto;
+    color: #232533;
     margin: 0;
 }
 
@@ -75,4 +76,8 @@ a:hover {
 
 p {
     margin: 0;
+}
+
+svg {
+    display: inline-block !important;
 }

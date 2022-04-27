@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import LinkText from './linkText';
+import LinkText from 'components/LinkText';
+import { IcArrowRight } from 'assets/icons';
 
 interface HomeSectionProps {
     imgSrc: string;
@@ -12,11 +13,13 @@ interface HomeSectionProps {
     hasBg?: boolean;
 }
 
-const StyledHomeSection = styled.section<HomeSectionProps>`
+type HomeSectionStyle = Partial<HomeSectionProps>
+
+const StyledHomeSection = styled.section<HomeSectionStyle>`
   display: flex;
   align-items: center;
   min-height: 624px;
-
+  
   ${(props) => (props.hasBg ? tw`bg-gray-100` : tw`bg-white`)
 };
   
@@ -50,22 +53,27 @@ const StyledHomeSection = styled.section<HomeSectionProps>`
   }
 `;
 
-const HomeSection = ({
-    imgSrc, iconSrc, title, href, linkText, text, hasBg,
-}: HomeSectionProps) => (
-    <StyledHomeSection hasBg={hasBg}>
-        <div className="section">
-            <img className="thumbnail" src={`/assets/images/${imgSrc}.svg`} alt="" />
-            <div className="description">
-                <div className="description__inner">
-                    <img className="description__icon" src={`/assets/images/${iconSrc}.svg`} alt="icon" />
-                    <h4 className="description__title">{title}</h4>
-                    <p className="description__text">{text}</p>
-                    <LinkText href={href}>{linkText}</LinkText>
+function HomeSection({
+    imgSrc = '/', iconSrc = '/', title = 'title', href = '/', linkText = 'link', text = 'text', hasBg = false,
+}: HomeSectionProps) {
+    return (
+        <StyledHomeSection hasBg={hasBg}>
+            <div className="section">
+                <img className="thumbnail" src={`/assets/images/${imgSrc}.svg`} alt="" />
+                <div className="description">
+                    <div className="description__inner">
+                        <img className="description__icon" src={`/assets/images/${iconSrc}.svg`} alt="icon" />
+                        <h4 className="description__title">{title}</h4>
+                        <p className="description__text">{text}</p>
+                        <LinkText href={href}>
+                            {linkText}
+                            <IcArrowRight />
+                        </LinkText>
+                    </div>
                 </div>
             </div>
-        </div>
-    </StyledHomeSection>
-);
+        </StyledHomeSection>
+    );
+}
 
 export default HomeSection;

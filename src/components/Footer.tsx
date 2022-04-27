@@ -4,28 +4,6 @@ import ReadySection from 'components/ReadySection';
 import { Logo } from 'assets/icons';
 import LinkText from 'components/LinkText';
 
-const SiteMapData = [
-    {
-        title: 'Products',
-        menuList: [
-            { text: 'Asset Inventory', href: '/' },
-            { text: 'Cost Analysis', href: '/' },
-            { text: 'Alert Manager', href: '/' },
-            { text: 'IAM', href: '/' },
-        ],
-    },
-    {
-        title: 'Support',
-        menuList: [
-            { text: 'Pricing', href: '/' },
-            { text: 'FAQ', href: '/' },
-            { text: 'Contact Us', href: '/' },
-            { text: 'Documentation', href: '/' },
-            { text: 'Community', href: '/' },
-        ],
-    },
-];
-
 const StyledFooter = styled.footer`
   ${tw`bg-violet-500`}
   padding: 48px 0;
@@ -122,52 +100,78 @@ const StyledFooter = styled.footer`
   }
 `;
 
-const Footer = () => (
-    <>
-        <ReadySection />
-        <StyledFooter>
-            <div className="footer">
-                <div className="grid">
-                    <div className="logo">
-                        <Logo />
-                        <span className="logo__text">presents</span>
-                    </div>
-                    {SiteMapData.map(
-                        (item, index) => (
-                            <div className={`sitemap sitemap-${index + 1}`} key={index}>
-                                <div className="sitemap__title">{item.title}</div>
-                                <ul className="sitemap__list">
-                                    {item.menuList.map(
-                                        (menu, index) => (
-                                            <li key={index} className="sitemap__menu">
-                                                <LinkText href={menu.href}>{menu.text}</LinkText>
-                                            </li>
-                                        ),
-                                    )}
-                                </ul>
-                            </div>
+const Footer = () => {
+    const SiteMapData = [
+        {
+            title: 'Products',
+            menuList: [
+                { text: 'Asset Inventory', href: '/' },
+                { text: 'Cost Analysis', href: '/' },
+                { text: 'Alert Manager', href: '/' },
+                { text: 'IAM', href: '/' },
+            ],
+        },
+        {
+            title: 'Support',
+            menuList: [
+                { text: 'Pricing', href: '/' },
+                { text: 'FAQ', href: '/' },
+                { text: 'Contact Us', href: '/' },
+                { text: 'Documentation', href: '/' },
+                { text: 'Community', href: '/' },
+            ],
+        },
+    ];
+
+    const SiteMapList = SiteMapData.map(
+        (item, index) => (
+            <div className={`sitemap sitemap-${index + 1}`} key={index}>
+                <div className="sitemap__title">{item.title}</div>
+                <ul className="sitemap__list">
+                    {item.menuList.map(
+                        (menu, index) => (
+                            <li key={index} className="sitemap__menu">
+                                <LinkText href={menu.href}>{menu.text}</LinkText>
+                            </li>
                         ),
                     )}
-                </div>
-                <div className="grid grid--flex-end">
-                    <div className="copyright">© 2022 Megazone Cloud Inc.</div>
-                    <div className="terms">
-                        <span className="terms__item">Service Terms</span>
-                        <span className="terms__item">Privacy Policy</span>
-                    </div>
-                    <ul className="language">
-                        <li className="language__item language--selected">English</li>
-                        <li className="language__item">한국어</li>
-                    </ul>
-                    <ul className="sns">
-                        <li className="sns__git"><a href="/">Git</a></li>
-                        <li className="sns__youtube"><a href="/">Youtube</a></li>
-                        <li className="sns__facebook"><a href="/">Facebook</a></li>
-                    </ul>
-                </div>
+                </ul>
             </div>
-        </StyledFooter>
-    </>
-);
+        ),
+    );
+
+    return (
+        <>
+            <ReadySection />
+            <StyledFooter>
+                <div className="footer">
+                    <div className="grid">
+                        <div className="logo">
+                            <Logo />
+                            <span className="logo__text">presents</span>
+                        </div>
+                        {SiteMapList}
+                    </div>
+                    <div className="grid grid--flex-end">
+                        <div className="copyright">© 2022 Megazone Cloud Inc.</div>
+                        <div className="terms">
+                            <span className="terms__item">Service Terms</span>
+                            <span className="terms__item">Privacy Policy</span>
+                        </div>
+                        <ul className="language">
+                            <li className="language__item language--selected">English</li>
+                            <li className="language__item">한국어</li>
+                        </ul>
+                        <ul className="sns">
+                            <li className="sns__git"><a href="/">Git</a></li>
+                            <li className="sns__youtube"><a href="/">Youtube</a></li>
+                            <li className="sns__facebook"><a href="/">Facebook</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </StyledFooter>
+        </>
+    );
+};
 
 export default Footer;

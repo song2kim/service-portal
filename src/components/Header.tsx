@@ -12,7 +12,6 @@ const StyledHeader = styled.div`
     ${tw`bg-violet-100`}
     position: relative;
     z-index: 1;
-    border: solid 1px red;
     &__inner {
       display: flex;
       align-items: center;

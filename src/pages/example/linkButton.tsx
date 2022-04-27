@@ -1,8 +1,7 @@
-import { FC } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import LinkButton from 'components/linkButton';
+import LinkButton from 'components/LinkButton';
 
 const StyledContainer = styled.ul`
   ${tw`bg-violet-200`}
@@ -29,23 +28,23 @@ const StyledGoBack = styled.button`
   border-radius: 50%;
 `;
 
-const ExLinkButton: FC = () => {
+function ExLinkButton() {
     const router = useRouter();
     return (
         <>
             <StyledContainer>
                 <StyledItemRow>
-                    <LinkButton color="violet-400" size="medium">violet / medium</LinkButton>
-                    <LinkButton color="violet-400" size="large">violet / large</LinkButton>
+                    <LinkButton href="/" color="violet-400" size="medium">violet / medium</LinkButton>
+                    <LinkButton href="/" color="violet-400" size="large">violet / large</LinkButton>
                 </StyledItemRow>
                 <StyledItemRow>
-                    <LinkButton color="white" size="medium">white / medium</LinkButton>
-                    <LinkButton color="white" size="large">white / large</LinkButton>
+                    <LinkButton href="/" color="white" size="medium">white / medium</LinkButton>
+                    <LinkButton href="/" color="white" size="large">white / large</LinkButton>
                 </StyledItemRow>
             </StyledContainer>
             <StyledGoBack type="button" onClick={() => router.back()}>go Back</StyledGoBack>
         </>
     );
-};
+}
 
 export default ExLinkButton;
