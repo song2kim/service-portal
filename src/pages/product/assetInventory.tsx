@@ -1,5 +1,6 @@
 import ProductTopic from 'components/ProductsTopic';
-import ProductSection from '../../components/ProductsSection';
+import ProductSection from 'components/ProductsSection';
+import ProductsHelp from 'components/ProductsHelp';
 
 const AssetInventory = () => {
     const TopicData = {
@@ -46,6 +47,7 @@ const AssetInventory = () => {
                     isReverse={item.isReverse}
                 />
             ))}
+            <ProductsHelp />
         </>
     );
 };
