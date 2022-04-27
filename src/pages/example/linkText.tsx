@@ -1,8 +1,9 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import LinkText from 'components/linkText';
+import LinkText from 'components/LinkText';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import { IcArrowRight } from 'assets/icons';
 
 const StyledContainer = styled.div`
   ${tw`bg-violet-200`}
@@ -27,7 +28,10 @@ const ExLinkText: FC = () => {
     const router = useRouter();
     return (
         <StyledContainer>
-            <LinkText href="/">default button</LinkText>
+            <LinkText href="/">
+                default button
+                <IcArrowRight />
+            </LinkText>
             <StyledGoBack onClick={() => router.back()}>go Back</StyledGoBack>
         </StyledContainer>
     );
