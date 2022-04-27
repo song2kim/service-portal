@@ -1,8 +1,8 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import ReadySection from 'components/readySection';
+import ReadySection from 'components/ReadySection';
 import { Logo } from 'assets/icons';
-import LinkText from 'components/linkText';
+import LinkText from 'components/LinkText';
 
 const SiteMapData = [
     {
@@ -49,6 +49,9 @@ const StyledFooter = styled.footer`
   .logo {
     color: white;
     grid-column: 2 / span 3;
+    &__text {
+      margin-left: 4px;
+    }
     path {
       fill: currentColor;
     }
@@ -127,7 +130,7 @@ const Footer = () => (
                 <div className="grid">
                     <div className="logo">
                         <Logo />
-                        <span>presents</span>
+                        <span className="logo__text">presents</span>
                     </div>
                     {SiteMapData.map(
                         (item, index) => (

@@ -1,6 +1,5 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { IcArrowRight } from 'assets/icons';
 import { ReactNode } from 'react';
 
 interface LinkTextProps {
@@ -20,10 +19,6 @@ const StyledLinkText = styled.a`
       color: inherit;
     }
   }
-  .text {
-    ${tw`inline-flex text-lg hover:underline`}
-    color: inherit;
-  }
   &:hover {
     > svg {
        margin-left: 4px;
@@ -34,8 +29,7 @@ const StyledLinkText = styled.a`
 
 const LinkText = ({ href = '/', children = 'link', ...props }: LinkTextProps) => (
     <StyledLinkText href={href} {...props}>
-        <span className="text">{children}</span>
-        <IcArrowRight />
+        {children}
     </StyledLinkText>
 );
 
