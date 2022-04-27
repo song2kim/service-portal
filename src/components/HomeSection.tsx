@@ -20,8 +20,7 @@ const StyledHomeSection = styled.section<HomeSectionStyle>`
   align-items: center;
   min-height: 624px;
   
-  ${(props) => (props.hasBg ? tw`bg-gray-100` : tw`bg-white`)
-};
+  ${(props) => (props.hasBg ? tw`bg-gray-100` : tw`bg-white`)};
   
   .section {
     display: grid;

@@ -8,6 +8,7 @@ type ContentsLayoutProps = {
 const StyledContentsLayout = styled.div`
   min-height: 100vh;
   padding-top: var(--gnb-height);
+  padding-top: 112px;
 `;
 
 const ContentsLayout = ({ children }: ContentsLayoutProps) => (
