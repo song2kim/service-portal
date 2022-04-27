@@ -97,7 +97,7 @@ const StyledSubNav = styled.nav`
     max-width: 1120px;
     margin: 0 auto;
     
-    display: none;
+    //display: none;
     &__title {
       ${tw`text-lg text-gray-500`}
     }

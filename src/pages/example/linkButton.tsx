@@ -35,6 +35,7 @@ function ExLinkButton() {
             <StyledContainer>
                 <StyledItemRow>
                     <LinkButton href="/" color="violet-400" size="medium">violet / medium</LinkButton>
+                    <LinkButton href="/" color="violet-400" size="medium">Talk to Sale</LinkButton>
                     <LinkButton href="/" color="violet-400" size="large">violet / large</LinkButton>
                 </StyledItemRow>
                 <StyledItemRow>
