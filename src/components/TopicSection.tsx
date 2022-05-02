@@ -30,10 +30,10 @@ const StyledTopicSection = styled.section`
 `;
 
 function TopicSection({
-    title = 'Title', description = 'This is description',
+    title = 'Title', description = 'This is description', ...props
 }: TopicSectionProps) {
     return (
-        <StyledTopicSection>
+        <StyledTopicSection {...props}>
             <div className="topic">
                 <h2 className="topic__title">{title}</h2>
                 <p className="topic__description">{description}</p>

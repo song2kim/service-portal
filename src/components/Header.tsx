@@ -2,12 +2,14 @@ import tw, { styled } from 'twin.macro';
 import { Logo, IcExternal } from 'assets/icons';
 import LinkButton from 'components/LinkButton';
 import LinkText from 'components/LinkText';
+import ROUTE from '../constants/route';
 
 const StyledHeader = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
   .header {
     ${tw`bg-violet-100`}
     position: relative;
@@ -135,23 +137,23 @@ function Header() {
             text: 'Products',
             href: '/',
             subNav: [
-                { text: 'Asset Inventory', href: '/product/assetInventory' },
-                { text: 'CostExplorer', href: '/product/assetInventory' },
-                { text: 'AlertManager', href: '/product/alertManager' },
-                { text: 'IAM', href: '/product/IAM' },
+                { text: 'Asset Inventory', href: ROUTE.PRODUCT.ASSET_INVENTORY },
+                { text: 'Cost Explorer', href: '/products/costExplorer' },
+                { text: 'Alert Manager', href: '/products/alertManager' },
+                { text: 'IAM', href: '/products/IAM' },
             ],
         },
-        { text: 'Pricing', href: '/costExplorer' },
+        { text: 'Pricing', href: '/pricing' },
         { text: 'FAQ', href: '/faq' },
-        { text: 'Contacts', href: '/contacnt' },
+        { text: 'Contacts', href: '/contacts' },
     ];
 
-    const NavList = NavData.map((item, index) => (
-        <li className="nav-list__item">
+    const NavList = NavData.map((item) => (
+        <li className="nav-list__item" key={item.href}>
             <a href={item.href}>{item.text}</a>
             <StyledSubNavList>
-                {item.subNav?.map((menu, index) => (
-                    <a href={menu.href} className={`sub-${index}`}>
+                {item.subNav?.map((menu) => (
+                    <a key={menu.href} href={menu.href}>
                         {menu.text}
                     </a>
                 ))}
@@ -159,8 +161,8 @@ function Header() {
         </li>
     ));
 
-    const SubNavList = NavData.map((item, index) => item.subNav?.map((menu, index) => (
-        <li className={`sub-nav__item sub-nav-${index}`}>
+    const SubNavList = NavData.map((item) => item.subNav?.map((menu) => (
+        <li className="sub-nav__item" key={menu.href}>
             <a href={menu.href}>{menu.text}</a>
         </li>
     )));

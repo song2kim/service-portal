@@ -166,9 +166,8 @@ const Home: NextPage = () => {
     ];
 
     const HomeSectoinList = HomeSectionDate.map(
-        (item, index) => (
+        (item) => (
             <HomeSection
-                key={index}
                 title={item.title}
                 text={item.text}
                 imgSrc={item.imgSrc}
@@ -199,8 +198,8 @@ const Home: NextPage = () => {
     ];
 
     const HelpSectionList = HelpSectionDate.map(
-        (item, index) => (
-            <div className="help__item" key={index}>
+        (item) => (
+            <div className="help__item">
                 <img
                     className="help__left help__icon"
                     src={`/assets/images/${item.iconSrc}.svg`}

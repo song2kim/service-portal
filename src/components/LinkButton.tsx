@@ -36,18 +36,20 @@ const styles = {
     ],
 };
 
-function LinkButton({
-    color = 'violet-400', size = 'medium', children = 'Button', href = '/', ...props
-}: LinkButtonProps) {
-    return (
-        <StyledLinkButton
-            css={styles.style({ color, size, children })}
-            href={href}
-            {...props}
-        >
-            {children}
-        </StyledLinkButton>
-    );
-}
+const LinkButton = ({
+    color = 'violet-400',
+    size = 'medium',
+    children = 'Button',
+    href = '/',
+    ...props
+}: LinkButtonProps) => (
+    <StyledLinkButton
+        css={styles.style({ color, size, children })}
+        href={href}
+        {...props}
+    >
+        {children}
+    </StyledLinkButton>
+);
 
 export default LinkButton;
