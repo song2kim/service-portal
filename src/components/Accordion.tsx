@@ -5,7 +5,7 @@ import React from 'react';
 
 interface AccordionProps {
   title: string;
-  contents: string;
+  content: string;
 }
 
 const StyledAccordion = styled.div`
@@ -19,12 +19,13 @@ const StyledAccordion = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
+        width: 100%;
         padding: 20px;
         svg {
           flex-shrink: 0;
         }
       }
-      &__contents {
+      &__content {
         ${tw`text-lg`}
         overflow: hidden;
         height: 0;
@@ -35,7 +36,7 @@ const StyledAccordion = styled.div`
     }
 `;
 
-function Accordion({ title = 'title', contents = 'This is accordion' }: AccordionProps) {
+function Accordion({ title = 'title', content = 'This is accordion' }: AccordionProps) {
     const parentRef = React.useRef<HTMLDivElement>(null);
     const childRef = React.useRef<HTMLDivElement>(null);
 
@@ -62,13 +63,13 @@ function Accordion({ title = 'title', contents = 'This is accordion' }: Accordio
     return (
         <StyledAccordion>
             <div className="accordion">
-                <div className="accordion__header" onClick={handleButtonClick}>
+                <button className="accordion__header" onClick={handleButtonClick} type="button">
                     <p className="accordion__title">{title}</p>
                     {isCollapse ? <IcArrowUpLg /> : <IcArrowDownLg />}
-                </div>
-                <div className="accordion__contents" ref={parentRef}>
+                </button>
+                <div className="accordion__content" ref={parentRef}>
                     <p ref={childRef}>
-                        {contents}
+                        {content}
                     </p>
                 </div>
             </div>

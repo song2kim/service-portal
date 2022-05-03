@@ -124,13 +124,13 @@ const Footer = () => {
     ];
 
     const SiteMapList = SiteMapData.map(
-        (item, index) => (
-            <div className={`sitemap sitemap-${index + 1}`} key={index}>
+        (item) => (
+            <div className="sitemap" key={item.title}>
                 <div className="sitemap__title">{item.title}</div>
                 <ul className="sitemap__list">
                     {item.menuList.map(
-                        (menu, index) => (
-                            <li key={index} className="sitemap__menu">
+                        (menu) => (
+                            <li className="sitemap__menu" key={menu.text}>
                                 <LinkText href={menu.href}>{menu.text}</LinkText>
                             </li>
                         ),

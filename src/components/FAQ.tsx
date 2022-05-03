@@ -4,6 +4,7 @@ import Accordion from './Accordion';
 
 interface FAQProps {
     title: string;
+    FAQData: Array<{title: string; content: string;}>;
 }
 
 const StyledFAQSection = styled.section`
@@ -21,32 +22,13 @@ const StyledFAQSection = styled.section`
     
 `;
 
-function FAQSection({ title = 'FAQ' }: FAQProps) {
-    const FAQData = [
-        {
-            title: 'What kind of resource data does SpaceONE collect?',
-            contents: 'This is contents',
-        },
-        {
-            title: 'Does SpaceONE support integration with private cloud?',
-            contents: 'This is contents',
-        },
-        {
-            title: 'How often does SpaceONE collect cloud resource data? Can I customize collecting schedule?',
-            contents: 'This is contents',
-        },
-        {
-            title: 'How can I export cloud resource dataset to analyze?',
-            contents: 'This is contents',
-        },
-    ];
-
+function FAQSection({ title = 'FAQ', FAQData = [] }: FAQProps) {
     return (
         <StyledFAQSection>
             <div className="faq">
                 <h3 className="faq__title">{title}</h3>
-                {FAQData.map((item, index) => (
-                    <Accordion title={item.title} contents={item.contents} key={index} />
+                {FAQData.map((item) => (
+                    <Accordion key={item.title} title={item.title} content={item.content} />
                 ))}
             </div>
         </StyledFAQSection>

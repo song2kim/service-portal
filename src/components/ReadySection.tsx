@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import {IcArrowTop } from 'assets/icons';
+import { IcArrowTop } from 'assets/icons';
 import React from 'react';
 import LinkButton from 'components/LinkButton';
 
@@ -50,7 +50,7 @@ const ReadySection = () => {
                 </h3>
                 <div className="ready-section__buttons">
                     <LinkButton color="white" size="large" href="/">Talk to Sales</LinkButton>
-                    <button className="button-top" onClick={goToTop}>
+                    <button className="button-top" onClick={goToTop} type="button">
                         <span className="button-top__text">Back to the top</span>
                         <IcArrowTop />
                     </button>

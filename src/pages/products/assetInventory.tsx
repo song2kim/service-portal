@@ -2,8 +2,12 @@ import ProductTopic from 'components/ProductsTopic';
 import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
 import FAQSection from 'components/FAQ';
+import { useRouter } from 'next/router';
+import ROUTE from '../../constants/route';
 
 const AssetInventory = () => {
+    const router = useRouter();
+    console.log(router.pathname === ROUTE.PRODUCT.ASSET_INVENTORY);
     const TopicData = {
         title: 'Discover and\nManage multicloud resources',
         subtitle: 'Collect and categorize multicloud assets in one platform.\nSearch cloud resources quickly and analyze them with detailed information in one dashboard.',
@@ -30,6 +34,25 @@ const AssetInventory = () => {
         },
     ];
 
+    const FAQData = [
+        {
+            title: 'What kind of resource data does SpaceONE collect?',
+            content: 'This is content',
+        },
+        {
+            title: 'Does SpaceONE support integration with private cloud?',
+            content: 'This is content',
+        },
+        {
+            title: 'How often does SpaceONE collect cloud resource data? Can I customize collecting schedule?',
+            content: 'This is content',
+        },
+        {
+            title: 'How can I export cloud resource dataset to analyze?',
+            content: 'This is content',
+        },
+    ];
+
     return (
         <>
             <ProductTopic
@@ -38,8 +61,9 @@ const AssetInventory = () => {
                 iconSrc={TopicData.iconSrc}
                 href={TopicData.href}
             />
-            {ProductData.map((item, index) => (
+            {ProductData.map((item) => (
                 <ProductSection
+                    key={item.title}
                     coreValue={item.coreValue}
                     title={item.title}
                     description={item.description}
@@ -48,7 +72,7 @@ const AssetInventory = () => {
                     isReverse={item.isReverse}
                 />
             ))}
-            <FAQSection title="Want to learn more about Asset Inventory?" />
+            <FAQSection title="Want to learn more about Asset Inventory?" FAQData={FAQData} />
             <ProductsHelp />
         </>
     );
