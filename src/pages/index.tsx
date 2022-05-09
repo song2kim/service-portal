@@ -6,6 +6,8 @@ import LinkText from 'components/LinkText';
 import { IcArrowRight } from 'assets/icons';
 import styled from 'styled-components';
 import tw from 'twin.macro';
+import Customers from 'components/Customers';
+import React from 'react';
 
 const StyledTopicSection = styled.section`
   ${tw`bg-violet-100`}
@@ -52,12 +54,6 @@ const StyledTopicSection = styled.section`
     p {
       ${tw`text-lg text-gray-300`}
       margin-right: 32px;
-    }
-    ul {
-      display: flex;
-      li {
-        margin-right: 40px;
-      }
     }
   }
   .video {
@@ -108,23 +104,6 @@ const StyledHelpSection = styled.section`
 `;
 
 const Home: NextPage = () => {
-    const CustomersDate = [
-        { title: 'AMOREPACIFIC', imgSrc: 'img_logo_amorepacific' },
-        { title: 'KB', imgSrc: 'img_logo_kb' },
-        { title: 'NEOWIZ', imgSrc: 'img_logo_neowiz' },
-        { title: 'JOYCITY', imgSrc: 'img_logo_joycity' },
-    ];
-
-    const CustomerList = CustomersDate.map(
-        (item) => (
-            <li>
-                <img
-                    src={`/assets/images/${item.imgSrc}.svg`}
-                    alt={`${item.title}`}
-                />
-            </li>
-        ),
-    );
 
     const HomeSectionDate = [
         {
@@ -247,7 +226,7 @@ const Home: NextPage = () => {
                     <LinkButton color="violet-400" size="large" href="">Talk to Sales</LinkButton>
                     <div className="customers">
                         <p>Loved by customers</p>
-                        <ul>{CustomerList}</ul>
+                        <Customers />
                     </div>
                 </div>
                 <div className="video">Watch the Video</div>
