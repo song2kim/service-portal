@@ -6,7 +6,7 @@ type ContentLayoutProps = {
 };
 
 const StyledContentLayout = styled.div`
-  min-height: 100vh;
+  //min-height: 100vh;
   padding-top: var(--gnb-height);
   padding-top: 112px;
 `;
