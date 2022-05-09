@@ -145,7 +145,7 @@ function Header() {
         },
         { text: 'Pricing', href: '/pricing' },
         { text: 'FAQ', href: '/faq' },
-        { text: 'Contacts', href: '/contacts' },
+        { text: 'Contact', href: '/contact' },
     ];
 
     const NavList = NavData.map((item) => (
@@ -178,7 +178,7 @@ function Header() {
                     </h1>
                     <StyledNav>
                         <ul className="nav-list">{NavList}</ul>
-                        <LinkButton color="violet-400" size="medium" href="" tw="mx-4">
+                        <LinkButton color="violet-400" size="medium" href="/talktosales" tw="mx-4">
                             Talk to Sales
                         </LinkButton>
                         <span className="nav-list__item">

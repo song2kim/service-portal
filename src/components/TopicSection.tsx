@@ -17,7 +17,7 @@ const StyledTopicSection = styled.section`
     white-space: pre-wrap;
     &__title {
       ${tw`font-serif font-medium text-8xl`};
-      grid-column: span 2;
+      grid-column: span 4;
       padding-top: 112px;
     }
     &__description {
