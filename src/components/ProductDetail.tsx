@@ -1,7 +1,5 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import LinkText from 'components/LinkText';
-import { IcArrowRight } from 'assets/icons';
 import LinkButton from './LinkButton';
 
 interface ProductFeature {
@@ -77,7 +75,7 @@ const StyledProduct = styled.div`
   }
 `;
 
-function ProductDetail() {
+const ProductDetail = () => {
     const ProductData: Product[] = [
         {
             name: 'Asset management',
@@ -114,7 +112,7 @@ function ProductDetail() {
                     logoSrc: ['img_pricing_grafana', 'img_pricing_zabbix', 'img_pricing_google', 'img_pricing_oracle', 'img_pricing_alibaba'],
                 },
                 {
-                    keywords: ['Alert management integrated with external monitoring systems'],
+                    keywords: ['Notification delivery based on custom escalation policy through various channels'],
                     logoSrc: ['img_pricing_aws', 'img_pricing_azure', 'img_pricing_google', 'img_pricing_prometheus', 'img_pricing_amazonsns'],
                 },
                 {
@@ -152,14 +150,14 @@ function ProductDetail() {
         <StyledProductDetail>
             <h3 className="product-detail__title">Product details</h3>
             {ProductData.map((item: Product) => (
-                <StyledProduct>
-                    <div className="product" key={item.name}>
+                <StyledProduct key={item.name}>
+                    <div className="product">
                         <h4 className="product__name">
-                            <img className="product__icon" src={`/assets/images/${item.iconSrc}.svg`} alt="" />
+                            <img className="product__icon" src={`/assets/images/${item.iconSrc}.svg`} alt={`${item.name} icon`} />
                             {item.name}
                         </h4>
                         {item.feature.map((feature) => (
-                            <div className="feature" key={feature.title}>
+                            <div className="feature" key={feature.keywords.toString()}>
                                 {feature.title && <h5 className="feature__title">{feature.title}</h5>}
                                 {feature.description && <p className="feature__description">{feature.description}</p>}
                                 <ul className="feature__keyword-group">
@@ -180,6 +178,6 @@ function ProductDetail() {
             ))}
         </StyledProductDetail>
     );
-}
+};
 
 export default ProductDetail;

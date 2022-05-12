@@ -14,17 +14,17 @@ const StyledTopicSection = styled.section`
     grid-template-columns: repeat(12,1fr);
     width: 1120px;
     margin: 0 auto;
+    padding-top: 176px;
     white-space: pre-wrap;
     &__title {
       ${tw`font-serif font-medium text-8xl`};
       grid-column: span 4;
-      padding-top: 112px;
     }
     &__description {
       ${tw`font-serif text-2xl`};
       flex-shrink: 0;
       grid-column: span 8 / -1;
-      padding-top: 174px;
+      padding-top: 62px;
     }
   }
 `;

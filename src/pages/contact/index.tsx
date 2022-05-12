@@ -124,10 +124,10 @@ const Contact = () => {
             <TopicSection title={TopicData.title} description={TopicData.description} />
             <StyledContactChannels>
                 {ContactChannelsData.map((item) => (
-                    <div className="contact">
+                    <div className="contact" key={item.title}>
                         <div className="contact__channels">{item.title}</div>
                         {item.contactList.map((contact) => (
-                            <LinkText href={`${contact.href}`}>
+                            <LinkText href={`${contact.href}`} key={contact.text}>
                                 {contact.text}
                                 <IcExternal />
                             </LinkText>
@@ -137,7 +137,7 @@ const Contact = () => {
             </StyledContactChannels>
             <StyledAddressList>
                 {AddressData.map((item) => (
-                    <div className="address">
+                    <div className="address" key={item.name}>
                         <p className="address__name">{item.name}</p>
                         <p className="address__text">{item.address}</p>
                         <LinkText href={item.href}>

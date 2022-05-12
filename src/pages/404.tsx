@@ -7,8 +7,7 @@ const StyledError = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 115px;
-  padding-bottom: 177px;
+  padding: 176px 0;
   h2 {
     ${tw`text-8xl`};
     margin: 8px 0 16px;

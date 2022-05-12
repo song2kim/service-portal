@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Check } from 'assets/icons';
 
 const Heading = styled.h1`
   text-decoration: underline;
@@ -8,7 +7,6 @@ const Heading = styled.h1`
 const ScExample = () => (
     <>
         <Heading>I am styled-component</Heading>
-        <Check />
     </>
 );
 
