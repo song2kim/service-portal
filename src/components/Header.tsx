@@ -2,7 +2,10 @@ import tw, { styled } from 'twin.macro';
 import { Logo, IcExternal } from 'assets/icons';
 import LinkButton from 'components/LinkButton';
 import LinkText from 'components/LinkText';
-import ROUTE from '../constants/route';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import ROUTE from 'constants/route';
+import React, { useEffect } from 'react';
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -32,6 +35,7 @@ const StyledNav = styled.nav`
     display: flex;
     height: 100%;
     margin-left: auto;
+    align-items: center;
     &__item {
       ${tw`text-gray-500`}
       position: relative;
@@ -40,25 +44,25 @@ const StyledNav = styled.nav`
       min-height: 64px;
       padding-right: 16px;
       padding-left: 16px;
-      &:hover {
+      &-active {
+      //@extend .nav-list__item;
         > a {
           ${tw`text-violet-400`}
           > svg path {
             ${tw`text-violet-500 fill-current`}
           }
         }
-        nav {
+      }
+    }
+    &__item-label {
+      cursor: pointer;
+      &-active  {
+        ${tw`text-violet-400`};
+        + nav {
           display: block;
         }
       }
     }
-  }
-`;
-
-const StyledIcExternal = styled(IcExternal)`
-  margin-left: 4px;
-  > path {
-    ${tw`text-gray-500 fill-current`}
   }
 `;
 
@@ -73,7 +77,7 @@ const StyledSubNavList = styled.nav`
   box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
   border-radius: 0 0 16px 16px;
   > a {
-    ${tw`border-gray-200`}
+    ${tw`border-gray-200`};
     display: flex;
     align-items: center;
     height: 52px;
@@ -84,7 +88,11 @@ const StyledSubNavList = styled.nav`
       border-top-width: 0;
     }
     &:hover {
-      ${tw`text-violet-400`}
+      ${tw`text-violet-400`};
+    }
+    &.-active {
+      //@extend nav > a;
+      ${tw`text-violet-400`};
     }
   }
 `;
@@ -99,7 +107,6 @@ const StyledSubNav = styled.nav`
     max-width: 1120px;
     margin: 0 auto;
     
-    //display: none;
     &__title {
       ${tw`text-lg text-gray-500`}
     }
@@ -118,52 +125,126 @@ const StyledSubNav = styled.nav`
           ${tw`text-violet-400`}
         }
       }
+      &-active {
+        //@extend .sub-nav__item;
+        a {
+          ${tw`text-violet-400`}
+        }
+      }
     }
   }
 `;
 
-function Header() {
-    const NavData = [
+const StyledIcExternal = styled(IcExternal)`
+  margin-left: 4px;
+  > path {
+    ${tw`text-gray-500 fill-current`}
+  }
+`;
+
+const Header = () => {
+    const router = useRouter();
+
+    const NavRoutes = [
         {
-            text: 'Example',
-            href: '/example',
+            label: 'Products',
+            path: ROUTE.PRODUCTS.INDEX,
             subNav: [
-                { text: 'Font', href: '/example/font' },
-                { text: 'LinkButton', href: '/example/linkButton' },
-                { text: 'LinkText', href: '/example/linkText' },
+                {
+                    label: 'Asset Inventory',
+                    path: ROUTE.PRODUCTS.ASSET_INVENTORY,
+                },
+                {
+                    label: 'Cost Explorer',
+                    path: ROUTE.PRODUCTS.COST_EXPLORER,
+                },
+                {
+                    label: 'Alert Manager',
+                    path: ROUTE.PRODUCTS.ALERT_MANAGER,
+                },
+                {
+                    label: 'IAM',
+                    path: ROUTE.PRODUCTS.IAM,
+                },
             ],
         },
         {
-            text: 'Products',
-            href: '/',
-            subNav: [
-                { text: 'Asset Inventory', href: ROUTE.PRODUCT.ASSET_INVENTORY },
-                { text: 'Cost Explorer', href: '/products/costExplorer' },
-                { text: 'Alert Manager', href: '/products/alertManager' },
-                { text: 'IAM', href: '/products/IAM' },
-            ],
+            label: 'Pricing',
+            path: ROUTE.PRICING,
         },
-        { text: 'Pricing', href: '/pricing' },
-        { text: 'FAQ', href: '/faq' },
-        { text: 'Contact', href: '/contact' },
+        {
+            label: 'Contact',
+            path: ROUTE.CONTACT,
+        },
     ];
 
-    const NavList = NavData.map((item) => (
-        <li className="nav-list__item" key={item.href}>
-            <a href={item.href}>{item.text}</a>
-            <StyledSubNavList>
-                {item.subNav?.map((menu) => (
-                    <a key={menu.href} href={menu.href}>
-                        {menu.text}
-                    </a>
-                ))}
-            </StyledSubNavList>
-        </li>
+    const FirstPathname = (currentPathname: string) => {
+        let firstPathname: string[] | string = '';
+        firstPathname = currentPathname.split('/');
+
+        return firstPathname[1];
+    };
+
+    const ActiveNav = (navPath: string) => {
+        let isActive = '';
+        if (router.pathname.startsWith(navPath)) isActive = '-active';
+
+        return isActive;
+    };
+
+    const [activeNav, setActiveNav] = React.useState<boolean>(false);
+    const btnRef = React.useRef() as React.MutableRefObject<HTMLDivElement>;
+    useEffect(() => {
+        const handleClickOutside = (event: React.BaseSyntheticEvent | MouseEvent) => {
+            if (!(btnRef.current?.contains(event.target))) setActiveNav((false));
+        };
+
+        window.addEventListener('click', handleClickOutside);
+        return () => {
+            window.removeEventListener('click', handleClickOutside);
+        };
+    }, [btnRef]);
+
+    const NavList = NavRoutes.map((item, index) => (
+        <span className={`nav-list__item nav-list__item${ActiveNav(item.path)}`} key={item.path}>
+            {
+                item.subNav
+                    ? (
+                        <span
+                            role="button"
+                            tabIndex={index}
+                            className={`nav-list__item-label${activeNav ? '-active' : ''}`}
+                            onClick={() => {
+                                setActiveNav(!activeNav);
+                            }}
+                            onKeyDown={() => {
+                                setActiveNav(!activeNav);
+                            }}
+                            ref={btnRef}
+                        >
+                            {item.label}
+                        </span>
+                    )
+                    : <Link href={item.path}>{item.label}</Link>
+            }
+            {item.subNav
+                && (
+                    <StyledSubNavList>
+                        {item.subNav?.map((menu) => (
+                            <Link href={menu.path}>
+                                <a className={`${ActiveNav(menu.path)}`} key={menu.path} href={menu.path}>
+                                    {menu.label}
+                                </a>
+                            </Link>
+                        ))}
+                    </StyledSubNavList>
+                )}
+        </span>
     ));
 
-    const SubNavList = NavData.map((item) => item.subNav?.map((menu) => (
-        <li className="sub-nav__item" key={menu.href}>
-            <a href={menu.href}>{menu.text}</a>
+    const SubNavList = NavRoutes.map((item) => item.subNav?.map((menu) => (
+        <li className={`sub-nav__item sub-nav__item${ActiveNav(menu.path)}`} key={menu.path}>
+            <Link href={menu.path}>{menu.label}</Link>
         </li>
     )));
 
@@ -172,38 +253,49 @@ function Header() {
             <div className="header">
                 <div className="header__inner">
                     <h1>
-                        <a href="/">
-                            <Logo />
-                        </a>
+                        <Link href={ROUTE.HOME} passHref>
+                            <a href={ROUTE.HOME}>
+                                <Logo />
+                            </a>
+                        </Link>
                     </h1>
                     <StyledNav>
-                        <ul className="nav-list">{NavList}</ul>
-                        <LinkButton color="violet-400" size="medium" href="/talktosales" tw="mx-4">
-                            Talk to Sales
-                        </LinkButton>
-                        <span className="nav-list__item">
-                            <LinkText href="/" tw="text-gray-600">
-                                Docs
-                                <StyledIcExternal />
-                            </LinkText>
-                        </span>
-                        <span className="nav-list__item">
-                            <LinkText href="/" tw="text-gray-600">
-                                Community
-                                <StyledIcExternal />
-                            </LinkText>
-                        </span>
+                        <div className="nav-list">
+                            {NavList}
+                            <span>
+                                <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
+                                    Talk to Sales
+                                </LinkButton>
+                            </span>
+                            <span className="nav-list__item">
+                                <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
+                                    Docs
+                                    <StyledIcExternal />
+                                </LinkText>
+                            </span>
+                            <span className="nav-list__item">
+                                <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
+                                    Community
+                                    <StyledIcExternal />
+                                </LinkText>
+                            </span>
+                        </div>
                     </StyledNav>
                 </div>
             </div>
-            <StyledSubNav>
-                <div className="sub-nav">
-                    <span className="sub-nav__title">Products</span>
-                    <ul className="sub-nav__list">{SubNavList}</ul>
-                </div>
-            </StyledSubNav>
+            {
+                FirstPathname(router.pathname) === FirstPathname(ROUTE.PRODUCTS.INDEX)
+                && (
+                    <StyledSubNav>
+                        <div className="sub-nav">
+                            <span className="sub-nav__title">Products</span>
+                            <ul className="sub-nav__list">{SubNavList}</ul>
+                        </div>
+                    </StyledSubNav>
+                )
+            }
         </StyledHeader>
     );
-}
+};
 
 export default Header;

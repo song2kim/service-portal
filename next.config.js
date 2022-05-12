@@ -9,9 +9,18 @@ const nextConfig = {
             test: /\.svg$/i,
             issuer: /\.[jt]sx?$/,
             use: ['@svgr/webpack'],
-        })
+        });
 
-        return config
+        return config;
+    },
+    async redirects() {
+        return [
+            {
+                source: '/products',
+                destination: '/products/assetInventory',
+                permanent: true,
+            },
+        ];
     },
 };
 
