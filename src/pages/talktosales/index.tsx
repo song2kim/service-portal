@@ -148,15 +148,16 @@ const TalktoSales = () => {
                             <div className="textarea-box">
                                 <label htmlFor="comments" className="textarea-box__label">
                                     Comments
-                                    <textarea name="comments" id="comments" cols="30" rows="5" className="textarea-box__textarea" placeholder="Tell us more about your project, needs and timeline." />
+                                    <textarea name="comments" id="comments" cols={30} rows={5} className="textarea-box__textarea" placeholder="Tell us more about your project, needs and timeline." />
                                 </label>
                             </div>
                         </StyledTextarea>
                         <StyledCheckbox>
                             <div className="check-box">
-                                <input id="check-box-privacy" type="checkbox" className="check-box__checkbox" />
                                 <label htmlFor="check-box-privacy" className="check-box__label">
-                                    By checking this box I confirm that I have read, consent and agree to Megazone Cloud’s SpaceONE Privacy Policy. (Required)
+                                    <input id="check-box-privacy" type="checkbox" className="check-box__checkbox" />
+                                    {/* eslint-disable-next-line max-len */}
+                                    By cheÔcking this box I confirm that I have read, consent and agree to Megazone Cloud’s SpaceONE Privacy Policy. (Required)
                                     <LinkText href="/">&nbsp; Privacy Policy</LinkText>
                                 </label>
                             </div>

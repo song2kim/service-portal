@@ -2,12 +2,8 @@ import ProductTopic from 'components/ProductsTopic';
 import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
 import FAQSection from 'components/FAQ';
-import { useRouter } from 'next/router';
-import ROUTE from '../../constants/route';
 
 const AssetInventory = () => {
-    const router = useRouter();
-    console.log(router.pathname === ROUTE.PRODUCT.ASSET_INVENTORY);
     const TopicData = {
         title: 'Discover and\nManage multicloud resources',
         subtitle: 'Collect and categorize multicloud assets in one platform.\nSearch cloud resources quickly and analyze them with detailed information in one dashboard.',

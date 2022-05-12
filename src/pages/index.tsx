@@ -104,7 +104,6 @@ const StyledHelpSection = styled.section`
 `;
 
 const Home: NextPage = () => {
-
     const HomeSectionDate = [
         {
             title: 'Discover and manage multicloud resources',
@@ -154,6 +153,7 @@ const Home: NextPage = () => {
                 href={item.href}
                 linkText={item.linkText}
                 hasBg={item.hasBg}
+                key={item.title}
             />
         )
         ,
@@ -178,7 +178,7 @@ const Home: NextPage = () => {
 
     const HelpSectionList = HelpSectionDate.map(
         (item) => (
-            <div className="help__item">
+            <div className="help__item" key={item.title}>
                 <img
                     className="help__left help__icon"
                     src={`/assets/images/${item.iconSrc}.svg`}

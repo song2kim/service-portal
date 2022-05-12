@@ -12,7 +12,7 @@ interface TopicSectionProps {
 const StyledTopicSection = styled.section`
   max-width: 1120px;
   margin: 0 auto;
-  padding: 72px 0 112px;
+  padding: 176px 0 112px;
   .topic {
     text-align: center;
     white-space: pre-wrap;

@@ -8,11 +8,6 @@ import AppLayout from 'components/AppLayout';
 function App({ Component, pageProps }: AppProps): ReactElement {
     return (
         <>
-            <Head>
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
-                <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" />
-            </Head>
             <GlobalStyles />
             <AppLayout>
                 <Component {...pageProps} />
