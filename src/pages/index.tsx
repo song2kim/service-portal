@@ -7,7 +7,8 @@ import { IcArrowRight } from 'assets/icons';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import Customers from 'components/Customers';
-import React from 'react';
+import React, { useState } from 'react';
+import IcClose from '../assets/icons/IcClose';
 
 const StyledTopicSection = styled.section`
   ${tw`bg-violet-100`}
@@ -57,16 +58,63 @@ const StyledTopicSection = styled.section`
     }
   }
   .video {
-    ${tw`font-serif text-lg text-white`}
+    ${tw`font-serif text-lg text-white bg-violet-200`}
     width: 1400px;
     min-height: 640px;
     margin: 64px auto 0;
 
-    background-color: lightseagreen;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+`;
+
+const StyledModal = styled.section`
+  ${tw`bg-gray-600 bg-opacity-40`}
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 32px 80px;
+  height: 100vh;
+  
+  .modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1440px;
+    &__close {
+      margin-left: auto;
+      path {
+        fill: white;
+      } 
+    }
+    &__video-wrap {
+      ${tw`bg-gray-600`};
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 50%;
+    }
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding:0 80px;
+    }
+  }
+  
+  
+`;
+const StyledIcClose = styled(IcClose)`
+  
 `;
 
 const StyledH3 = styled.h3`
@@ -104,6 +152,12 @@ const StyledHelpSection = styled.section`
 `;
 
 const Home: NextPage = () => {
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
     const HomeSectionDate = [
         {
             title: 'Discover and manage multicloud resources',
@@ -229,14 +283,37 @@ const Home: NextPage = () => {
                         <Customers />
                     </div>
                 </div>
-                <div className="video">Watch the Video</div>
+                <button type="button" className="video" onClick={toggleModal}>Watch the Video</button>
             </StyledTopicSection>
+            {modal && (
+                <StyledModal onClick={toggleModal}>
+                    <div className="modal">
+                        <button type="button" className="modal__close" onClick={toggleModal}>
+                            <StyledIcClose />
+                        </button>
+                        <div className="modal__video-wrap">
+                            <iframe
+                                className="modal__video"
+                                width="560"
+                                height="315"
+                                src="https://www.youtube.com/embed/cR6AOklH718"
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            />
+                        </div>
+                    </div>
+                </StyledModal>
+            )}
+
             <StyledH3>We make multicloud managed</StyledH3>
             {HomeSectoinList}
             <StyledHelpSection>
                 <StyledH3>We’ll help you</StyledH3>
                 <div className="help">{HelpSectionList}</div>
             </StyledHelpSection>
+
         </>
     );
 };
