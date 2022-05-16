@@ -46,8 +46,9 @@ const StyledNav = styled.nav`
       padding-left: 16px;
       &-active {
       //@extend .nav-list__item;
+        ${tw`text-violet-400`}
         > a {
-          ${tw`text-violet-400`}
+          color: inherit;
           > svg path {
             ${tw`text-violet-500 fill-current`}
           }
