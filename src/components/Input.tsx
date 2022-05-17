@@ -4,11 +4,13 @@ import React from 'react';
 
 interface InputProps {
     id: string;
+    type?: string;
     label: string;
     placeholder: string;
     required?: boolean;
     width?: string;
-    error?: boolean;
+    register: any;
+    errors: any;
 }
 
 type InputStyle = Partial<InputProps>
@@ -45,7 +47,14 @@ const StyledInput = styled.div<InputStyle>`
 `;
 
 function Input({
-    id, label = 'text', placeholder = 'text', required = false, width = ' ', error = false,
+    id,
+    type,
+    label,
+    placeholder,
+    required = false,
+    width = '100%',
+    register,
+    errors,
 }: InputProps) {
     return (
         <StyledInput width={width}>
@@ -53,8 +62,15 @@ function Input({
                 <label htmlFor={id} className="input-box__label">
                     {label}
                     {required && ' *'}
-                    <input className="input-box__input" type="text" id={id} placeholder={placeholder} />
-                    {error && <p className="input-box__error">This field is required.</p>}
+                    <input
+                        className="input-box__input"
+                        type={type}
+                        id={id}
+                        placeholder={placeholder}
+                        {...register(`${id}`, { required })}
+                    />
+                    {errors[id]?.type === 'required'
+                        && <p className="input-box__error">This field is required.</p>}
                 </label>
             </div>
         </StyledInput>

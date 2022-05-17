@@ -8,12 +8,14 @@ interface SelectProps {
     placeholder: string;
     required?: boolean;
     width?: string;
-    error?: boolean;
+    register: any;
+    errors: any;
+    options: any;
 }
 
-type InputStyle = Partial<SelectProps>
+type SelectStyle = Partial<SelectProps>
 
-const StyledSelect = styled.div<InputStyle>`
+const StyledSelect = styled.div<SelectStyle>`
   width: ${(props) => props.width || '100%'};
   .select {
     width: 100%;
@@ -50,7 +52,14 @@ const StyledSelect = styled.div<InputStyle>`
 `;
 
 function Select({
-    id, label = 'select', placeholder = 'select', required, width, error,
+    id,
+    label,
+    placeholder,
+    required,
+    width,
+    register,
+    errors,
+    options,
 }: SelectProps) {
     return (
         <StyledSelect width={width}>
@@ -58,14 +67,32 @@ function Select({
                 <label htmlFor={id} className="select__label">
                     {label}
                     {required && ' *'}
-                    <select name="country" id={id} className="select__box">
-                        <option value="">select1</option>
-                        <option value="">select2</option>
+                    <select
+                        name={id}
+                        id={id}
+                        className="select__box"
+                        defaultValue=""
+                        placeholder={placeholder}
+                        {...register(`${id}`, { required })}
+                    >
+                        <option disabled value="">Select Country</option>
+                        {
+                            options.map((value: string) => (
+                                <option key={value} value={value}>{value}</option>
+                            ))
+                        }
                     </select>
+                    {errors[id]?.type === 'required'
+                        && <p className="select__error">This field is required.</p>}
                 </label>
             </div>
         </StyledSelect>
     );
 }
+
+Select.defaultProps = {
+    required: false,
+    width: '100%',
+};
 
 export default Select;

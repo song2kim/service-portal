@@ -232,7 +232,7 @@ const Header = () => {
                 && (
                     <StyledSubNavList>
                         {item.subNav?.map((menu) => (
-                            <Link href={menu.path}>
+                            <Link href={menu.path} key={menu.label}>
                                 <a className={`${ActiveNav(menu.path)}`} key={menu.path} href={menu.path}>
                                     {menu.label}
                                 </a>
