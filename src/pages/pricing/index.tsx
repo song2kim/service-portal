@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import LinkButton from 'components/LinkButton';
 import { IcCheckLg, IcCloseGray } from 'assets/icons';
 import ProductDetail from 'components/ProductDetail';
+import ROUTE from 'constants/route';
 
 interface PricePlan {
     title: string;
@@ -14,6 +15,8 @@ interface PricePlan {
     account?: string;
     benefitList: Array<{benefit: string}>;
     recommend?: boolean;
+    linkText?: string;
+    href?: string;
 }
 
 const StyledTab = styled.div`
@@ -212,7 +215,7 @@ const StyledComparePlan = styled.section`
 const Pricing = () => {
     const TopicData = {
         title: 'Pricing',
-        description: 'We offer a wide range of products starting from a simple demo account to a full-support enterprise account.',
+        description: 'We offer a wide range of products starting from a simple demo account to a full-support enterprise account. Talk to sales and learn more about SpaceONE.',
     };
 
     const PricePlanData: PricePlan[] = [
@@ -220,33 +223,39 @@ const Pricing = () => {
             title: 'Free Trial',
             price: '$0',
             benefitList: [
-                { benefit: '1 service account' },
-                { benefit: 'Full features provided' },
+                { benefit: '1 Cloud Account' },
+                { benefit: 'Full Features Provided' },
             ],
+            linkText: 'Reqeust Demo',
+            href: ROUTE.DEMO,
         },
         {
             title: 'Business',
             price: '$140',
             period: ' /month',
-            account: 'Per service account',
+            account: 'per cloud account',
             benefitList: [
-                { benefit: 'Unlimited service accounts' },
-                { benefit: 'Full features provided' },
-                { benefit: 'Various app extensions' },
+                { benefit: 'Unlimited Cloud Accounts' },
+                { benefit: 'Full Features Provided' },
+                { benefit: 'Support Center' },
             ],
             recommend: true,
+            linkText: 'Talk to Sales',
+            href: ROUTE.TALKTOSALES,
         },
         {
             title: 'Enterprise',
             price: 'Contact Sales',
             benefitList: [
-                { benefit: 'Unlimited service accounts' },
-                { benefit: 'Full features provided' },
-                { benefit: 'Various app extensions' },
-                { benefit: 'Custom onboarding program including hands-on training' },
-                { benefit: 'Implementation consultancy service by cloud industry professionals\n' },
-                { benefit: 'Direct support Slack channel with designated customer success team' },
+                { benefit: 'Unlimited Cloud Accounts' },
+                { benefit: 'Full Features Provided' },
+                { benefit: 'Support Center' },
+                { benefit: 'Custom Onboarding Program including hands-on training' },
+                { benefit: 'Implementation Consultancy Service by cloud industry professionals' },
+                { benefit: 'Direct Support Slack Channel with designated customer success team' },
             ],
+            linkText: 'Talk to Sales',
+            href: ROUTE.TALKTOSALES,
         },
     ];
 
@@ -265,7 +274,7 @@ const Pricing = () => {
                             <li className="plan__benefit-item" key={benefit.benefit}>{benefit.benefit}</li>
                         ))}
                     </ul>
-                    <LinkButton href="/" color="violet-400" size="large">Talk to Sales</LinkButton>
+                    <LinkButton href={item.href} color="violet-400" size="large">{item.linkText}</LinkButton>
                     {item.recommend && <em className="plan__recommend">Our Recommends</em>}
                 </div>
             ))}
@@ -275,6 +284,7 @@ const Pricing = () => {
 
     const ComparedPricePlanList = (
         <StyledComparePlan>
+            {/* missing design <p> Compare our various price tiers and choose what you want</p> */}
             <div className="compare-plan">
                 <table className="plan">
                     <caption>Pricing and feature information for all plans</caption>
@@ -287,12 +297,12 @@ const Pricing = () => {
                     <thead>
                         <tr>
                             <th className="plan__title"> </th>
-                            <th className="plan__title">plan1</th>
+                            <th className="plan__title">Free Trial</th>
                             <th className="plan__title">
-                                plan2
+                                Business
                                 <em className="plan__recommends">Our Recommends</em>
                             </th>
-                            <th className="plan__title">plan3</th>
+                            <th className="plan__title">Our Recommends</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -303,10 +313,10 @@ const Pricing = () => {
                             <td className="plan__feature-group" />
                         </tr>
                         <tr>
-                            <th className="plan__feature" scope="row">Integrated cloud service accounts</th>
-                            <td className="plan__value">1 service account</td>
-                            <td className="plan__value">Unlimited</td>
-                            <td className="plan__value">Unlimited</td>
+                            <th className="plan__feature" scope="row">Integrated Cloud Service Accounts</th>
+                            <td className="plan__value">1 cloud account</td>
+                            <td className="plan__value">Unlimited cloud accounts</td>
+                            <td className="plan__value">Unlimited cloud accounts</td>
                         </tr>
                         <tr>
                             <th className="plan__feature-group" scope="col"><span>Support</span></th>
@@ -315,7 +325,7 @@ const Pricing = () => {
                             <td className="plan__feature-group" />
                         </tr>
                         <tr>
-                            <th className="plan__feature" scope="row">Support pack</th>
+                            <th className="plan__feature" scope="row">Support Pack</th>
                             <td className="plan__value">No support for trial</td>
                             <td className="plan__value">Basic support pack</td>
                             <td className="plan__value">Custom full support</td>
@@ -327,28 +337,28 @@ const Pricing = () => {
                             <td className="plan__value">Response in 12 hours</td>
                         </tr>
                         <tr>
-                            <th className="plan__feature-sub" scope="row">Direct communication channel (24/7)</th>
+                            <th className="plan__feature-sub" scope="row">Direct Communication Channel (Slack)</th>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCheckLg /></td>
                         </tr>
                         <tr>
-                            <th className="plan__feature-sub" scope="row">Onboarding & training program</th>
+                            <th className="plan__feature-sub" scope="row">Onboarding & Training Program</th>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCheckLg /></td>
                         </tr>
                         <tr>
-                            <th className="plan__feature-sub" scope="row">Implementation consultancy program</th>
+                            <th className="plan__feature-sub" scope="row">Implementation Consultancy Program</th>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCloseGray /></td>
                             <td className="plan__value"><IcCheckLg /></td>
                         </tr>
                         <tr>
                             <th className="plan__feature-sub"> </th>
-                            <td className="plan__value"><LinkButton color="violet-400" size="large" href="/">Talk to Sales</LinkButton></td>
-                            <td className="plan__value"><LinkButton color="violet-400" size="large" href="/">Talk to Sales</LinkButton></td>
-                            <td className="plan__value"><LinkButton color="violet-400" size="large" href="/">Talk to Sales</LinkButton></td>
+                            <td className="plan__value"><LinkButton color="violet-400" size="large" href={ROUTE.DEMO}>Request Demo</LinkButton></td>
+                            <td className="plan__value"><LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>Talk to Sales</LinkButton></td>
+                            <td className="plan__value"><LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>Talk to Sales</LinkButton></td>
                         </tr>
                     </tbody>
                 </table>
@@ -362,7 +372,7 @@ const Pricing = () => {
             content: PricePlanList,
         },
         {
-            title: 'Compare plans',
+            title: 'Compare Plans',
             content: ComparedPricePlanList,
         },
     ];
@@ -370,16 +380,20 @@ const Pricing = () => {
 
     const FAQData = [
         {
-            title: 'What is a service account?',
-            content: 'This is content',
+            title: 'What is a cloud account?',
+            content: 'A cloud account is an account of cloud service providers such as AWS, Azure, and Google Cloud. Our pricing plans are based on the number of cloud accounts you have integrated with SpaceONE.',
         },
         {
-            title: 'How can I buy SpaceONE apps for advanced features?',
-            content: 'This is content',
+            title: 'How does SpaceONE charge the bill?',
+            content: 'You can pay your bill through transfer. SpaceONE billing information will be integrated into the invoice of Megazone Cloud. If you have any questions about billing and payment, contact us through our support portal. ',
         },
         {
             title: 'How long does it take to talk with SpaceONE sales?',
-            content: 'This is content',
+            content: 'If you submit a request through our contact page, our sales team will contact you via email within 2 business days. If your inquiry is delayed, please contact us through a contact channel such as support@spaceone.com.',
+        },
+        {
+            title: 'Can I change my plan later on?',
+            content: 'Yes, you can change your plan by contacting our sales team. You can submit requests through the contact page of this website or via our support portal.',
         },
     ];
 

@@ -181,18 +181,27 @@ const TalktoSales = () => {
                             errors={errors}
                         />
                         <Input
+                            id="email"
+                            label="Work Email"
+                            placeholder="example@company.com"
+                            required
+                            register={register}
+                            errors={errors}
+                        />
+                        {/* misisng design <p className="error">Please use a valid email address.</p> */}
+                        <Input
                             id="phone"
-                            label="Phone Number"
+                            label="Mobile Phone Number"
                             type="number"
-                            placeholder="Phone Number"
+                            placeholder="+1-000-000-0000"
                             required
                             register={register}
                             errors={errors}
                         />
                         <Input
-                            id="email"
-                            label="Email Address"
-                            placeholder="example@company.com"
+                            id="company"
+                            label="Company"
+                            placeholder="Company Name"
                             required
                             register={register}
                             errors={errors}
@@ -218,7 +227,7 @@ const TalktoSales = () => {
                             <div className="textarea-box">
                                 <label htmlFor="comments" className="textarea-box__label">
                                     Comments
-                                    <textarea name="comments" id="comments" cols={30} rows={5} className="textarea-box__textarea" placeholder="Tell us more about your project, needs and timeline." />
+                                    <textarea name="comments" id="comments" cols={30} rows={5} className="textarea-box__textarea" placeholder="Tell us more about your project, needs and timeline. (1000 bytes)" />
                                 </label>
                             </div>
                         </StyledTextarea>
@@ -232,7 +241,7 @@ const TalktoSales = () => {
                                         {...register('privacy', { required: true })}
                                     />
                                     {/* eslint-disable-next-line max-len */}
-                                    By checking this box I confirm that I have read, consent and agree to Megazone Cloud’s SpaceONE Privacy Policy. (Required)
+                                    By checking this box, I confirm that I have read, consent and agree to Megazone Cloud’s SpaceONE Privacy Policy. (required)
                                     <LinkText href="/">&nbsp; Privacy Policy</LinkText>
                                     {
                                         errors.privacy?.type === 'required'
@@ -244,7 +253,7 @@ const TalktoSales = () => {
                         </StyledCheckbox>
                         <StyledSubmit>Submit</StyledSubmit>
                         {hasError(errors)
-                            && <p className="error">Field needs to be filled.</p>}
+                            && <p className="error">Please complete all required fields.</p>}
                     </StyledForm>
                     <StyledSupportMsg>
                         <div className="message">

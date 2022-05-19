@@ -1,5 +1,6 @@
 import tw, { styled } from 'twin.macro';
 import LinkButton from '../components/LinkButton';
+import ROUTE from '../constants/route';
 
 const StyledError = styled.section`
   ${tw`bg-violet-100`}
@@ -21,8 +22,8 @@ const Custom404 = () => (
     <StyledError>
         <img src="/assets/images/img_error_jellyoctos.svg" alt="" />
         <h2>404</h2>
-        <p>Sorry, we can’t seem to find what you’re looking for.</p>
-        <LinkButton color="violet-400" size="large" href="/">Back to home</LinkButton>
+        <p>Sorry, we can’t find what you’re looking for.</p>
+        <LinkButton color="violet-400" size="large" href={ROUTE.HOME}>Back to home</LinkButton>
     </StyledError>
 );
 

@@ -1,8 +1,9 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import ReadySection from 'components/ReadySection';
-import { Logo } from 'assets/icons';
+import { IcExternal, Logo } from 'assets/icons';
 import LinkText from 'components/LinkText';
+import ROUTE from 'constants/route';
+import Link from 'next/link';
 
 const StyledFooter = styled.footer`
   ${tw`bg-violet-500`}
@@ -30,6 +31,10 @@ const StyledFooter = styled.footer`
     &__text {
       margin-left: 4px;
     }
+    &__text2 {
+      ${tw`text-violet-200 text-sm`};
+      margin-top: 8px;
+    }
     path {
       fill: currentColor;
     }
@@ -48,13 +53,14 @@ const StyledFooter = styled.footer`
     }
   }
   .copyright {
-    ${tw`text-violet-300`}
+    ${tw`text-violet-200 text-sm`}
     grid-column: 2 / span 3;
   }
   .terms {
+    ${tw`text-violet-100 text-sm`}
     grid-column: span 3;
     &__item {
-      margin-right: 24px;
+      margin-right: 12px;
     }
   }
   .language {
@@ -105,20 +111,19 @@ const Footer = () => {
         {
             title: 'Products',
             menuList: [
-                { text: 'Asset Inventory', href: '/' },
-                { text: 'Cost Analysis', href: '/' },
-                { text: 'Alert Manager', href: '/' },
-                { text: 'IAM', href: '/' },
+                { text: 'Asset Inventory', href: ROUTE.PRODUCTS.ASSET_INVENTORY },
+                { text: 'Cost Analysis', href: ROUTE.PRODUCTS.COST_EXPLORER },
+                { text: 'Alert Manager', href: ROUTE.PRODUCTS.ALERT_MANAGER },
+                { text: 'IAM', href: ROUTE.PRODUCTS.IAM },
             ],
         },
         {
             title: 'Support',
             menuList: [
-                { text: 'Pricing', href: '/' },
-                { text: 'FAQ', href: '/' },
-                { text: 'Contact Us', href: '/' },
-                { text: 'Documentation', href: '/' },
-                { text: 'Community', href: '/' },
+                { text: 'Pricing', href: ROUTE.PRICING },
+                { text: 'Contact', href: ROUTE.CONTACT },
+                { text: 'Documentation', href: ROUTE.DOCS, externalLink: true },
+                { text: 'Community', href: ROUTE.COMMUNITY, externalLink: true },
             ],
         },
     ];
@@ -131,7 +136,17 @@ const Footer = () => {
                     {item.menuList.map(
                         (menu) => (
                             <li className="sitemap__menu" key={menu.text}>
-                                <LinkText href={menu.href}>{menu.text}</LinkText>
+                                {menu.externalLink
+                                    ? (
+                                        <LinkText href={menu.href} target="_blank">
+                                            {menu.text}
+                                            <IcExternal />
+                                        </LinkText>
+                                    ) : (
+                                        <LinkText href={menu.href}>
+                                            {menu.text}
+                                        </LinkText>
+                                    )}
                             </li>
                         ),
                     )}
@@ -142,20 +157,26 @@ const Footer = () => {
 
     return (
         <>
-            <ReadySection />
             <StyledFooter>
                 <div className="footer">
                     <div className="grid">
                         <div className="logo">
                             <Logo />
                             <span className="logo__text">presents</span>
+                            <p className="logo__text2">© MEGAZONE CLOUD Corp.</p>
                         </div>
                         {SiteMapList}
                     </div>
                     <div className="grid grid--flex-end">
-                        <div className="copyright">© 2022 Megazone Cloud Inc.</div>
+                        <div className="copyright">
+                            Copyright 2022
+                            <br />
+                            © MEGAZONE CLOUD Corp.
+                            <br />
+                            All Right Reserved.
+                        </div>
                         <div className="terms">
-                            <span className="terms__item">Service Terms</span>
+                            <span className="terms__item">Terms of Service</span>
                             <span className="terms__item">Privacy Policy</span>
                         </div>
                         <ul className="language">
@@ -163,9 +184,15 @@ const Footer = () => {
                             <li className="language__item">한국어</li>
                         </ul>
                         <ul className="sns">
-                            <li className="sns__git"><a href="/">Git</a></li>
-                            <li className="sns__youtube"><a href="/">Youtube</a></li>
-                            <li className="sns__facebook"><a href="/">Facebook</a></li>
+                            <li className="sns__git">
+                                <Link href={ROUTE.GIT}>Git</Link>
+                            </li>
+                            <li className="sns__youtube">
+                                <Link href={ROUTE.YOUTUBE}>Youtube</Link>
+                            </li>
+                            <li className="sns__facebook">
+                                <Link href={ROUTE.FACEBOOK}>Facebook</Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

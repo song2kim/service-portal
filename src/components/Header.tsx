@@ -78,7 +78,7 @@ const StyledSubNavList = styled.nav`
   box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
   border-radius: 0 0 16px 16px;
   > a {
-    ${tw`border-gray-200`};
+    ${tw`border-gray-200 text-gray-600`};
     display: flex;
     align-items: center;
     height: 52px;
@@ -207,44 +207,43 @@ const Header = () => {
     }, [btnRef]);
 
     const NavList = NavRoutes.map((item, index) => (
-        <span className={`nav-list__item nav-list__item${ActiveNav(item.path)}`} key={item.path}>
+        <span className={`nav-list__item nav-list__item${ActiveNav(item.path)}`} key={item.label}>
             {
                 item.subNav
                     ? (
-                        <span
-                            role="button"
-                            tabIndex={index}
-                            className={`nav-list__item-label${activeNav ? '-active' : ''}`}
-                            onClick={() => {
-                                setActiveNav(!activeNav);
-                            }}
-                            onKeyDown={() => {
-                                setActiveNav(!activeNav);
-                            }}
-                            ref={btnRef}
-                        >
-                            {item.label}
-                        </span>
+                        <>
+                            <span
+                                role="button"
+                                tabIndex={index}
+                                className={`nav-list__item-label${activeNav ? '-active' : ''}`}
+                                onClick={() => {
+                                    setActiveNav(!activeNav);
+                                }}
+                                onKeyDown={() => {
+                                    setActiveNav(!activeNav);
+                                }}
+                                ref={btnRef}
+                            >
+                                {item.label}
+                            </span>
+                            <StyledSubNavList>
+                                {item.subNav?.map((menu) => (
+                                    <Link href={menu.path} key={menu.label}>
+                                        <a className={`${ActiveNav(menu.path)}`} href={menu.path}>
+                                            {menu.label}
+                                        </a>
+                                    </Link>
+                                ))}
+                            </StyledSubNavList>
+                        </>
                     )
                     : <Link href={item.path}>{item.label}</Link>
             }
-            {item.subNav
-                && (
-                    <StyledSubNavList>
-                        {item.subNav?.map((menu) => (
-                            <Link href={menu.path} key={menu.label}>
-                                <a className={`${ActiveNav(menu.path)}`} key={menu.path} href={menu.path}>
-                                    {menu.label}
-                                </a>
-                            </Link>
-                        ))}
-                    </StyledSubNavList>
-                )}
         </span>
     ));
 
     const SubNavList = NavRoutes.map((item) => item.subNav?.map((menu) => (
-        <li className={`sub-nav__item sub-nav__item${ActiveNav(menu.path)}`} key={menu.path}>
+        <li className={`sub-nav__item sub-nav__item${ActiveNav(menu.path)}`} key={menu.label}>
             <Link href={menu.path}>{menu.label}</Link>
         </li>
     )));

@@ -8,7 +8,9 @@ import styled from 'styled-components';
 import tw from 'twin.macro';
 import Customers from 'components/Customers';
 import React, { useState } from 'react';
-import IcClose from '../assets/icons/IcClose';
+import IcClose from 'assets/icons/IcClose';
+import ROUTE from 'constants/route';
+import ReadySection from '../components/ReadySection';
 
 const StyledTopicSection = styled.section`
   ${tw`bg-violet-100`}
@@ -164,26 +166,26 @@ const Home: NextPage = () => {
             text: 'Collect and categorize multicloud assets in one platform. Search cloud resources quickly and analyze them with detailed information in a single dashboard.',
             imgSrc: 'img_home_asset_inventory',
             iconSrc: 'ic_home_asset_inventory',
-            href: '/',
+            href: ROUTE.PRODUCTS.ASSET_INVENTORY,
             linkText: 'Learn about Asset Inventory',
             hasBg: false,
-        },
-        {
-            title: 'Notify events and manage incidents automatically',
-            text: 'Respond to incidents quickly with real-time notifications. Improve user experience by strengthening your team\'s capability based on post-mortem features.',
-            imgSrc: 'img_home_alert',
-            iconSrc: 'ic_home_alert',
-            href: '/',
-            linkText: 'Learn about Alert Manager',
-            hasBg: true,
         },
         {
             title: 'Analyze your costs easily and optimize resources',
             text: 'View your billing details thoroughly and optimize resources based on cost data analyzed. Control expenses and prevent overspendings with budget management feature. ',
             imgSrc: 'img_home_cost',
             iconSrc: 'ic_home_cost',
-            href: '/',
+            href: ROUTE.PRODUCTS.COST_EXPLORER,
             linkText: 'Learn about Cost Explorer',
+            hasBg: true,
+        },
+        {
+            title: 'Notify events and manage incidents automatically',
+            text: 'Respond to incidents quickly with real-time notifications. Improve user experience by strengthening your team\'s capability based on post-mortem features.',
+            imgSrc: 'img_home_alert',
+            iconSrc: 'ic_home_alert',
+            href: ROUTE.PRODUCTS.ALERT_MANAGER,
+            linkText: 'Learn about Alert Manager',
             hasBg: false,
         },
         {
@@ -191,7 +193,7 @@ const Home: NextPage = () => {
             text: 'Add users easily by integrating external identity services such as Google oAuth and Keycloak. Manage SpaceONE user access by assigning roles through RBAC feature.',
             imgSrc: 'img_home_IMA',
             iconSrc: 'ic_home_IMA',
-            href: '/',
+            href: ROUTE.PRODUCTS.IAM,
             linkText: 'Learn about IAM',
             hasBg: true,
         },
@@ -217,15 +219,15 @@ const Home: NextPage = () => {
         {
             title: 'Documentation',
             text: 'Find the best ways to start managing cloud infrastructure with CloudForet’s easy-to-follow documentation.',
-            iconSrc: 'ic_home_community',
-            href: '/',
+            iconSrc: 'ic_home_documentation',
+            href: ROUTE.DOCS,
             linkText: 'Visit the Documentation',
         },
         {
             title: 'CloudForet Community',
             text: 'Join our forum and share your knowledge with the broader community. Connect with fellow users and learn new skills.',
-            iconSrc: 'ic_home_documentation',
-            href: '/',
+            iconSrc: 'ic_home_community',
+            href: ROUTE.COMMUNITY,
             linkText: 'Visit the Community',
         },
     ];
@@ -313,7 +315,7 @@ const Home: NextPage = () => {
                 <StyledH3>We’ll help you</StyledH3>
                 <div className="help">{HelpSectionList}</div>
             </StyledHelpSection>
-
+            <ReadySection />
         </>
     );
 };
