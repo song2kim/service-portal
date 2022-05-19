@@ -2,6 +2,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import LinkText from 'components/LinkText';
 import { IcArrowRight } from 'assets/icons';
+import ROUTE from 'constants/route';
 
 const StyledProductHelp = styled.section`
   display: flex;
@@ -26,7 +27,7 @@ function ProductSection() {
             <div className="help">
                 <img className="help__thumbnail" src="/assets/images/img_products_jellyoctos.svg" alt="" />
                 <p className="help__title">Not finding what you’re looking for?</p>
-                <LinkText href="/">
+                <LinkText href={ROUTE.DOCS}>
                     Visit the Docs for more
                     <IcArrowRight />
                 </LinkText>

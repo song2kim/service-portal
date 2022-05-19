@@ -1,10 +1,13 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import { ReactNode } from 'react';
+import Link from 'next/link';
+import ROUTE from '../constants/route';
 
 interface LinkTextProps {
     href: string;
     children: ReactNode;
+    target?: string;
 }
 
 const StyledLinkText = styled.a`
@@ -27,10 +30,14 @@ const StyledLinkText = styled.a`
   }
 `;
 
-const LinkText = ({ href = '/', children = 'link', ...props }: LinkTextProps) => (
-    <StyledLinkText href={href} {...props}>
-        {children}
-    </StyledLinkText>
+const LinkText = ({
+    href = ROUTE.HOME, children = 'link', target = '_self', ...props
+}: LinkTextProps) => (
+    <Link href={href} passHref>
+        <StyledLinkText {...props} target={target}>
+            {children}
+        </StyledLinkText>
+    </Link>
 );
 
 export default LinkText;

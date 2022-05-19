@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { IcArrowTop } from 'assets/icons';
 import React from 'react';
 import LinkButton from 'components/LinkButton';
+import ROUTE from '../constants/route';
 
 const StyledReadySection = styled.section`
   ${tw`bg-violet-500`}
@@ -13,7 +14,8 @@ const StyledReadySection = styled.section`
     margin: 0 auto;
     border-bottom-width: 1px;
     h3 {
-      ${tw`text-white text-6xl`}
+      ${tw`text-white text-6xl`};
+      white-space: pre-line;
     }
     &__buttons {
       display: flex;
@@ -31,7 +33,7 @@ const StyledReadySection = styled.section`
   }   
 `;
 
-const ReadySection = () => {
+const ReadySection = ({ title = 'Ready for\nNew Cloud Management Platform?' }) => {
     const goToTop = () => {
         window.scrollTo({
             top: 0,
@@ -44,12 +46,10 @@ const ReadySection = () => {
         <StyledReadySection>
             <div className="ready-section">
                 <h3>
-                    Ready for
-                    <br />
-                    New Cloud Management Platform?
+                    {title}
                 </h3>
                 <div className="ready-section__buttons">
-                    <LinkButton color="white" size="large" href="/">Talk to Sales</LinkButton>
+                    <LinkButton color="white" size="large" href={ROUTE.TALKTOSALES}>Talk to Sales</LinkButton>
                     <button className="button-top" onClick={goToTop} type="button">
                         <span className="button-top__text">Back to the top</span>
                         <IcArrowTop />

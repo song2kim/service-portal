@@ -4,6 +4,7 @@ import LinkText from 'components/LinkText';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 import { IcArrowRight } from 'assets/icons';
+import ROUTE from 'constants/route';
 
 const StyledContainer = styled.div`
   ${tw`bg-violet-200`}
@@ -28,7 +29,7 @@ const ExLinkText: FC = () => {
     const router = useRouter();
     return (
         <StyledContainer>
-            <LinkText href="/">
+            <LinkText href={ROUTE.HOME}>
                 default button
                 <IcArrowRight />
             </LinkText>

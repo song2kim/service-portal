@@ -25,6 +25,9 @@ const StyledAccordion = styled.div`
           flex-shrink: 0;
         }
       }
+      &__title {
+        text-align: left;
+      }
       &__content {
         ${tw`text-lg`}
         overflow: hidden;

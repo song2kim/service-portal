@@ -2,13 +2,16 @@ import ProductTopic from 'components/ProductsTopic';
 import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
 import FAQSection from 'components/FAQ';
+import ROUTE from 'constants/route';
+import React from 'react';
+import ReadySection from '../../components/ReadySection';
 
 const AssetInventory = () => {
     const TopicData = {
-        title: 'Discover and\nManage multicloud resources',
-        subtitle: 'Collect and categorize multicloud assets in one platform.\nSearch cloud resources quickly and analyze them with detailed information in one dashboard.',
+        title: 'Discover and \nManage multicloud resources',
+        subtitle: 'Collect and categorize multi-cloud assets in ONE platform. \nSearch cloud resources quickly and analyze them with detailed information in ONE dashboard.',
         iconSrc: 'ic_home_community',
-        href: '/',
+        href: ROUTE.TALKTOSALES,
     };
 
     const ProductData = [
@@ -28,24 +31,44 @@ const AssetInventory = () => {
             hasBg: false,
             isReverse: true,
         },
+        {
+            coreValue: 'Monitoring',
+            title: 'Integrate monitoring data from cloud service providers',
+            description: 'View monitoring data from AWS Cloudwatch, Azure Monitor and GCP Operations suite(formerly Stackdriver) in real-time. Consolidate monitoring features and visualize the data in SpaceONE by pre-built integration feature.',
+            imgSrc: 'img_products_inventory',
+            hasBg: true,
+            isReverse: false,
+        },
+        {
+            coreValue: 'Change Management',
+            title: 'View change histories of cloud resources',
+            description: 'Manage changes from cloud resources. SpaceONE records any change in resource data. Change management is essential in fault management and governance.',
+            imgSrc: 'img_products_inventory',
+            hasBg: true,
+            isReverse: true,
+        },
     ];
 
     const FAQData = [
         {
-            title: 'What kind of resource data does SpaceONE collect?',
-            content: 'This is content',
+            title: 'How does SpaceONE collect resource data from cloud service providers such as AWS, Azure and GCP?',
+            content: 'SpaceONE provides customized collectors for each cloud service provider. Each collector collects resource data via the API provided by each cloud service provider.',
         },
         {
-            title: 'Does SpaceONE support integration with private cloud?',
-            content: 'This is content',
+            title: 'What kind of resource data does SpaceONE collect?',
+            content: 'SpaceONE supports various cloud service data. SpaceONE collects cloud service data provided by public cloud service providers (AWS, Azure, Google Cloud) as shown in the list below.',
+        },
+        {
+            title: 'What kind of cloud services can be integrated with SpaceONE Asset Inventory? Does SpaceONE support integration with private cloud?',
+            content: 'SpaceONE supports public cloud service providers including AWS, Azure, and Google Cloud. It also supports private cloud service providers, namely OpenStack and VMware. Furthermore, it can be integrated with Kubernetes (K8S). ',
         },
         {
             title: 'How often does SpaceONE collect cloud resource data? Can I customize collecting schedule?',
-            content: 'This is content',
+            content: 'You can adjust the resource collection schedule yourself. You can set the schedule by specifying a datetime in units of days and hours.',
         },
         {
             title: 'How can I export cloud resource dataset to analyze?',
-            content: 'This is content',
+            content: 'You can export resource data sets to a file in xlsx format.',
         },
     ];
 
@@ -70,6 +93,8 @@ const AssetInventory = () => {
             ))}
             <FAQSection title="Want to learn more about Asset Inventory?" FAQData={FAQData} />
             <ProductsHelp />
+
+            <ReadySection title="Ready for Asset Inventory to \n Discover Multi-Cloud Resources?" />
         </>
     );
 };

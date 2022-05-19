@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import LinkButton from './LinkButton';
+import ROUTE from '../constants/route';
 
 interface ProductFeature {
     title?: string;
@@ -13,6 +14,7 @@ interface Product {
     name: string;
     iconSrc: string;
     feature: ProductFeature[];
+    href: string;
 }
 
 const StyledProductDetail = styled.section`
@@ -78,11 +80,11 @@ const StyledProduct = styled.div`
 const ProductDetail = () => {
     const ProductData: Product[] = [
         {
-            name: 'Asset management',
+            name: 'Asset Inventory',
             iconSrc: 'ic_home_asset_inventory',
             feature: [
                 {
-                    title: 'Resource data management',
+                    title: 'Resource Data Management',
                     description: 'Discover all the cloud service resources through automated collection process. SpaceONE supports integration from public clouds to on-premises and kubernetes.',
                     keywords: [
                         'Cloud asset data collection',
@@ -95,11 +97,37 @@ const ProductDetail = () => {
                     title: 'Operation & Analytics',
                     description: 'Upgrade your cloud operation efficiency through analyzing asset data. Get insights through data processing based on raw resource data from cloud providers.',
                     keywords: [
-                        'Change history management ',
+                        'Change history management',
                         'Resource relation diagram visualization',
                     ],
                 },
             ],
+            href: ROUTE.PRODUCTS.ASSET_INVENTORY,
+        },
+        {
+            name: 'Cost Explorer',
+            iconSrc: 'ic_home_cost',
+            feature: [
+                {
+                    title: 'Cost Analysis & Visualization',
+                    description: 'Explore cost details with your customized tools thoroughly. Analyze cost data and visualize with custom dashboards.',
+                    keywords: [
+                        'Time granularity customization including daily level',
+                        'Data filtering and grouping functionality',
+                        'Visualization through custom dashboard',
+                        'Cost data export in PDF, xlsx',
+                    ],
+                },
+                {
+                    title: 'Overspending & Anomaly Detection',
+                    description: 'Detect overspending and anomalies automatically based on preset budgets and real usage data.',
+                    keywords: [
+                        'Budget and usage management',
+                        'Cost anomaly detection',
+                    ],
+                },
+            ],
+            href: ROUTE.PRODUCTS.COST_EXPLORER,
         },
         {
             name: 'Alert Manager',
@@ -107,7 +135,7 @@ const ProductDetail = () => {
             feature: [
                 {
                     title: ' ',
-                    description: 'Integrate incident alerts and send real-time notifications with predefined policy. SpaceONE provides various channels to integrate with your alert manager. ',
+                    description: 'Integrate incident alerts and send real-time notifications with predefined policy. SpaceONE provides various channels to integrate with your alert manager.  ',
                     keywords: ['Alert management integrated with external monitoring systems'],
                     logoSrc: ['img_pricing_grafana', 'img_pricing_zabbix', 'img_pricing_google', 'img_pricing_oracle', 'img_pricing_alibaba'],
                 },
@@ -119,36 +147,13 @@ const ProductDetail = () => {
                     keywords: ['Incident handling record management', 'Integrated health status dashboard'],
                 },
             ],
-        },
-        {
-            name: 'Cost Explorer',
-            iconSrc: 'ic_home_cost',
-            feature: [
-                {
-                    title: 'Cost analysis & Visualization',
-                    description: 'Explore cost details with your customized tools thoroughly. Analyze cost data and visualize with custom dashboards.',
-                    keywords: [
-                        'Time granularity customization including daily level',
-                        'Data filtering and grouping functionality',
-                        'Visualization through custom dashboard',
-                        'Cost data export in PDF, xlsx',
-                    ],
-                },
-                {
-                    title: 'Overspending & Anomaly detection',
-                    description: 'Detect overspending and anomalies automatically based on preset budgets and real usage data. ',
-                    keywords: [
-                        'Budget and usage management',
-                        'Cost anomaly detection',
-                    ],
-                },
-            ],
+            href: ROUTE.PRODUCTS.ALERT_MANAGER,
         },
     ];
 
     return (
         <StyledProductDetail>
-            <h3 className="product-detail__title">Product details</h3>
+            <h3 className="product-detail__title">Product Details</h3>
             {ProductData.map((item: Product) => (
                 <StyledProduct key={item.name}>
                     <div className="product">
@@ -172,7 +177,7 @@ const ProductDetail = () => {
                                 </ul>
                             </div>
                         ))}
-                        <LinkButton color="violet-400" size="large" href="/">Learn more</LinkButton>
+                        <LinkButton color="violet-400" size="large" href={item.href}>Learn more</LinkButton>
                     </div>
                 </StyledProduct>
             ))}
