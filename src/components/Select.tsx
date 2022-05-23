@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import React from 'react';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 
 interface SelectProps {
     id: string;
@@ -8,9 +9,9 @@ interface SelectProps {
     placeholder: string;
     required?: boolean;
     width?: string;
-    register: any;
-    errors: any;
-    options: any;
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors;
+    options: string[];
 }
 
 type SelectStyle = Partial<SelectProps>
@@ -78,7 +79,7 @@ function Select({
                         <option disabled value="">Select Country</option>
                         {
                             options.map((value: string) => (
-                                <option key={value} value={value}>{value}</option>
+                                <option value={value}>{value}</option>
                             ))
                         }
                     </select>

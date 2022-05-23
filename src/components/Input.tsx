@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import React from 'react';
+import { UseFormRegister, FieldValues, FieldErrors } from 'react-hook-form';
 
 interface InputProps {
     id: string;
@@ -9,8 +10,8 @@ interface InputProps {
     placeholder: string;
     required?: boolean;
     width?: string;
-    register: any;
-    errors: any;
+    register: UseFormRegister<FieldValues>;
+    errors: FieldErrors;
 }
 
 type InputStyle = Partial<InputProps>
