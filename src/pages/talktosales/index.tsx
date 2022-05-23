@@ -7,6 +7,7 @@ import LinkText from 'components/LinkText';
 import Customers from 'components/Customers';
 import { useForm } from 'react-hook-form';
 import React from 'react';
+import ROUTE from '../../constants/route';
 
 const StyledLayout = styled.section`
   ${tw`bg-gray-100`};
@@ -25,7 +26,7 @@ const StyledForm = styled.form`
   display: flex;
   flex-wrap: wrap;
   column-gap: 12px;
-  grid-column: span 6;
+  grid-column: span 8;
   padding-top: 40px;
   padding-right: 137px;
   padding-bottom: 160px;
@@ -97,6 +98,11 @@ const StyledCheckbox = styled.div`
   }
 `;
 
+const StyledNote = styled.p`
+  ${tw`text-sm`};
+  margin-top: 8px;
+`;
+
 const StyledSubmit = styled.button`{
   ${tw`bg-violet-400 text-lg text-white`};
   display: block;
@@ -114,10 +120,9 @@ const StyledSubmit = styled.button`{
 
 const StyledSupportMsg = styled.div`
   ${tw`bg-gray-100`};
-  grid-column: span 6;
+  grid-column: span 4;
   padding-left: 40px;
   .message {
-    max-width: 60%;
     margin-top: 40px;
     &__title {
       ${tw`font-semibold text-3xl`};
@@ -132,9 +137,6 @@ const StyledSupportMsg = styled.div`
 const StyledCustomers = styled(Customers)`
   ul {
     flex-wrap: wrap;
-    li {
-      width: 150px;
-    }
   }
 `;
 
@@ -188,7 +190,6 @@ const TalktoSales = () => {
                             register={register}
                             errors={errors}
                         />
-                        {/* misisng design <p className="error">Please use a valid email address.</p> */}
                         <Input
                             id="phone"
                             label="Mobile Phone Number"
@@ -227,7 +228,22 @@ const TalktoSales = () => {
                             <div className="textarea-box">
                                 <label htmlFor="comments" className="textarea-box__label">
                                     Comments
-                                    <textarea name="comments" id="comments" cols={30} rows={5} className="textarea-box__textarea" placeholder="Tell us more about your project, needs and timeline. (1000 bytes)" />
+                                    <textarea
+                                        name="comments"
+                                        id="comments"
+                                        cols={30}
+                                        rows={5}
+                                        className="textarea-box__textarea"
+                                        placeholder="Tell us more about your project, needs and timeline. (1000 bytes)"
+                                        {...register('comments', {
+                                            maxLength: 1000,
+                                        })}
+                                    />
+
+                                    {errors.comments
+                                        && errors.comments.type === 'maxLength'
+                                        && <p className="textarea-box__error"> Your input exceed maximum length</p>}
+
                                 </label>
                             </div>
                         </StyledTextarea>
@@ -251,6 +267,11 @@ const TalktoSales = () => {
                                 </label>
                             </div>
                         </StyledCheckbox>
+                        <StyledNote>
+                            Non-sales related inquiries submitted through this form are not monitored and will not be responded to. For other inquiries, please visit our
+                            <LinkText href={ROUTE.DEMO} target="_blank">&nbsp; Technical Support&nbsp; </LinkText>
+                            page.
+                        </StyledNote>
                         <StyledSubmit>Submit</StyledSubmit>
                         {hasError(errors)
                             && <p className="error">Please complete all required fields.</p>}
