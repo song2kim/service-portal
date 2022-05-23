@@ -79,7 +79,7 @@ function Select({
                         <option disabled value="">Select Country</option>
                         {
                             options.map((value: string) => (
-                                <option value={value}>{value}</option>
+                                <option key={value} value={value}>{value}</option>
                             ))
                         }
                     </select>
