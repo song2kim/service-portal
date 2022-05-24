@@ -10,7 +10,9 @@ import Customers from 'components/Customers';
 import React, { useState } from 'react';
 import IcClose from 'assets/icons/IcClose';
 import ROUTE from 'constants/route';
-import ReadySection from '../components/ReadySection';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import ReadySection from 'components/ReadySection';
+import { useTranslation } from 'next-i18next';
 
 const StyledTopicSection = styled.section`
   ${tw`bg-violet-100`}
@@ -154,6 +156,8 @@ const StyledHelpSection = styled.section`
 `;
 
 const Home: NextPage = () => {
+    const { t } = useTranslation('common');
+
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
@@ -279,7 +283,7 @@ const Home: NextPage = () => {
                             alt="topic"
                         />
                     </div>
-                    <LinkButton color="violet-400" size="large" href="">Talk to Sales</LinkButton>
+                    <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>Talk to Sales</LinkButton>
                     <div className="customers">
                         <p>Loved by customers</p>
                         <Customers />
@@ -319,5 +323,11 @@ const Home: NextPage = () => {
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default Home;

@@ -1,0 +1,17 @@
+{
+  "gnb": {
+    "products": "제품 소개",
+    "asset_inventory": "자원 관리",
+    "cost_explorer": "비용 관리",
+    "alert_manager": "얼럿 매니저",
+    "iam": "사용자 관리",
+    "pricing": "요금 안내",
+    "contact": "문의하기",
+    "talk_to_sales": "도입 문의",
+    "docs": "개발자 문서",
+    "community": "커뮤니티"
+  },
+  "product": {
+    "title": "Product page"
+  }
+}

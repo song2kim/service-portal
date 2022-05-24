@@ -43,6 +43,9 @@ module.exports = {
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         'react/no-danger': 'off',
-        'no-tabs': 0,
+        'no-tabs': 'off',
+        'react/require-default-props': 'off',
+        'max-len': ['error', { code: 300 }],
+        '@typescript-eslint/no-var-requires' : 'off',
     },
 };

@@ -7,7 +7,8 @@ import LinkText from 'components/LinkText';
 import Customers from 'components/Customers';
 import { useForm } from 'react-hook-form';
 import React from 'react';
-import ROUTE from '../../constants/route';
+import ROUTE from 'constants/route';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const StyledLayout = styled.section`
   ${tw`bg-gray-100`};
@@ -229,15 +230,14 @@ const TalktoSales = () => {
                                 <label htmlFor="comments" className="textarea-box__label">
                                     Comments
                                     <textarea
-                                        name="comments"
+                                        {...register('comments', {
+                                            maxLength: 1000,
+                                        })}
                                         id="comments"
                                         cols={30}
                                         rows={5}
                                         className="textarea-box__textarea"
                                         placeholder="Tell us more about your project, needs and timeline. (1000 bytes)"
-                                        {...register('comments', {
-                                            maxLength: 1000,
-                                        })}
                                     />
 
                                     {errors.comments
@@ -268,7 +268,8 @@ const TalktoSales = () => {
                             </div>
                         </StyledCheckbox>
                         <StyledNote>
-                            Non-sales related inquiries submitted through this form are not monitored and will not be responded to. For other inquiries, please visit our
+                            Non-sales related inquiries submitted through this form are not monitored and will not be responded to.
+                            For other inquiries, please visit our
                             <LinkText href={ROUTE.DEMO} target="_blank">&nbsp; Technical Support&nbsp; </LinkText>
                             page.
                         </StyledNote>
@@ -292,5 +293,11 @@ const TalktoSales = () => {
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default TalktoSales;

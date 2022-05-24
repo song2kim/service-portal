@@ -3,6 +3,7 @@ import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
 import FAQSection from 'components/FAQ';
 import ROUTE from 'constants/route';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const AssetInventory = () => {
     const TopicData = {
@@ -91,5 +92,11 @@ const AssetInventory = () => {
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default AssetInventory;

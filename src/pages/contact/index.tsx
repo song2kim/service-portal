@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 import LinkText from 'components/LinkText';
 import { IcExternal } from 'assets/icons';
 import ROUTE from 'constants/route';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const StyledContact = styled.div`
   ${tw`bg-violet-500 text-white`};
@@ -157,5 +158,11 @@ const Contact = () => {
         </StyledContact>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default Contact;

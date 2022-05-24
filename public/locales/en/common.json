@@ -1,0 +1,17 @@
+{
+  "gnb": {
+    "products": "Products",
+    "asset_inventory": "Asset Inventory",
+    "cost_explorer": "Cost Explorer",
+    "alert_manager": "Alert Manager",
+    "iam": "IAM",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "talk_to_sales": "Talk to Sales",
+    "docs": "Docs",
+    "community": "Community"
+  },
+  "product": {
+    "title": "Product page"
+  }
+}

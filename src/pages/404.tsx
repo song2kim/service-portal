@@ -1,6 +1,7 @@
 import tw, { styled } from 'twin.macro';
 import LinkButton from '../components/LinkButton';
 import ROUTE from '../constants/route';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const StyledError = styled.section`
   ${tw`bg-violet-100`}
@@ -26,5 +27,11 @@ const Custom404 = () => (
         <LinkButton color="violet-400" size="large" href={ROUTE.HOME}>Back to home</LinkButton>
     </StyledError>
 );
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default Custom404;
