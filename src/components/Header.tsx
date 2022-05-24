@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ROUTE from 'constants/route';
 import React, { useEffect } from 'react';
+import { useTranslation } from 'next-i18next';
 
 const StyledHeader = styled.div`
   width: 100%;
@@ -144,37 +145,38 @@ const StyledIcExternal = styled(IcExternal)`
 `;
 
 const Header = () => {
+    const { t } = useTranslation('common');
     const router = useRouter();
 
     const NavRoutes = [
         {
-            label: 'Products',
+            label: t('gnb.products'),
             path: ROUTE.PRODUCTS.INDEX,
             subNav: [
                 {
-                    label: 'Asset Inventory',
+                    label: t('gnb.asset_inventory'),
                     path: ROUTE.PRODUCTS.ASSET_INVENTORY,
                 },
                 {
-                    label: 'Cost Explorer',
+                    label: t('gnb.cost_explorer'),
                     path: ROUTE.PRODUCTS.COST_EXPLORER,
                 },
                 {
-                    label: 'Alert Manager',
+                    label: t('gnb.alert_manager'),
                     path: ROUTE.PRODUCTS.ALERT_MANAGER,
                 },
                 {
-                    label: 'IAM',
+                    label: t('gnb.iam'),
                     path: ROUTE.PRODUCTS.IAM,
                 },
             ],
         },
         {
-            label: 'Pricing',
+            label: t('gnb.pricing'),
             path: ROUTE.PRICING,
         },
         {
-            label: 'Contact',
+            label: t('gnb.contact'),
             path: ROUTE.CONTACT,
         },
     ];
@@ -264,18 +266,18 @@ const Header = () => {
                             {NavList}
                             <span>
                                 <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
-                                    Talk to Sales
+                                    {t('gnb.talk_to_sales')}
                                 </LinkButton>
                             </span>
                             <span className="nav-list__item">
                                 <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
-                                    Docs
+                                    {t('gnb.docs')}
                                     <StyledIcExternal />
                                 </LinkText>
                             </span>
                             <span className="nav-list__item">
                                 <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
-                                    Community
+                                    {t('gnb.community')}
                                     <StyledIcExternal />
                                 </LinkText>
                             </span>

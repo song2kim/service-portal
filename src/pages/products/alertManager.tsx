@@ -3,7 +3,8 @@ import ProductSection from 'components/ProductsSection';
 import ProductsHelp from 'components/ProductsHelp';
 import FAQSection from 'components/FAQ';
 import ROUTE from 'constants/route';
-import ReadySection from '../../components/ReadySection';
+import ReadySection from 'components/ReadySection';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const AlertManager = () => {
     const TopicData = {
@@ -79,12 +80,17 @@ const AlertManager = () => {
                     isReverse={item.isReverse}
                 />
             ))}
-
             <FAQSection title="Want to learn more about Alert Manager?" FAQData={FAQData} />
             <ProductsHelp />
             <ReadySection title="Ready for Alert Manager to Manage Incidents Automatically?" />
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default AlertManager;

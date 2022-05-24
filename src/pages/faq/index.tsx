@@ -1,5 +1,6 @@
 import TopicSection from 'components/TopicSection';
 import FAQSection from 'components/FAQ';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Pricing = () => {
     const TopicData = {
@@ -41,5 +42,11 @@ const Pricing = () => {
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default Pricing;

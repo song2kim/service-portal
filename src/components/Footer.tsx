@@ -4,6 +4,8 @@ import { IcExternal, Logo } from 'assets/icons';
 import LinkText from 'components/LinkText';
 import ROUTE from 'constants/route';
 import Link from 'next/link';
+import React from 'react';
+import { useRouter } from 'next/router';
 
 const StyledFooter = styled.footer`
   ${tw`bg-violet-500`}
@@ -107,6 +109,8 @@ const StyledFooter = styled.footer`
 `;
 
 const Footer = () => {
+    const router = useRouter();
+
     const SiteMapData = [
         {
             title: 'Products',
@@ -155,49 +159,65 @@ const Footer = () => {
         ),
     );
 
+    const LanguageData = [
+        {
+            language: 'English',
+            locale: 'en',
+        },
+        {
+            language: '한국어',
+            locale: 'ko',
+        },
+    ];
+
     return (
-        <>
-            <StyledFooter>
-                <div className="footer">
-                    <div className="grid">
-                        <div className="logo">
-                            <Logo />
-                            <span className="logo__text">presents</span>
-                            <p className="logo__text2">© MEGAZONE CLOUD Corp.</p>
-                        </div>
-                        {SiteMapList}
+        <StyledFooter>
+            <div className="footer">
+                <div className="grid">
+                    <div className="logo">
+                        <Logo />
+                        <span className="logo__text">presents</span>
+                        <p className="logo__text2">© MEGAZONE CLOUD Corp.</p>
                     </div>
-                    <div className="grid grid--flex-end">
-                        <div className="copyright">
-                            Copyright 2022
-                            <br />
-                            © MEGAZONE CLOUD Corp.
-                            <br />
-                            All Right Reserved.
-                        </div>
-                        <div className="terms">
-                            <span className="terms__item">Terms of Service</span>
-                            <span className="terms__item">Privacy Policy</span>
-                        </div>
-                        <ul className="language">
-                            <li className="language__item language--selected">English</li>
-                            <li className="language__item">한국어</li>
-                        </ul>
-                        <ul className="sns">
-                            <li className="sns__git">
-                                <Link href={ROUTE.GIT}>Git</Link>
-                            </li>
-                            <li className="sns__youtube">
-                                <Link href={ROUTE.YOUTUBE}>Youtube</Link>
-                            </li>
-                            <li className="sns__facebook">
-                                <Link href={ROUTE.FACEBOOK}>Facebook</Link>
-                            </li>
-                        </ul>
-                    </div>
+                    {SiteMapList}
                 </div>
-            </StyledFooter>
-        </>
+                <div className="grid grid--flex-end">
+                    <div className="copyright">
+                        Copyright 2022
+                        <br />
+                        © MEGAZONE CLOUD Corp.
+                        <br />
+                        All Right Reserved.
+                    </div>
+                    <div className="terms">
+                        <span className="terms__item">Terms of Service</span>
+                        <span className="terms__item">Privacy Policy</span>
+                    </div>
+                    <ul className="language">
+                        {LanguageData.map((item) => (
+                            <li
+                                key={item.language}
+                                role="presentation"
+                                className={`language__item${item.locale === router.locale ? '--selected' : ''}`}
+                            >
+                                <Link href={router.route} locale={item.locale}>{item.language}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                    <ul className="sns">
+                        <li className="sns__git">
+                            <Link href={ROUTE.GIT}>Git</Link>
+                        </li>
+                        <li className="sns__youtube">
+                            <Link href={ROUTE.YOUTUBE}>Youtube</Link>
+                        </li>
+                        <li className="sns__facebook">
+                            <Link href={ROUTE.FACEBOOK}>Facebook</Link>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </StyledFooter>
     );
 };
 

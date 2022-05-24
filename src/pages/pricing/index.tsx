@@ -7,6 +7,7 @@ import LinkButton from 'components/LinkButton';
 import { IcCheckLg, IcCloseGray } from 'assets/icons';
 import ProductDetail from 'components/ProductDetail';
 import ROUTE from 'constants/route';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface PricePlan {
     title: string;
@@ -16,7 +17,7 @@ interface PricePlan {
     benefitList: Array<{benefit: string}>;
     recommend?: boolean;
     linkText?: string;
-    href?: string;
+    href: string;
 }
 
 const StyledTab = styled.div`
@@ -424,5 +425,11 @@ const Pricing = () => {
         </>
     );
 };
+
+export const getStaticProps = async ({ locale }: { locale: string }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common'])),
+    },
+});
 
 export default Pricing;
