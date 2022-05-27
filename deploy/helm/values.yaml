@@ -1,14 +1,25 @@
 enabled: true
 
+##########################
+# Deployment Metadata
+##########################
 name: service-portal
 namespace: service-portal
+
+##########################
+# Deployment Spec
+##########################
+replicas: 1
+
+##########################
+# Containers
+##########################
 image:
     name: 722069360300.dkr.ecr.ap-northeast-2.amazonaws.com/spaceone/service-portal
     version: latest
 imagePullSecrets: 
   - name: service-portal-ecr
 imagePullPolicy: IfNotPresent
-replicas: 1
 
 volumeMounts:
     application: []
@@ -22,8 +33,11 @@ volumes:
           path: /usr/share/zoneinfo/Asia/Seoul
     - name: log-volume
       emptyDir: {}
-      
-# Service
+
+
+##########################
+# Network
+##########################
 service:
     type: NodePort
     annotations:
@@ -38,17 +52,16 @@ service:
           targetPort: 80
           protocol: TCP
 
-# Ingress
 ingress:
-  enabled: false
+  enabled: true
   annotations:
       alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
       alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
       alb.ingress.kubernetes.io/inbound-cidrs: 0.0.0.0/0 # replace or leave out
       alb.ingress.kubernetes.io/scheme: "internet-facing" # internet-facing
       alb.ingress.kubernetes.io/target-type: instance # Your console and console-api should be NodePort for this configuration.
-      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:... # This should be replaced with your cert arn.
-      external-dns.alpha.kubernetes.io/hostname: "demo.spaceone.megazone.io"
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:722069360300:certificate/e0be1874-ee86-41a1-ac9c-cf4626d64b6f
+      external-dns.alpha.kubernetes.io/hostname: "spaceone.megazone.io"
 
 ####################################
 # pod spec (append more pod spec)
