@@ -1,5 +1,5 @@
-import TopicSection from 'components/TopicSection';
-import FAQSection from 'components/FAQ';
+import TopicSection from '@/components/TopicSection';
+import FAQSection from '@/components/FAQ';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const Pricing = () => {

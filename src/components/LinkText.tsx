@@ -2,7 +2,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import ROUTE from '../constants/route';
+import ROUTE from '@/constants/route';
 
 interface LinkTextProps {
     href: string;

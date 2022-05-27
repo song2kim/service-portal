@@ -1,8 +1,8 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { IcExternal, Logo } from 'assets/icons';
-import LinkText from 'components/LinkText';
-import ROUTE from 'constants/route';
+import { IcExternal, Logo } from '@/assets/icons';
+import LinkText from '@/components/LinkText';
+import ROUTE from '@/constants/route';
 import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/router';

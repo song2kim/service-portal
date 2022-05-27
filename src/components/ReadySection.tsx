@@ -1,9 +1,9 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { IcArrowTop } from 'assets/icons';
+import { IcArrowTop } from '@/assets/icons';
 import React from 'react';
-import LinkButton from 'components/LinkButton';
-import ROUTE from '../constants/route';
+import LinkButton from '@/components/LinkButton';
+import ROUTE from '@/constants/route';
 
 const StyledReadySection = styled.section`
   ${tw`bg-violet-500`}
