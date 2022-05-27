@@ -1,9 +1,9 @@
-import ProductTopic from 'components/ProductsTopic';
-import ProductSection from 'components/ProductsSection';
-import ProductsHelp from 'components/ProductsHelp';
-import FAQSection from 'components/FAQ';
-import ROUTE from 'constants/route';
-import ReadySection from 'components/ReadySection';
+import ProductTopic from '@/components/ProductsTopic';
+import ProductSection from '@/components/ProductsSection';
+import ProductsHelp from '@/components/ProductsHelp';
+import FAQSection from '@/components/FAQ';
+import ROUTE from '@/constants/route';
+import ReadySection from '@/components/ReadySection';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const IAM = () => {

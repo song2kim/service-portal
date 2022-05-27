@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
-import LinkText from 'components/LinkText';
+import LinkText from '@/components/LinkText';
 import styled from 'styled-components';
 import tw from 'twin.macro';
 

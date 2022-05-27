@@ -1,7 +1,7 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import tw, { styled } from 'twin.macro';
-import LinkButton from '../components/LinkButton';
-import ROUTE from '../constants/route';
+import LinkButton from '@/components/LinkButton';
+import ROUTE from '@/constants/route';
 
 const StyledError = styled.section`
   ${tw`bg-violet-100`}

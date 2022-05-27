@@ -1,12 +1,12 @@
-import TopicSection from 'components/TopicSection';
+import TopicSection from '@/components/TopicSection';
 import tw from 'twin.macro';
-import FAQSection from 'components/FAQ';
+import FAQSection from '@/components/FAQ';
 import { useState } from 'react';
 import styled from 'styled-components';
-import LinkButton from 'components/LinkButton';
-import { IcCheckLg, IcCloseGray } from 'assets/icons';
-import ProductDetail from 'components/ProductDetail';
-import ROUTE from 'constants/route';
+import LinkButton from '@/components/LinkButton';
+import { IcCheckLg, IcCloseGray } from '@/assets/icons';
+import ProductDetail from '@/components/ProductDetail';
+import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 interface PricePlan {

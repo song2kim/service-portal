@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import Accordion from 'components/Accordion';
+import Accordion from '@/components/Accordion';
 
 interface FAQProps {
     title?: string;

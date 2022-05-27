@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import ROUTE from '@/constants/route';
 import LinkButton from './LinkButton';
-import ROUTE from '../constants/route';
 
 interface ProductFeature {
     title?: string;

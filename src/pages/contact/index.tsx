@@ -1,9 +1,9 @@
-import TopicSection from 'components/TopicSection';
+import TopicSection from '@/components/TopicSection';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import LinkText from 'components/LinkText';
-import { IcExternal } from 'assets/icons';
-import ROUTE from 'constants/route';
+import LinkText from '@/components/LinkText';
+import { IcExternal } from '@/assets/icons';
+import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const StyledContact = styled.div`

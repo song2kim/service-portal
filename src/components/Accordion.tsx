@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import { IcArrowUpLg, IcArrowDownLg } from 'assets/icons';
+import { IcArrowUpLg, IcArrowDownLg } from '@/assets/icons';
 import React from 'react';
 
 interface AccordionProps {

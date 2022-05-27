@@ -1,10 +1,10 @@
-import ProductTopic from 'components/ProductsTopic';
-import ProductSection from 'components/ProductsSection';
-import ProductsHelp from 'components/ProductsHelp';
-import FAQSection from 'components/FAQ';
-import ROUTE from 'constants/route';
+import ProductTopic from '@/components/ProductsTopic';
+import ProductSection from '@/components/ProductsSection';
+import ProductsHelp from '@/components/ProductsHelp';
+import FAQSection from '@/components/FAQ';
+import ROUTE from '@/constants/route';
 import React from 'react';
-import ReadySection from 'components/ReadySection';
+import ReadySection from '@/components/ReadySection';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const AssetInventory = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
-import ContentLayout from 'components/ContentLayout';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import ContentLayout from '@/components/ContentLayout';
 import styled from 'styled-components';
 
 type AppLayoutProps = {

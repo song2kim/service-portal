@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import LinkText from 'components/LinkText';
-import { IcArrowRight } from 'assets/icons';
+import LinkText from '@/components/LinkText';
+import { IcArrowRight } from '@/assets/icons';
 
 interface HomeSectionProps {
     imgSrc: string;

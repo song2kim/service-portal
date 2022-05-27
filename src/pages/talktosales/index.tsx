@@ -1,13 +1,13 @@
-import TopicSection from 'components/TopicSection';
-import Input from 'components/Input';
+import TopicSection from '@/components/TopicSection';
+import Input from '@/components/Input';
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import Select from 'components/Select';
-import LinkText from 'components/LinkText';
-import Customers from 'components/Customers';
+import Select from '@/components/Select';
+import LinkText from '@/components/LinkText';
+import Customers from '@/components/Customers';
 import { useForm } from 'react-hook-form';
 import React from 'react';
-import ROUTE from 'constants/route';
+import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const StyledLayout = styled.section`

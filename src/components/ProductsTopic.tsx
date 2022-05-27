@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import LinkButton from 'components/LinkButton';
+import LinkButton from '@/components/LinkButton';
 
 interface TopicSectionProps {
     title: string;

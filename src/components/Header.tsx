@@ -1,10 +1,10 @@
 import tw, { styled } from 'twin.macro';
-import { Logo, IcExternal } from 'assets/icons';
-import LinkButton from 'components/LinkButton';
-import LinkText from 'components/LinkText';
+import { Logo, IcExternal } from '@/assets/icons';
+import LinkButton from '@/components/LinkButton';
+import LinkText from '@/components/LinkText';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import ROUTE from 'constants/route';
+import ROUTE from '@/constants/route';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 

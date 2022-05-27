@@ -1,8 +1,8 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
-import LinkText from 'components/LinkText';
-import { IcArrowRight } from 'assets/icons';
-import ROUTE from 'constants/route';
+import LinkText from '@/components/LinkText';
+import { IcArrowRight } from '@/assets/icons';
+import ROUTE from '@/constants/route';
 
 const StyledProductHelp = styled.section`
   display: flex;

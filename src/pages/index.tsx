@@ -1,17 +1,17 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import HomeSection from 'components/HomeSection';
-import LinkButton from 'components/LinkButton';
-import LinkText from 'components/LinkText';
-import { IcArrowRight } from 'assets/icons';
+import HomeSection from '@/components/HomeSection';
+import LinkButton from '@/components/LinkButton';
+import LinkText from '@/components/LinkText';
+import { IcArrowRight } from '@/assets/icons';
 import styled from 'styled-components';
 import tw from 'twin.macro';
-import Customers from 'components/Customers';
+import Customers from '@/components/Customers';
 import React, { useState } from 'react';
-import IcClose from 'assets/icons/IcClose';
-import ROUTE from 'constants/route';
+import IcClose from '@/assets/icons/IcClose';
+import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import ReadySection from 'components/ReadySection';
+import ReadySection from '@/components/ReadySection';
 // import { useTranslation } from 'next-i18next';
 
 const StyledTopicSection = styled.section`
