@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-{{ include "spaceone.labels" . | indent 4 }}
+{{ include "service-portal.labels" . | indent 4 }}
     spaceone.service: {{ .Values.name }}
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace | default .Release.Namespace }}
@@ -17,36 +17,29 @@ spec:
     metadata:
       annotations:
         spaceone.deployment.tool: helm
-      labels:  
+      labels:
 {{ include "service-portal.labels" . | indent 8 }}
         spaceone.service: {{ .Values.name }}
     spec:
       terminationGracePeriodSeconds: {{ .Values.gracePeriod }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.version }}
           imagePullPolicy: {{ .Values.imagePullPolicy }}
-          {{- with .Values.imagePullSecrets }}
-          imagePullSecrets: 
-            {{- toYaml . | nindent 12 }}
-          {{- end }}
           ports:
-            - containerPort: 80
+            - containerPort: 3000
           volumeMounts:
             - name: timezone
               mountPath: /etc/localtime
-            - name: log-volume
-              mountPath: /var/log/spaceone
+      volumes:
+      - name: timezone
+        hostPath:
+            path: /usr/share/zoneinfo/Asia/Seoul
 
-{{- if .Values.volumeMounts.application }}
-{{- toYaml .Values.volumeMounts.application | nindent 12 }}
-{{- end }}
-
-      volumes: {}
-
-{{- if .Values.volumes }}
-{{- toYaml .Values.volumes | nindent 8 }}
-{{- end }}
 
 {{- if .Values.pod.spec }}
 {{- toYaml .Values.pod.spec | nindent 6 }}

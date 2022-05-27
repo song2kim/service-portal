@@ -8,15 +8,13 @@ jobs:
     outputs:
       version: ${{ steps.job1.outputs.VERSION }}
     steps:
-      - name: calculate current date
+      - name: ser tag
         id: job1
         run: |
           sudo ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-          echo "TIME=$(date +'%Y%m%d.%H%M%S')" >> $GITHUB_ENV
-          echo "::set-output name=VERSION::${{ env.TIME }}"
+          echo "::set-output name=VERSION::$(date +'%Y%m%d.%H%M%S')"
 
   docker:
-    if: github.repository_owner == 'spaceone-dev'
     needs: versioning
     runs-on: ubuntu-latest
     env:
@@ -32,7 +30,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-2
+          aws-region: ap-northeast-2
 
       - name: Login to Amazon ECR
         id: login-ecr

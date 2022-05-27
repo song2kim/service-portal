@@ -16,24 +16,10 @@ replicas: 1
 ##########################
 image:
     name: 722069360300.dkr.ecr.ap-northeast-2.amazonaws.com/spaceone/service-portal
-    version: latest
+    version: "20220527.173805"
 imagePullSecrets: 
   - name: service-portal-ecr
 imagePullPolicy: IfNotPresent
-
-volumeMounts:
-    application: []
-
-##########################
-# Local volumes
-##########################
-volumes:
-    - name: timezone
-      hostPath:
-          path: /usr/share/zoneinfo/Asia/Seoul
-    - name: log-volume
-      emptyDir: {}
-
 
 ##########################
 # Network
@@ -45,11 +31,11 @@ service:
     ports:
         - name: http
           port: 80
-          targetPort: 80
+          targetPort: 3000
           protocol: TCP
         - name: https
           port: 443
-          targetPort: 80
+          targetPort: 3000
           protocol: TCP
 
 ingress:

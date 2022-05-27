@@ -9,7 +9,7 @@ metadata:
       {{- end }}
     {{- end }}
   labels:
-{{ include "spaceone.labels" . | indent 4 }}
+{{ include "service-portal.labels" . | indent 4 }}
     spaceone.service: {{ .Values.name }}
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace | default .Release.Namespace }}

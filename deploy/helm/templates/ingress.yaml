@@ -10,10 +10,10 @@ metadata:
     {{- end }}
   {{- end }}
   labels:
-{{ include "spaceone.labels" . | indent 4 }}
+{{ include "service-portal.labels" . | indent 4 }}
     spaceone.service: ingress
   name: service-portal
-  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  namespace: {{ .Values.namespace | default .Release.Namespace }}
 
 spec:
   ingressClassName: alb
@@ -34,7 +34,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: console
+                name: service-portal
                 port:
                   number: 80
 {{- end }}
