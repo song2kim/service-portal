@@ -15,6 +15,9 @@ const nextConfig = {
 
         return config;
     },
+    experimental: {
+        outputStandalone: true,
+    },
     async redirects() {
         return [
             {
