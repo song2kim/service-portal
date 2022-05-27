@@ -4,7 +4,7 @@ import Accordion from 'components/Accordion';
 
 interface FAQProps {
     title?: string;
-    FAQData: Array<{title: string; content: string | object;}>;
+    FAQData: Array<{title: string; content: string | object}>;
 }
 
 const StyledFAQSection = styled.section`

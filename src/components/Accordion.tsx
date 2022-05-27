@@ -5,7 +5,7 @@ import React from 'react';
 
 interface AccordionProps {
   title: string;
-  content: string;
+  content: string|object;
 }
 
 const StyledAccordion = styled.div`

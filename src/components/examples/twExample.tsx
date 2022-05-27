@@ -6,8 +6,6 @@ const Heading = styled.h1`
   //@apply underline
 `;
 
-const TwExample = () => {
-    return <Heading>I am twin.macro</Heading>;
-};
+const TwExample = () => <Heading>I am twin.macro</Heading>;
 
 export default TwExample;

@@ -69,12 +69,12 @@ function Select({
                     {label}
                     {required && ' *'}
                     <select
+                        {...register(`${id}`, { required })}
                         name={id}
                         id={id}
                         className="select__box"
                         defaultValue=""
                         placeholder={placeholder}
-                        {...register(`${id}`, { required })}
                     >
                         <option disabled value="">Select Country</option>
                         {
