@@ -13,7 +13,7 @@ metadata:
 {{ include "service-portal.labels" . | indent 4 }}
     spaceone.service: ingress
   name: service-portal
-  namespace: {{ .Values.global.namespace | default .Release.Namespace }}
+  namespace: {{ .Values.namespace | default .Release.Namespace }}
 
 spec:
   ingressClassName: alb
