@@ -12,7 +12,7 @@ import IcClose from 'assets/icons/IcClose';
 import ROUTE from 'constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReadySection from 'components/ReadySection';
-import { useTranslation } from 'next-i18next';
+// import { useTranslation } from 'next-i18next';
 
 const StyledTopicSection = styled.section`
   ${tw`bg-violet-100`}
@@ -156,7 +156,7 @@ const StyledHelpSection = styled.section`
 `;
 
 const Home: NextPage = () => {
-    const { t } = useTranslation('common');
+    // const { t } = useTranslation('common');
 
     const [modal, setModal] = useState(false);
 

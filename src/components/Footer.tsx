@@ -108,10 +108,21 @@ const StyledFooter = styled.footer`
   }
 `;
 
+interface MenuList {
+    text: string;
+    href: string;
+    externalLink?: boolean;
+}
+
+interface SiteMapDataType {
+    title: string;
+    menuList: MenuList[]
+}
+
 const Footer = () => {
     const router = useRouter();
 
-    const SiteMapData = [
+    const SiteMapData: SiteMapDataType[] = [
         {
             title: 'Products',
             menuList: [

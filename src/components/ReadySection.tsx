@@ -33,7 +33,7 @@ const StyledReadySection = styled.section`
   }   
 `;
 
-const ReadySection = ({ title = 'Ready for\nNew Cloud Management Platform?' }) => {
+const ReadySection = ({ title = 'Ready for\nNew Cloud Management Platform?' }: { title?: string }) => {
     const goToTop = () => {
         window.scrollTo({
             top: 0,

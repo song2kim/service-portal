@@ -45,7 +45,7 @@ module.exports = {
         'react/no-danger': 'off',
         'no-tabs': 'off',
         'react/require-default-props': 'off',
-        'max-len': ['error', { code: 300 }],
+        'max-len':'off',
         '@typescript-eslint/no-var-requires' : 'off',
     },
 };
