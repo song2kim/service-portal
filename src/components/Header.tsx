@@ -17,6 +17,7 @@ const StyledHeader = styled.div`
     z-index: 9999;
     color: white;
     background-color: darkseagreen;
+    display: none;
   }
 
   width: 100%;

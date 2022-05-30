@@ -199,6 +199,11 @@ const StyledHelpSection = styled.section`
   @media (max-width: 1439px) {
     .help {
       padding: 0 24px;
+    }
+  }
+  
+  @media (max-width: 767px){
+    .help {
       flex-wrap: wrap;
       row-gap: 32px;
     }
