@@ -5,7 +5,7 @@ import LinkButton from '@/components/LinkButton';
 import LinkText from '@/components/LinkText';
 import { IcArrowRight } from '@/assets/icons';
 import styled from 'styled-components';
-import tw, { theme } from 'twin.macro';
+import tw from 'twin.macro';
 import Customers from '@/components/Customers';
 import React, { useState } from 'react';
 import IcClose from '@/assets/icons/IcClose';
