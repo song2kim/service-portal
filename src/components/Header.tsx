@@ -47,6 +47,14 @@ const StyledHeader = styled.div`
       }
     }
   }
+  
+  @media (max-width: 1439px) {
+    .header {
+      &__inner {
+        padding: 0 24px;
+      }
+    }
+  }
 `;
 
 const StyledNav = styled.nav`
@@ -209,13 +217,6 @@ const StyledNavButton = styled.button`{
 }`;
 
 const StyledResponsive = styled.div`
-  @media (max-width: ${theme('screens.tablet.max')}) {
-    .header {
-      &__inner {
-        padding: 0 24px;
-      }
-    }
-  }
 `;
 
 const Header = () => {
@@ -361,53 +362,52 @@ const Header = () => {
     ));
 
     return (
-        <StyledResponsive>
-            <StyledHeader>
-                <ul className="test">
-                    <li tw="desktop:(bg-violet-500)">desktop</li>
-                    <li tw="laptop:(bg-violet-300)">laptop</li>
-                    <li tw="tablet:(bg-violet-400)">tablet</li>
-                    <li tw="mobile:(bg-violet-200)"> mobile</li>
-                </ul>
-                <div className="header">
-                    <div className="header__inner">
-                        <h1>
-                            <Link href={ROUTE.HOME} passHref>
-                                <a href={ROUTE.HOME}>
-                                    <Logo />
-                                </a>
-                            </Link>
-                        </h1>
-                        <StyledNavButton type="button" onClick={toggleModal} tw="hidden tablet:(block)">
-                            {modal
-                                ? <StyledIcClose /> : <IcMenu />}
-                        </StyledNavButton>
-                        <StyledNav tw="laptop:(visible) tablet:(hidden)">
-                            <div className="nav-list">
-                                {NavList}
-                                <span>
+        <StyledHeader>
+            <ul className="test">
+                <li tw="desktop:(bg-violet-500)">desktop</li>
+                <li tw="laptop:(bg-violet-300)">laptop</li>
+                <li tw="tablet:(bg-violet-400)">tablet</li>
+                <li tw="mobile:(bg-violet-200)"> mobile</li>
+            </ul>
+            <div className="header">
+                <div className="header__inner">
+                    <h1>
+                        <Link href={ROUTE.HOME} passHref>
+                            <a href={ROUTE.HOME}>
+                                <Logo />
+                            </a>
+                        </Link>
+                    </h1>
+                    <StyledNavButton type="button" onClick={toggleModal} tw="hidden tablet:(block)">
+                        {modal
+                            ? <StyledIcClose /> : <IcMenu />}
+                    </StyledNavButton>
+                    <StyledNav tw="laptop:(visible) tablet:(hidden)">
+                        <div className="nav-list">
+                            {NavList}
+                            <span>
                                     <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
                                         {t('gnb.talk_to_sales')}
                                     </LinkButton>
                                 </span>
-                                <span className="nav-list__item">
+                            <span className="nav-list__item">
                                     <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
                                         {t('gnb.docs')}
                                         <StyledIcExternal />
                                     </LinkText>
                                 </span>
-                                <span className="nav-list__item">
+                            <span className="nav-list__item">
                                     <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
                                         {t('gnb.community')}
                                         <StyledIcExternal />
                                     </LinkText>
                                 </span>
-                            </div>
-                        </StyledNav>
-                    </div>
+                        </div>
+                    </StyledNav>
                 </div>
-                {
-                    FirstPathname(router.pathname) === FirstPathname(ROUTE.PRODUCTS.INDEX)
+            </div>
+            {
+                FirstPathname(router.pathname) === FirstPathname(ROUTE.PRODUCTS.INDEX)
                 && (
                     <StyledSubNav tw="laptop:(visible) tablet:(hidden)">
                         <div className="sub-nav">
@@ -416,30 +416,29 @@ const Header = () => {
                         </div>
                     </StyledSubNav>
                 )
-                }
+            }
 
-                {modal && (
-                    <StyledNavMobile tw="hidden tablet:(block)">
-                        {MobileNavList}
-                        <span className="nav-list__item">
+            {modal && (
+                <StyledNavMobile tw="hidden tablet:(block)">
+                    {MobileNavList}
+                    <span className="nav-list__item">
                             <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
                                 {t('gnb.docs')}
                                 <StyledIcExternal />
                             </LinkText>
                         </span>
-                        <span className="nav-list__item">
+                    <span className="nav-list__item">
                             <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
                                 {t('gnb.community')}
                                 <StyledIcExternal />
                             </LinkText>
                         </span>
-                        <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>
-                            {t('gnb.talk_to_sales')}
-                        </LinkButton>
-                    </StyledNavMobile>
-                )}
-            </StyledHeader>
-        </StyledResponsive>
+                    <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>
+                        {t('gnb.talk_to_sales')}
+                    </LinkButton>
+                </StyledNavMobile>
+            )}
+        </StyledHeader>
     );
 };
 

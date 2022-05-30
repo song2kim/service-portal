@@ -30,7 +30,11 @@ const StyledReadySection = styled.section`
       display: inline-block;
       margin-right: 4px;
     }
-  }   
+  }
+  
+  @media (max-width: 1439px) {
+    padding: 0 24px;
+  }
 `;
 
 const ReadySection = ({ title = 'Ready for\nNew Cloud Management Platform?' }: { title?: string }) => {

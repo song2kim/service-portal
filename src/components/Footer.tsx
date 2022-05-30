@@ -106,6 +106,44 @@ const StyledFooter = styled.footer`
       background-image: url("/assets/images/ic_footer_facebook.svg");
     }
   }
+  
+  @media (max-width: 1439px) {
+    .footer {
+      padding: 0 24px;  
+    }
+  }
+  
+  @media (max-width: 1023px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .logo {
+      grid-column: 1 / span 1;
+    }
+    .sitemap,
+    .copyright,
+    .terms,
+    .language,
+    .sns {
+      grid-column: span 1;
+    }
+  }
+  @media (max-width: 767px) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+      row-gap: 40px;
+    }
+    .logo {
+      grid-column: 1 / span 4;
+    }
+    .sitemap,
+    .copyright,
+    .terms,
+    .language,
+    .sns {
+      grid-column: span 4;
+    }
+  }
 `;
 
 interface MenuList {
