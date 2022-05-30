@@ -1,4 +1,4 @@
-import tw, { styled, theme } from 'twin.macro';
+import tw, { styled } from 'twin.macro';
 import { Logo, IcExternal, IcMenu } from '@/assets/icons';
 import LinkButton from '@/components/LinkButton';
 import LinkText from '@/components/LinkText';
@@ -217,9 +217,6 @@ const StyledNavButton = styled.button`{
   margin-left: auto;
 }`;
 
-const StyledResponsive = styled.div`
-`;
-
 const Header = () => {
     const { t } = useTranslation('common');
     const router = useRouter();
@@ -387,22 +384,22 @@ const Header = () => {
                         <div className="nav-list">
                             {NavList}
                             <span>
-                                    <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
-                                        {t('gnb.talk_to_sales')}
-                                    </LinkButton>
-                                </span>
+                                <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
+                                    {t('gnb.talk_to_sales')}
+                                </LinkButton>
+                            </span>
                             <span className="nav-list__item">
-                                    <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
-                                        {t('gnb.docs')}
-                                        <StyledIcExternal />
-                                    </LinkText>
-                                </span>
+                                <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
+                                    {t('gnb.docs')}
+                                    <StyledIcExternal />
+                                </LinkText>
+                            </span>
                             <span className="nav-list__item">
-                                    <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
-                                        {t('gnb.community')}
-                                        <StyledIcExternal />
-                                    </LinkText>
-                                </span>
+                                <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
+                                    {t('gnb.community')}
+                                    <StyledIcExternal />
+                                </LinkText>
+                            </span>
                         </div>
                     </StyledNav>
                 </div>
@@ -423,17 +420,17 @@ const Header = () => {
                 <StyledNavMobile tw="hidden tablet:(block)">
                     {MobileNavList}
                     <span className="nav-list__item">
-                            <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
-                                {t('gnb.docs')}
-                                <StyledIcExternal />
-                            </LinkText>
-                        </span>
+                        <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
+                            {t('gnb.docs')}
+                            <StyledIcExternal />
+                        </LinkText>
+                    </span>
                     <span className="nav-list__item">
-                            <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
-                                {t('gnb.community')}
-                                <StyledIcExternal />
-                            </LinkText>
-                        </span>
+                        <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
+                            {t('gnb.community')}
+                            <StyledIcExternal />
+                        </LinkText>
+                    </span>
                     <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>
                         {t('gnb.talk_to_sales')}
                     </LinkButton>

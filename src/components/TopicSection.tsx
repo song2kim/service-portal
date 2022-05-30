@@ -1,4 +1,4 @@
-import tw, { theme } from 'twin.macro';
+import tw from 'twin.macro';
 import styled from 'styled-components';
 
 interface TopicSectionProps {
