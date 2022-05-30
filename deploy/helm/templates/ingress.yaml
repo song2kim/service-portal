@@ -34,7 +34,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: console
+                name: service-portal
                 port:
                   number: 80
 {{- end }}

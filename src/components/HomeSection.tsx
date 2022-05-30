@@ -19,6 +19,7 @@ const StyledHomeSection = styled.section<HomeSectionStyle>`
   display: flex;
   align-items: center;
   min-height: 624px;
+  padding: 0 24px;
   
   ${(props) => (props.hasBg ? tw`bg-gray-100` : tw`bg-white`)};
   
@@ -47,6 +48,34 @@ const StyledHomeSection = styled.section<HomeSectionStyle>`
       &__text {
         ${tw`text-xl text-gray-500`};
         margin-bottom: 24px;
+      }
+    }
+  }
+  
+  @media (max-width: 1023px) {
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 24px;
+      .thumbnail {
+        grid-column: 1 / span 2;
+      }
+      .description {
+        grid-column: span 2 / -1;
+      }
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .section {
+      padding-top: 56px;
+      padding-bottom: 56px;
+      row-gap: 40px;
+      .thumbnail {
+        grid-column: span 4;
+        min-height: auto;
+      }
+      .description {
+        grid-column: span 4;
       }
     }
   }

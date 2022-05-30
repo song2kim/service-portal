@@ -23,11 +23,14 @@ module.exports = {
             '7xl': ['48px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
             '8xl': ['56px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
             '9xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+            'm-sm': ['36px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+            'm-md': ['42px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
+            'm-lg': ['48px', { lineHeight: '1.2', letterSpacing: '-0.04em' }],
         },
         screens: {
             desktop: { min: `${screens.desktop.min}px` },
-            laptop: { min: `${screens.laptop.min}px`, max: `${screens.laptop.max}px` },
-            tablet: { min: `${screens.tablet.min}px`, max: `${screens.tablet.max}px` },
+            laptop: { max: `${screens.laptop.max}px` },
+            tablet: { max: `${screens.tablet.max}px` },
             mobile: { max: `${screens.mobile.max}px` },
         },
         colors: {

@@ -5,7 +5,7 @@ import LinkButton from '@/components/LinkButton';
 import LinkText from '@/components/LinkText';
 import { IcArrowRight } from '@/assets/icons';
 import styled from 'styled-components';
-import tw from 'twin.macro';
+import tw, { theme } from 'twin.macro';
 import Customers from '@/components/Customers';
 import React, { useState } from 'react';
 import IcClose from '@/assets/icons/IcClose';
@@ -71,6 +71,50 @@ const StyledTopicSection = styled.section`
     align-items: center;
     justify-content: center;
   }
+  
+  @media (max-width: 1023px) {
+    padding-top: 160px;
+    padding-bottom: 160px;
+    margin-bottom: 95px;
+    .topic {
+      &__inner {
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 24px;
+        padding: 24px;
+      }
+      &__left {
+        grid-column: 1 / span 3;
+      }
+      &__title {
+        span {
+          margin-left: 0;
+        }
+      }
+      &__thumbnail {
+        display: none;
+      }
+    }
+    a {
+      margin-left: 24px;
+    }
+    .customers {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding-top: 128px;
+    padding-bottom: 128px;
+    margin-bottom: 65px;
+    .topic {
+      &__title {
+        ${tw`text-m-lg`}
+      }
+      &__left {
+        grid-column: 1 / span 4;
+      }
+    }
+  }
 `;
 
 const StyledModal = styled.section`
@@ -117,9 +161,7 @@ const StyledModal = styled.section`
   
   
 `;
-const StyledIcClose = styled(IcClose)`
-  
-`;
+const StyledIcClose = styled(IcClose)``;
 
 const StyledH3 = styled.h3`
   ${tw`font-serif font-medium text-7xl`}
@@ -153,11 +195,22 @@ const StyledHelpSection = styled.section`
       margin: 8px 0;
     }
   }
+  
+  @media (max-width: 1439px) {
+    .help {
+      padding: 0 24px;
+    }
+  }
+  
+  @media (max-width: 767px){
+    .help {
+      flex-wrap: wrap;
+      row-gap: 32px;
+    }
+  }
 `;
 
 const Home: NextPage = () => {
-    // const { t } = useTranslation('common');
-
     const [modal, setModal] = useState(false);
 
     const toggleModal = () => {
@@ -283,13 +336,19 @@ const Home: NextPage = () => {
                             alt="topic"
                         />
                     </div>
-                    <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>Talk to Sales</LinkButton>
+                    <LinkButton
+                        color="violet-400"
+                        size="large"
+                        href={ROUTE.TALKTOSALES}
+                    >
+                        Talk to Sales
+                    </LinkButton>
                     <div className="customers">
                         <p>Loved by customers</p>
                         <Customers />
                     </div>
                 </div>
-                <button type="button" className="video" onClick={toggleModal}>Watch the Video</button>
+                {/* <button type="button" className="video" onClick={toggleModal}>Watch the Video</button> */}
             </StyledTopicSection>
             {modal && (
                 <StyledModal onClick={toggleModal}>

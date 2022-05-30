@@ -38,6 +38,7 @@ class MyDocument extends Document {
                     <link rel="icon" href="/favicon.ico" />
                     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css" />
                     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" />
+                    {/* <meta name="viewport" content="width=device-width, initial-scale=1.0" /> */}
                 </Head>
                 <body>
                     <Main />
