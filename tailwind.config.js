@@ -26,8 +26,8 @@ module.exports = {
         },
         screens: {
             desktop: { min: `${screens.desktop.min}px` },
-            laptop: { min: `${screens.laptop.min}px`, max: `${screens.laptop.max}px` },
-            tablet: { min: `${screens.tablet.min}px`, max: `${screens.tablet.max}px` },
+            laptop: { max: `${screens.laptop.max}px` },
+            tablet: { max: `${screens.tablet.max}px` },
             mobile: { max: `${screens.mobile.max}px` },
         },
         colors: {

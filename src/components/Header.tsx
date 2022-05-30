@@ -1,29 +1,50 @@
-import tw, { styled } from 'twin.macro';
-import { Logo, IcExternal } from '@/assets/icons';
+import tw, { styled, theme } from 'twin.macro';
+import { Logo, IcExternal, IcMenu } from '@/assets/icons';
 import LinkButton from '@/components/LinkButton';
 import LinkText from '@/components/LinkText';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import ROUTE from '@/constants/route';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import IcClose from '@/assets/icons/IcClose';
 
 const StyledHeader = styled.div`
+  .test {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    color: white;
+    background-color: darkseagreen;
+  }
+
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 100;
+  
   .header {
     ${tw`bg-violet-100`}
     position: relative;
     z-index: 1;
+
     &__inner {
       display: flex;
       align-items: center;
       flex-wrap: wrap;
       max-width: 1120px;
       margin: 0 auto;
+    }
+
+    h1 {
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 64px;
+      }
     }
   }
 `;
@@ -45,8 +66,8 @@ const StyledNav = styled.nav`
       min-height: 64px;
       padding-right: 16px;
       padding-left: 16px;
-      &-active {
-      //@extend .nav-list__item;
+      &--active {
+        //@extend .nav-list__item;
         ${tw`text-violet-400`}
         > a {
           color: inherit;
@@ -58,7 +79,7 @@ const StyledNav = styled.nav`
     }
     &__item-label {
       cursor: pointer;
-      &-active  {
+      &--active  {
         ${tw`text-violet-400`};
         + nav {
           display: block;
@@ -92,7 +113,7 @@ const StyledSubNavList = styled.nav`
     &:hover {
       ${tw`text-violet-400`};
     }
-    &.-active {
+    &.--active {
       //@extend nav > a;
       ${tw`text-violet-400`};
     }
@@ -108,7 +129,7 @@ const StyledSubNav = styled.nav`
     align-items: center;
     max-width: 1120px;
     margin: 0 auto;
-    
+
     &__title {
       ${tw`text-lg text-gray-500`}
     }
@@ -127,7 +148,7 @@ const StyledSubNav = styled.nav`
           ${tw`text-violet-400`}
         }
       }
-      &-active {
+      &--active {
         //@extend .sub-nav__item;
         a {
           ${tw`text-violet-400`}
@@ -141,6 +162,59 @@ const StyledIcExternal = styled(IcExternal)`
   margin-left: 4px;
   > path {
     ${tw`text-gray-500 fill-current`}
+  }
+`;
+
+const StyledNavMobile = styled.nav`
+  ${tw`bg-white`}
+  position: fixed;
+  top: var(--gnb-height);
+  left:0;
+  z-index: 100;
+  width: 100%;
+  height: calc(100% - var(--gnb-height));
+  padding: 16px 24px;
+  text-align: center;
+  .nav-list {
+    &__item > a {
+      ${tw`border-gray-200 text-gray-500 font-normal`};
+      display: block;
+      padding: 16px 0;
+      border-style: solid;
+      border-bottom-width: 1px;
+      text-align: left;
+    }
+  }
+  > a {
+    margin: 72px auto 0;
+  }
+`;
+
+const StyledSubMobile = styled.ul`
+  .sub-nav {
+    &__item > a {
+      display: block;
+      padding: 12px 8px;
+      text-align: left;
+    }
+  }
+`;
+
+const StyledIcClose = styled(IcClose)`
+
+`;
+
+const StyledNavButton = styled.button`{
+  margin-left: auto;
+}`;
+
+const StyledResponsive = styled.div`
+  @media (max-width: ${theme('screens.tablet.max')}) {
+    .header {
+      &__inner {
+        padding: 0 24px;
+      }
+    }
   }
 `;
 
@@ -190,7 +264,7 @@ const Header = () => {
 
     const ActiveNav = (navPath: string) => {
         let isActive = '';
-        if (router.pathname.startsWith(navPath)) isActive = '-active';
+        if (router.pathname.startsWith(navPath)) isActive = '--active';
 
         return isActive;
     };
@@ -208,6 +282,12 @@ const Header = () => {
         };
     }, [btnRef]);
 
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal);
+    };
+
     const NavList = NavRoutes.map((item, index) => (
         <span className={`nav-list__item nav-list__item${ActiveNav(item.path)}`} key={item.label}>
             {
@@ -217,7 +297,7 @@ const Header = () => {
                             <span
                                 role="button"
                                 tabIndex={index}
-                                className={`nav-list__item-label${activeNav ? '-active' : ''}`}
+                                className={`nav-list__item-label${activeNav ? '--active' : ''}`}
                                 onClick={() => {
                                     setActiveNav(!activeNav);
                                 }}
@@ -250,53 +330,116 @@ const Header = () => {
         </li>
     )));
 
+    const MobileNavList = NavRoutes.map((item) => (
+        <div
+            className="nav-list__item"
+            role="presentation"
+            onClick={toggleModal}
+            onKeyDown={toggleModal}
+            key={item.label}
+        >
+            <Link href={item.path}>{item.label}</Link>
+            {item.subNav
+            && (
+                <StyledSubMobile>
+                    {
+                        item.subNav?.map((menu) => (
+                            <li
+                                className="sub-nav__item"
+                                key={menu.label}
+                                role="presentation"
+                                onClick={toggleModal}
+                                onKeyDown={toggleModal}
+                            >
+                                <Link href={menu.path}>{menu.label}</Link>
+                            </li>
+                        ))
+                    }
+                </StyledSubMobile>
+            )}
+        </div>
+    ));
+
     return (
-        <StyledHeader>
-            <div className="header">
-                <div className="header__inner">
-                    <h1>
-                        <Link href={ROUTE.HOME} passHref>
-                            <a href={ROUTE.HOME}>
-                                <Logo />
-                            </a>
-                        </Link>
-                    </h1>
-                    <StyledNav>
-                        <div className="nav-list">
-                            {NavList}
-                            <span>
-                                <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
-                                    {t('gnb.talk_to_sales')}
-                                </LinkButton>
-                            </span>
-                            <span className="nav-list__item">
-                                <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
-                                    {t('gnb.docs')}
-                                    <StyledIcExternal />
-                                </LinkText>
-                            </span>
-                            <span className="nav-list__item">
-                                <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
-                                    {t('gnb.community')}
-                                    <StyledIcExternal />
-                                </LinkText>
-                            </span>
-                        </div>
-                    </StyledNav>
+        <StyledResponsive>
+            <StyledHeader>
+                <ul className="test">
+                    <li tw="desktop:(bg-violet-500)">desktop</li>
+                    <li tw="laptop:(bg-violet-300)">laptop</li>
+                    <li tw="tablet:(bg-violet-400)">tablet</li>
+                    <li tw="mobile:(bg-violet-200)"> mobile</li>
+                </ul>
+                <div className="header">
+                    <div className="header__inner">
+                        <h1>
+                            <Link href={ROUTE.HOME} passHref>
+                                <a href={ROUTE.HOME}>
+                                    <Logo />
+                                </a>
+                            </Link>
+                        </h1>
+                        <StyledNavButton type="button" onClick={toggleModal} tw="hidden tablet:(block)">
+                            {modal
+                                ? <StyledIcClose /> : <IcMenu />}
+                        </StyledNavButton>
+                        <StyledNav tw="laptop:(visible) tablet:(hidden)">
+                            <div className="nav-list">
+                                {NavList}
+                                <span>
+                                    <LinkButton color="violet-400" size="medium" href={ROUTE.TALKTOSALES} tw="mx-4">
+                                        {t('gnb.talk_to_sales')}
+                                    </LinkButton>
+                                </span>
+                                <span className="nav-list__item">
+                                    <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
+                                        {t('gnb.docs')}
+                                        <StyledIcExternal />
+                                    </LinkText>
+                                </span>
+                                <span className="nav-list__item">
+                                    <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
+                                        {t('gnb.community')}
+                                        <StyledIcExternal />
+                                    </LinkText>
+                                </span>
+                            </div>
+                        </StyledNav>
+                    </div>
                 </div>
-            </div>
-            {
-                FirstPathname(router.pathname) === FirstPathname(ROUTE.PRODUCTS.INDEX)
+                {
+                    FirstPathname(router.pathname) === FirstPathname(ROUTE.PRODUCTS.INDEX)
                 && (
-                    <StyledSubNav>
+                    <StyledSubNav tw="laptop:(visible) tablet:(hidden)">
                         <div className="sub-nav">
                             <span className="sub-nav__title">Products</span>
                             <ul className="sub-nav__list">{SubNavList}</ul>
                         </div>
                     </StyledSubNav>
                 )
-            }
-        </StyledHeader>
+                }
+
+                {modal && (
+                    <StyledNavMobile tw="hidden tablet:(block)">
+                        {MobileNavList}
+                        <span className="nav-list__item">
+                            <LinkText href={ROUTE.DOCS} tw="text-gray-600" target="_blank">
+                                {t('gnb.docs')}
+                                <StyledIcExternal />
+                            </LinkText>
+                        </span>
+                        <span className="nav-list__item">
+                            <LinkText href={ROUTE.COMMUNITY} tw="text-gray-600" target="_blank">
+                                {t('gnb.community')}
+                                <StyledIcExternal />
+                            </LinkText>
+                        </span>
+                        <LinkButton color="violet-400" size="large" href={ROUTE.TALKTOSALES}>
+                            {t('gnb.talk_to_sales')}
+                        </LinkButton>
+                    </StyledNavMobile>
+                )}
+            </StyledHeader>
+        </StyledResponsive>
     );
 };
 
