@@ -289,7 +289,7 @@ const Home: NextPage = () => {
                         <Customers />
                     </div>
                 </div>
-                <button type="button" className="video" onClick={toggleModal}>Watch the Video</button>
+                {/* <button type="button" className="video" onClick={toggleModal}>Watch the Video</button> */}
             </StyledTopicSection>
             {modal && (
                 <StyledModal onClick={toggleModal}>
