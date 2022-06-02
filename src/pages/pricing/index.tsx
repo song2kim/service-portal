@@ -1,20 +1,22 @@
 import TopicSection from '@/components/TopicSection';
 import tw from 'twin.macro';
 import FAQSection from '@/components/FAQ';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import LinkButton from '@/components/LinkButton';
 import { IcCheckLg, IcCloseGray } from '@/assets/icons';
 import ProductDetail from '@/components/ProductDetail';
 import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import device from '@/styles/theme';
+import ReadySection from '@/components/ReadySection';
 
 interface PricePlan {
     title: string;
     price: string;
     period?: string;
     account?: string;
-    benefitList: Array<{benefit: string}>;
+    benefitList: Array<string>;
     recommend?: boolean;
     linkText?: string;
     href: string;
@@ -24,14 +26,12 @@ const StyledTab = styled.div`
   ${tw`bg-gray-100`};
   padding-bottom: 160px;
   .price-detail {
-    width: 1120px;
+    max-width: 1120px;
     margin: 0 auto;
     text-align: center;
-    //border: solid 1px red;
   }
   .tab {
       ${tw`border border-gray-300`};
-      //overflow: hidden;
       display: inline-flex;
       margin: 0 auto;
       border-radius: 16px;
@@ -66,6 +66,11 @@ const StyledTab = styled.div`
   }
   .content {
     margin-top: 64px;
+  }
+  
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left : 24px;
   }
 `;
 
@@ -132,6 +137,28 @@ const StyledPlan = styled.div`
     padding-top: 16px;
     text-align: left;
   }
+  
+  @media ${device.laptop} {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    .plan {
+      grid-column: span 3;
+    }
+    .note {
+      grid-column: span 9;
+    }
+  }
+  
+  @media ${device.tablet} {
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    .plan {
+      grid-column: span 4;
+    }
+    .note {
+      grid-column: span 4;
+    }
+  }
 `;
 
 const StyledComparePlan = styled.section`
@@ -181,17 +208,19 @@ const StyledComparePlan = styled.section`
       }
       &__feature {
         ${tw`bg-white`};
-        padding-left: 24px;
         padding-top: 16px;
+        padding-right: 24px;
         padding-bottom: 16px;
+        padding-left: 24px;
         border-left-width: 1px;
         text-align: left;
       }
       &__feature-sub {
         ${tw`bg-white text-lg font-normal text-gray-500`};
-        padding-left: 32px;
         padding-top: 16px;
+        padding-right: 24px;
         padding-bottom: 16px;
+        padding-left: 32px;
         text-align: left;
         border-left-width: 1px;
       }
@@ -211,6 +240,7 @@ const StyledComparePlan = styled.section`
       }
     }
   }
+  
 `;
 
 const Pricing = () => {
@@ -223,10 +253,7 @@ const Pricing = () => {
         {
             title: 'Free Trial',
             price: '$0',
-            benefitList: [
-                { benefit: '1 Cloud Account' },
-                { benefit: 'Full Features Provided' },
-            ],
+            benefitList: ['1 Cloud Account', 'Full Features Provided'],
             linkText: 'Reqeust Demo',
             href: ROUTE.DEMO,
         },
@@ -235,11 +262,7 @@ const Pricing = () => {
             price: '$140',
             period: ' /month',
             account: 'per cloud account',
-            benefitList: [
-                { benefit: 'Unlimited Cloud Accounts' },
-                { benefit: 'Full Features Provided' },
-                { benefit: 'Support Center' },
-            ],
+            benefitList: ['Unlimited Cloud Accounts', 'Full Features Provided', 'Support Center'],
             recommend: true,
             linkText: 'Talk to Sales',
             href: ROUTE.TALKTOSALES,
@@ -247,14 +270,7 @@ const Pricing = () => {
         {
             title: 'Enterprise',
             price: 'Contact Sales',
-            benefitList: [
-                { benefit: 'Unlimited Cloud Accounts' },
-                { benefit: 'Full Features Provided' },
-                { benefit: 'Support Center' },
-                { benefit: 'Custom Onboarding Program including hands-on training' },
-                { benefit: 'Implementation Consultancy Service by cloud industry professionals' },
-                { benefit: 'Direct Support Slack Channel with designated customer success team' },
-            ],
+            benefitList: ['Unlimited Cloud Accounts', 'Full Features Provided', 'Support Center', 'Custom Onboarding Program including hands-on training', 'Implementation Consultancy Service by cloud industry professionals', 'Direct Support Slack Channel with designated customer success team'],
             linkText: 'Talk to Sales',
             href: ROUTE.TALKTOSALES,
         },
@@ -272,10 +288,10 @@ const Pricing = () => {
                     </div>
                     <ul className="plan__benefit-list">
                         {item.benefitList.map((benefit) => (
-                            <li className="plan__benefit-item" key={benefit.benefit}>{benefit.benefit}</li>
+                            <li className="plan__benefit-item" key={benefit}>{benefit}</li>
                         ))}
                     </ul>
-                    <LinkButton href={item.href} color="violet-400" size="large">{item.linkText}</LinkButton>
+                    <LinkButton href={item.href} color="violet-400" size="large" target="_blank">{item.linkText}</LinkButton>
                     {item.recommend && <em className="plan__recommend">Our Recommends</em>}
                 </div>
             ))}
@@ -303,7 +319,7 @@ const Pricing = () => {
                                 Business
                                 <em className="plan__recommends">Our Recommends</em>
                             </th>
-                            <th className="plan__title">Our Recommends</th>
+                            <th className="plan__title">Enterprise</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -403,25 +419,32 @@ const Pricing = () => {
             <TopicSection title={TopicData.title} description={TopicData.description} tw="bg-gray-100" />
             <StyledTab>
                 <div className="price-detail">
-                    <div className="tab">
-                        {TabData.map((item, index) => (
-                            <button
-                                type="button"
-                                key={item.title}
-                                onClick={() => setCurrentTab(index)}
-                                className={`tab__item ${currentTab === index ? 'tab__item--active' : ''}`}
-                            >
-                                <span className="tab__title">{item.title}</span>
-                            </button>
-                        ))}
+                    <div tw="mobile:(hidden)">
+                        <div className="tab">
+                            {TabData.map((item, index) => (
+                                <button
+                                    type="button"
+                                    key={item.title}
+                                    onClick={() => setCurrentTab(index)}
+                                    className={`tab__item ${currentTab === index ? 'tab__item--active' : ''}`}
+                                >
+                                    <span className="tab__title">{item.title}</span>
+                                </button>
+                            ))}
+                        </div>
+                        <div className="content">
+                            {TabData[currentTab].content}
+                        </div>
                     </div>
-                    <div className="content">
-                        {TabData[currentTab].content}
+
+                    <div tw="hidden mobile:(block)">
+                        {TabData[0].content}
                     </div>
                 </div>
             </StyledTab>
             <ProductDetail />
             <FAQSection title="Frequently Asked Questions" FAQData={FAQData} />
+            <ReadySection />
         </>
     );
 };

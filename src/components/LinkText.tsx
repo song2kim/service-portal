@@ -31,7 +31,10 @@ const StyledLinkText = styled.a`
 `;
 
 const LinkText = ({
-    href = ROUTE.HOME, children = 'link', target = '_self', ...props
+    href = ROUTE.HOME,
+    children = 'link',
+    target = '_self',
+    ...props
 }: LinkTextProps) => (
     <Link href={href} passHref>
         <StyledLinkText {...props} target={target}>

@@ -8,6 +8,7 @@ import ROUTE from '@/constants/route';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import IcClose from '@/assets/icons/IcClose';
+import device from '@/styles/theme';
 
 const StyledHeader = styled.div`
   .test {
@@ -17,7 +18,7 @@ const StyledHeader = styled.div`
     z-index: 9999;
     color: white;
     background-color: darkseagreen;
-    display: none;
+    //display: none;
   }
 
   width: 100%;
@@ -49,10 +50,10 @@ const StyledHeader = styled.div`
     }
   }
   
-  @media (max-width: 1439px) {
+  @media ${device.laptop} {
     .header {
       &__inner {
-        padding: 0 24px;
+        padding-left: 24px;
       }
     }
   }
@@ -165,6 +166,10 @@ const StyledSubNav = styled.nav`
       }
     }
   }
+  
+  @media ${device.laptop} {
+    padding: 0 24px;
+  }
 `;
 
 const StyledIcExternal = styled(IcExternal)`
@@ -209,12 +214,11 @@ const StyledSubMobile = styled.ul`
   }
 `;
 
-const StyledIcClose = styled(IcClose)`
-
-`;
-
 const StyledNavButton = styled.button`{
   margin-left: auto;
+  height: var(--gnb-height);
+  padding-left: 24px;
+  padding-right: 24px;
 }`;
 
 const Header = () => {
@@ -378,7 +382,7 @@ const Header = () => {
                     </h1>
                     <StyledNavButton type="button" onClick={toggleModal} tw="hidden tablet:(block)">
                         {modal
-                            ? <StyledIcClose /> : <IcMenu />}
+                            ? <IcClose /> : <IcMenu />}
                     </StyledNavButton>
                     <StyledNav tw="laptop:(visible) tablet:(hidden)">
                         <div className="nav-list">

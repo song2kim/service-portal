@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import ROUTE from '@/constants/route';
+import device from '@/styles/theme';
 import LinkButton from './LinkButton';
 
 interface ProductFeature {
@@ -27,15 +28,20 @@ const StyledProductDetail = styled.section`
     margin-bottom: 48px;
     text-align: center;
   }
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 `;
 
 const StyledProduct = styled.div`
   ${tw`border border-gray-100`};
+  max-width: 1120px;
   box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
   border-radius: 16px;
   margin-top: 16px;
   .product {
-    padding: 24px 32px;
+    padding: 32px;
     &__name {
       ${tw`text-3xl border-gray-200`};
       display: flex;
@@ -66,10 +72,11 @@ const StyledProduct = styled.div`
       ${tw`text-gray-500 text-lg`};
       margin-top: 12px;
       padding-left: 32px;
-      background: url("/assets/icons/ic_check.svg") no-repeat 0 50%;
+      background: url('/assets/icons/ic_check.svg') no-repeat 0 50%;
     }
     &__logo-group {
       display: flex;
+      flex-wrap: wrap;
       column-gap: 24px;
       padding-left: 24px;
       margin-top: 12px;

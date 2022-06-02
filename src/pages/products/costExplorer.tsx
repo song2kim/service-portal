@@ -25,7 +25,7 @@ const Answer2 = (
 const CostExplorer = () => {
     const TopicData = {
         title: 'Analyze your costs easily and \nOptimize resources',
-        subtitle: 'View your billing details thoroughly and optimize resources based on cost data analyzed. Control expenses and prevent overspendigs with budget management feature. ',
+        subtitle: 'View your billing details thoroughly and optimize resources based on cost data analyzed. \n Control expenses and prevent overspendigs with budget management feature. ',
         iconSrc: 'ic_home_cost',
         href: ROUTE.TALKTOSALES,
     };
@@ -42,14 +42,14 @@ const CostExplorer = () => {
             coreValue: 'Cost Dashboard',
             title: 'Visualize cost data with customized dashbaords',
             description: 'Add your own widgets to Cost Explorer dashboard with different layouts. From monthly spendings to cloud account cost insights, you can manage all cloud infrastucture cost in ONE-page dahsboard. ',
-            imgSrc: 'img_products_cost_analysis',
-            hasBg: true,
+            imgSrc: 'img_products_cost_dashboard',
+            hasBg: false,
             isReverse: true,
         }, {
             coreValue: 'Budget',
             title: 'Manage expenditures through budgets and alerts',
             description: 'Set cost budgets on each project and manage the resource usage. Get notified based on custom thresholds through budget alerts. Check detected cost surges by comparing monthly resource cost data.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_budget',
             hasBg: true,
             isReverse: false,
         },
@@ -96,8 +96,7 @@ const CostExplorer = () => {
 
             <FAQSection title="Want to learn more about Cost Explorer?" FAQData={FAQData} />
             <ProductsHelp />
-
-            <ReadySection title="Ready for Cost Explorer to Analyze Cost Easily?" />
+            <ReadySection title={'Ready for Cost Explorer to \nAnalyze Cost Easily?'} />
         </>
     );
 };

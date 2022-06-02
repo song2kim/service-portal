@@ -8,8 +8,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const AlertManager = () => {
     const TopicData = {
-        title: 'Notify events and manage incidents automatically',
-        subtitle: 'Respond to incidents quickly with real-time notifications. Improve user experience by strengthening your team\'s capability based on post-mortem features.',
+        title: 'Notify events and \nManage incidents automatically',
+        subtitle: 'Respond to incidents quickly with real-time notifications. Improve user experience by strengthening your \nteam\'s capability based on post-mortem features.',
         iconSrc: 'ic_home_alert',
         href: ROUTE.TALKTOSALES,
     };
@@ -19,7 +19,7 @@ const AlertManager = () => {
             coreValue: 'Alert Dashboard',
             title: 'Get incident alerts from external monitoring solutions',
             description: 'Manage incident alerts in ONE dashboard. Integrate SpaceONE with Grafana, Zabbix, Prometheus and Amazon SNS. Automate receiving alerts by webhook based SpaceONE plugins.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_alert_dashboard',
             hasBg: true,
             isReverse: false,
         },
@@ -27,7 +27,7 @@ const AlertManager = () => {
             coreValue: 'Notifications',
             title: 'Send notifications through various channels',
             description: 'Get notified automatically through Slack, Telegram, Jira, Email, SMS or Voice call. Apply escalation policy to deliver notifications efficiently.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_notifications',
             hasBg: false,
             isReverse: true,
         },
@@ -35,7 +35,7 @@ const AlertManager = () => {
             coreValue: 'Incident History',
             title: 'Manage workflows to resolve incidents',
             description: 'Assign members to each incident generated. Manage incident alerts through urgency and issue-handling status. Keep track of incident history and manage workflows to resolve incidents.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_incident_history',
             hasBg: true,
             isReverse: false,
         },
@@ -82,7 +82,7 @@ const AlertManager = () => {
             ))}
             <FAQSection title="Want to learn more about Alert Manager?" FAQData={FAQData} />
             <ProductsHelp />
-            <ReadySection title="Ready for Alert Manager to Manage Incidents Automatically?" />
+            <ReadySection title={'Ready for Alert Manager to \nManage Incidents Automatically?'} />
         </>
     );
 };

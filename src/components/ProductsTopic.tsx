@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import LinkButton from '@/components/LinkButton';
+import device from '@/styles/theme';
 
 interface TopicSectionProps {
     title: string;
@@ -29,6 +30,20 @@ const StyledTopicSection = styled.section`
       padding: 20px 0 46px;
     }
   }
+
+  @media ${device.tablet}{
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  
+  @media ${device.mobile}{
+  .topic {
+    &__title { {
+      ${tw`text-m-md`};
+    } 
+    }
+  }
+}
 `;
 
 function ProductTopic({

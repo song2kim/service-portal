@@ -10,6 +10,7 @@ interface LinkButtonProps {
     size: linkButtonSize;
     children: ReactNode;
     href: string;
+    target?: string;
 }
 
 type LinkButtonStyle = Partial<LinkButtonProps>
@@ -41,12 +42,14 @@ const LinkButton = ({
     size = 'medium',
     children = 'Button',
     href = '/',
+    target = '_self',
     ...props
 }: LinkButtonProps) => (
     <StyledLinkButton
         css={styles.style({ color, size, children })}
         href={href}
         {...props}
+        target={target}
     >
         {children}
     </StyledLinkButton>

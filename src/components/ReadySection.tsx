@@ -4,6 +4,7 @@ import { IcArrowTop } from '@/assets/icons';
 import React from 'react';
 import LinkButton from '@/components/LinkButton';
 import ROUTE from '@/constants/route';
+import device from '@/styles/theme';
 
 const StyledReadySection = styled.section`
   ${tw`bg-violet-500`}
@@ -32,7 +33,7 @@ const StyledReadySection = styled.section`
     }
   }
   
-  @media (max-width: 1439px) {
+  @media ${device.laptop} {
     padding: 0 24px;
   }
 `;

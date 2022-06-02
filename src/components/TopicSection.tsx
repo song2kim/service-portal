@@ -1,5 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import device from '@/styles/theme';
 
 interface TopicSectionProps {
     title: string;
@@ -8,13 +9,14 @@ interface TopicSectionProps {
 
 const StyledTopicSection = styled.section`
   display: flex;
-  height: 416px;
+  height: 480px;
+  align-items: center;
   .topic {
     display: grid;
     grid-template-columns: repeat(12,1fr);
+    row-gap: 8px;
     width: 1120px;
     margin: 0 auto;
-    padding-top: 176px;
     white-space: pre-wrap;
     &__title {
       ${tw`font-serif font-medium text-8xl`};
@@ -25,6 +27,34 @@ const StyledTopicSection = styled.section`
       flex-shrink: 0;
       grid-column: span 8 / -1;
       padding-top: 62px;
+    }
+  }
+
+  @media ${device.laptop} {
+    .topic {
+      grid-template-columns: repeat(8,1fr);
+      column-gap: 24px;
+      padding-left: 24px;
+      padding-right: 24px;
+      &__title {
+        grid-column: span 2;
+      }
+      &__description {
+        grid-column: span 6 / -1;
+      }
+    }
+  }
+
+  @media ${device.tablet} {
+    //height: auto;
+    .topic {
+      grid-template-columns: repeat(4,1fr);
+      &__title {
+        grid-column: span 4;
+      }
+      &__description {
+        grid-column: span 4 / -1;
+        padding-top: 0;
     }
   }
 `;

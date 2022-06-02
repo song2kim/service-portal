@@ -2,6 +2,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import tw, { styled } from 'twin.macro';
 import LinkButton from '@/components/LinkButton';
 import ROUTE from '@/constants/route';
+import device from '@/styles/theme';
+import Image from 'next/image';
 
 const StyledError = styled.section`
   ${tw`bg-violet-100`}
@@ -9,21 +11,48 @@ const StyledError = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 176px 0;
-  h2 {
-    ${tw`text-8xl`};
-    margin: 8px 0 16px;
+  padding-top: 176px;
+  padding-bottom: 176px;
+  .error {
+    &__title {
+      ${tw`text-8xl text-violet-500`};
+      margin-bottom:8px;
+    }
+    &__sub {
+      ${tw`text-4xl`};
+      margin-bottom: 24px;
+    }
+    &__description {
+      ${tw`text-2xl`};
+      text-align: center;
+      margin-bottom: 40px;
+    } 
   }
-  p {
-    margin-bottom: 26px;
+  
+  @media ${device.mobile} {
+    padding-right: 24px;
+    padding-left: 24px;
+    h2 {
+      ${tw`text-m-md`}
+    }
   }
 `;
 
 const Custom404 = () => (
     <StyledError>
-        <img src="/assets/images/img_error_jellyoctos.svg" alt="" />
-        <h2>404</h2>
-        <p>Sorry, we can’t find what you’re looking for.</p>
+        <Image
+            src="/assets/images/img_error_jellyoctos.svg"
+            alt=""
+            width="462px"
+            height="400px"
+        />
+        <h2 className="error__title">Error 404</h2>
+        <p className="error__sub">Page not found</p>
+        <p className="error__description">
+            Sorry, we can&apos;t seem to find what you&apos;re looking for.
+            <br />
+            Check the web address and try again or return to the homepage.
+        </p>
         <LinkButton color="violet-400" size="large" href={ROUTE.HOME}>Back to home</LinkButton>
     </StyledError>
 );

@@ -8,8 +8,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const IAM = () => {
     const TopicData = {
-        title: 'Manage users, roles, permissions to each project easily',
-        subtitle: 'Add team members to join SpaceONE and manage your infrastructure. Assign roles to SpaceONE users in your domain. ',
+        title: 'Manage users, roles, permissions \nto each project easily',
+        subtitle: 'Add team members to join SpaceONE and manage your infrastructure. Assign roles to SpaceONE users in \nyour domain. ',
         iconSrc: 'ic_home_IMA',
         href: ROUTE.TALKTOSALES,
     };
@@ -19,7 +19,7 @@ const IAM = () => {
             coreValue: 'External Authentications',
             title: 'Authenticate users by identity service',
             description: 'Choose various authentication options. SpaceONE supports from local ID / password to external identity services including Google oAuth2, Active Directory, Keycloak.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_external_auth',
             hasBg: true,
             isReverse: false,
         },
@@ -27,7 +27,7 @@ const IAM = () => {
             coreValue: 'RBAC',
             title: 'Control access permissions by roles and policies',
             description: 'Apply access policies to manage user roles. Fine-tune access permissions with SpaceONE RBAC(Role-Based Access Control) system.',
-            imgSrc: 'img_products_cost_analysis',
+            imgSrc: 'img_products_RBAC',
             hasBg: false,
             isReverse: true,
         },
@@ -79,7 +79,7 @@ const IAM = () => {
 
             <FAQSection title="Want to learn more about Alert Manager?" FAQData={FAQData} />
             <ProductsHelp />
-            <ReadySection title="Ready for IAM to Manage Users and Roles?" />
+            <ReadySection title={'Ready for IAM to \n Manage Users and Roles?'} />
         </>
     );
 };

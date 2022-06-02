@@ -1,5 +1,6 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
+import device from '@/styles/theme';
 
 interface ProductSectionProps {
     coreValue: string;
@@ -26,17 +27,20 @@ const StyledProductSection = styled.section<ProductSectionStyle>`
     grid-auto-flow: dense;
     max-width: 1120px;
     margin: 0 auto;
+    align-items: center;
     &__thumbnail {
-      grid-column: span 6;
+      ${tw`bg-violet-100`}
+      grid-column-start: span 6;
       ${(props) => (props.isReverse ? 'grid-column-end: -1' : '')};
-      min-width: 540px;
-      min-height: 368px;
+      width: 100%;
+      box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
+      border-radius: 16px;
     }
     &__text {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      grid-column: span 5;
+      grid-column-start: span 5;
       ${(props) => (props.isReverse ? '' : 'grid-column-end: -1;')};
     }
     &__corevalue {
@@ -49,6 +53,54 @@ const StyledProductSection = styled.section<ProductSectionStyle>`
     &__description { 
       ${tw`text-lg text-gray-500`}
       margin-top: 16px;
+    }
+  }
+  
+  @media ${device.laptop} {
+    padding-top: 58px;
+    padding-bottom: 58px;
+    padding-right: 24px;
+    padding-left: 24px;
+    .section {
+      grid-template-columns: repeat(8, 1fr);
+      &__thumbnail {
+        grid-column-start: span 5;
+      }
+      &__text {
+        grid-column-start: span 3;
+      }
+    }
+  }
+
+  @media ${device.tablet} {
+    min-height: auto;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    .section {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 24px;
+      &__thumbnail {
+        grid-column-start: span 2;
+        min-width: auto;
+      }
+      &__text {
+        grid-column-start: span 2;
+      }
+    }
+  }
+  
+  @media ${device.mobile} {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    .section {
+      row-gap: 24px;
+      &__thumbnail {
+        grid-column-start: span 4;
+        min-height: auto;
+      }
+      &__text {
+        grid-column-start: span 4;
+      }
     }
   }
 `;

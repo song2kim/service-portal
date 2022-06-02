@@ -5,28 +5,35 @@ import LinkText from '@/components/LinkText';
 import { IcExternal } from '@/assets/icons';
 import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import device from '@/styles/theme';
+import Image from 'next/image';
 
 const StyledContact = styled.div`
   ${tw`bg-violet-500 text-white`};
+  .img-map {
+    padding-top: 24px;
+    padding-bottom: 40px;
+    text-align: center;
+  }
 `;
 
 const StyledContactChannels = styled.section`
-  ${tw`border-gray-200`};
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 40px;
-  max-width: 1120px;
-  margin: 64px auto 0;
-  padding-top: 64px;
-  border-top-width: 1px;
-  
-  .contact {
+  margin-top: 64px;
+  .inner {
     ${tw`border-gray-200`};
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 40px;
+    max-width: 1120px;
+    margin:0 auto;
+    padding-top: 64px;
+    padding-bottom: 137px;
+    border-top-width: 1px;
+  }
+  .contact {
     display: flex;
     flex-direction: column;
     grid-column: 4 span;
-    padding-bottom: 137px;
-    border-bottom-width: 1px;
     &__channels {
       ${tw`text-3xl font-normal`};
     }
@@ -38,29 +45,88 @@ const StyledContactChannels = styled.section`
       }
     }
   }
+
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  
+  @media ${device.tablet} {
+    .inner {
+      grid-template-columns: repeat(8, 1fr);
+      row-gap: 48px;
+      padding-bottom: 88px;
+    }  
+  }
+
+  @media ${device.mobile} {
+    .inner {
+      grid-template-columns: repeat(4, 1fr);  
+      row-gap: 40px;
+      padding-bottom: 64px;
+    }
+  }
 `;
 
 const StyledAddressList = styled.section`
-    ${tw``};
-  max-width: 1120px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 40px;
-  grid-row-gap: 48px;
-  margin-top: 88px;
-  padding-bottom: 700px;
-  
+  .inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 48px;
+  }
   .address {
     grid-column: span 4;
+    &__name {
+      ${tw`text-3xl`};
+      margin-bottom: 8px;
+    }
     &__text {
+      ${tw`text-lg`};
       white-space: pre-line;
+      margin-bottom: 16px;
     }
     > a {
       ${tw`text-violet-200`};
-      margin-top: 16px;
+    }
+    &:nth-child(1), :nth-child(2), :nth-child(3) {
+      ${tw`border-gray-200`};
+      border-top-width: 1px;
+      padding-top: 88px;
     }
   }
+  
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
+  };
+  
+  @media ${device.tablet} {
+    .inner { 
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .address {
+      &:nth-child(3) {
+        border: none;
+        padding-top: 0;
+      }
+    }
+  };
+  
+  @media ${device.mobile} {
+    .inner {
+      grid-template-columns: repeat(4, 1fr);
+      grid-row-gap: 24px;  
+    }
+    .address {
+      &:nth-child(2) {
+        border: none;
+        padding-top: 0;
+      }
+    }
+  };
 `;
 
 const Contact = () => {
@@ -89,7 +155,6 @@ const Contact = () => {
             contactList: [
                 { text: 'GitHub', href: ROUTE.GIT },
                 { text: 'Youtube', href: ROUTE.YOUTUBE },
-                { text: 'Facebook', href: ROUTE.FACEBOOK },
             ],
         },
     ];
@@ -131,30 +196,41 @@ const Contact = () => {
         <StyledContact>
             <TopicSection title={TopicData.title} description={TopicData.description} />
             <StyledContactChannels>
-                {ContactChannelsData.map((item) => (
-                    <div className="contact" key={item.title}>
-                        <div className="contact__channels">{item.title}</div>
-                        {item.contactList.map((contact) => (
-                            <LinkText href={`${contact.href}`} key={contact.text}>
-                                {contact.text}
-                                <IcExternal />
-                            </LinkText>
-                        ))}
-                    </div>
-                ))}
+                <div className="inner">
+                    {ContactChannelsData.map((item) => (
+                        <div className="contact" key={item.title}>
+                            <div className="contact__channels">{item.title}</div>
+                            {item.contactList.map((contact) => (
+                                <LinkText href={`${contact.href}`} key={contact.text}>
+                                    {contact.text}
+                                    <IcExternal />
+                                </LinkText>
+                            ))}
+                        </div>
+                    ))}
+                </div>
             </StyledContactChannels>
             <StyledAddressList>
-                {AddressData.map((item) => (
-                    <div className="address" key={item.name}>
-                        <p className="address__name">{item.name}</p>
-                        <p className="address__text">{item.address}</p>
-                        <LinkText href={item.href} target="_blank">
-                            Get directions
-                            <IcExternal />
-                        </LinkText>
-                    </div>
-                ))}
+                <div className="inner">
+                    {AddressData.map((item) => (
+                        <div className="address" key={item.name}>
+                            <p className="address__name">{item.name}</p>
+                            <p className="address__text">{item.address}</p>
+                            <LinkText href={item.href} target="_blank">
+                                Get directions
+                                <IcExternal />
+                            </LinkText>
+                        </div>
+                    ))}
+                </div>
             </StyledAddressList>
+            <div className="img-map">
+                <Image
+                    src="/assets/images/img_contact_map.svg"
+                    width="1200px"
+                    height="630px"
+                />
+            </div>
         </StyledContact>
     );
 };

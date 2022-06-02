@@ -1,6 +1,7 @@
 import tw from 'twin.macro';
 import styled from 'styled-components';
 import Accordion from '@/components/Accordion';
+import device from '@/styles/theme';
 
 interface FAQProps {
     title?: string;
@@ -9,7 +10,10 @@ interface FAQProps {
 
 const StyledFAQSection = styled.section`
     ${tw`bg-gray-100`};
-    padding:88px 160px 160px;
+    padding-top: 88px;
+    padding-right: 160px;
+    padding-bottom: 160px;
+    padding-left: 160px;
     .faq {
       width: 1120px;
       margin: 0 auto;
@@ -20,7 +24,14 @@ const StyledFAQSection = styled.section`
         text-align: center;
       }  
     }
-    
+  
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
+    .faq {
+      width: auto;
+    }
+  }
 `;
 
 function FAQSection({ title, FAQData = [] }: FAQProps) {

@@ -12,6 +12,8 @@ import IcClose from '@/assets/icons/IcClose';
 import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ReadySection from '@/components/ReadySection';
+import device from '@/styles/theme';
+import Image from 'next/image';
 // import { useTranslation } from 'next-i18next';
 
 const StyledTopicSection = styled.section`
@@ -46,16 +48,13 @@ const StyledTopicSection = styled.section`
       ${tw`text-xl text-gray-500`}
       margin-top: 24px;
     }
-    &__thumbnail {
-        width: 100%; 
-        height: 100%;
-    }
   }
   .customers {
     display: flex;
-    height: 128px;
+    min-height: 128px;
     align-items: center;
     margin-top: 16px;
+    padding-bottom: 16px;
     p {
       ${tw`text-lg text-gray-300`}
       margin-right: 32px;
@@ -72,7 +71,7 @@ const StyledTopicSection = styled.section`
     justify-content: center;
   }
   
-  @media (max-width: 1023px) {
+  @media ${device.tablet} {
     padding-top: 160px;
     padding-bottom: 160px;
     margin-bottom: 95px;
@@ -102,7 +101,7 @@ const StyledTopicSection = styled.section`
     }
   }
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     padding-top: 128px;
     padding-bottom: 128px;
     margin-bottom: 65px;
@@ -196,13 +195,13 @@ const StyledHelpSection = styled.section`
     }
   }
   
-  @media (max-width: 1439px) {
+  @media ${device.laptop} {
     .help {
       padding: 0 24px;
     }
   }
   
-  @media (max-width: 767px){
+  @media ${device.mobile}{
     .help {
       flex-wrap: wrap;
       row-gap: 32px;
@@ -281,7 +280,7 @@ const Home: NextPage = () => {
             linkText: 'Visit the Documentation',
         },
         {
-            title: 'CloudForet Community',
+            title: 'Our Community',
             text: 'Join our forum and share your knowledge with the broader community. Connect with fellow users and learn new skills.',
             iconSrc: 'ic_home_community',
             href: ROUTE.COMMUNITY,
@@ -292,15 +291,18 @@ const Home: NextPage = () => {
     const HelpSectionList = HelpSectionDate.map(
         (item) => (
             <div className="help__item" key={item.title}>
-                <img
-                    className="help__left help__icon"
-                    src={`/assets/images/${item.iconSrc}.svg`}
-                    alt=""
-                />
+                <div className="help__left help__icon">
+                    <Image
+                        src={`/assets/images/${item.iconSrc}.svg`}
+                        alt={item.linkText}
+                        width="80px"
+                        height="80px"
+                    />
+                </div>
                 <div className="help__right ">
                     <strong className="help__title">{item.title}</strong>
                     <div className="help__text">{item.text}</div>
-                    <LinkText href={item.href}>
+                    <LinkText href={item.href} target="_blank">
                         {item.linkText}
                         <IcArrowRight />
                     </LinkText>
@@ -330,11 +332,14 @@ const Home: NextPage = () => {
                                 on-premises and multiclouds.
                             </p>
                         </div>
-                        <img
-                            className="topic__right topic__thumbnail"
-                            src="/assets/images/img_home_topic.svg"
-                            alt="topic"
-                        />
+                        <div className="topic__right topic__thumbnail">
+                            <Image
+                                src="/assets/images/img_home_topic.svg"
+                                alt="topic"
+                                width="346px"
+                                height="260px"
+                            />
+                        </div>
                     </div>
                     <LinkButton
                         color="violet-400"

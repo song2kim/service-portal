@@ -6,6 +6,7 @@ import ROUTE from '@/constants/route';
 import Link from 'next/link';
 import React from 'react';
 import { useRouter } from 'next/router';
+import device from '@/styles/theme';
 
 const StyledFooter = styled.footer`
   ${tw`bg-violet-500`}
@@ -22,7 +23,6 @@ const StyledFooter = styled.footer`
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     column-gap: 40px;
-    
     &--flex-end {
       align-items: flex-end;
     }
@@ -60,9 +60,15 @@ const StyledFooter = styled.footer`
   }
   .terms {
     ${tw`text-violet-100 text-sm`}
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
     grid-column: span 3;
     &__item {
       margin-right: 12px;
+    }
+    &__privacy {
+      ${tw`font-bold`}
     }
   }
   .language {
@@ -102,18 +108,15 @@ const StyledFooter = styled.footer`
     &__youtube a {
       background-image: url("/assets/images/ic_footer_youtube.svg");
     }
-    &__facebook a {
-      background-image: url("/assets/images/ic_footer_facebook.svg");
-    }
   }
   
-  @media (max-width: 1439px) {
+  @media ${device.laptop} {
     .footer {
       padding: 0 24px;  
     }
   }
   
-  @media (max-width: 1023px) {
+  @media ${device.tablet} {
     .grid {
       grid-template-columns: repeat(4, 1fr);
     }
@@ -128,7 +131,8 @@ const StyledFooter = styled.footer`
       grid-column: span 1;
     }
   }
-  @media (max-width: 767px) {
+  
+  @media ${device.mobile} {
     .grid {
       grid-template-columns: repeat(4, 1fr);
       row-gap: 40px;
@@ -240,7 +244,7 @@ const Footer = () => {
                     </div>
                     <div className="terms">
                         <span className="terms__item">Terms of Service</span>
-                        <span className="terms__item">Privacy Policy</span>
+                        <span className="terms__item terms__privacy">Privacy Policy</span>
                     </div>
                     <ul className="language">
                         {LanguageData.map((item) => (
@@ -259,9 +263,6 @@ const Footer = () => {
                         </li>
                         <li className="sns__youtube">
                             <Link href={ROUTE.YOUTUBE}>Youtube</Link>
-                        </li>
-                        <li className="sns__facebook">
-                            <Link href={ROUTE.FACEBOOK}>Facebook</Link>
                         </li>
                     </ul>
                 </div>

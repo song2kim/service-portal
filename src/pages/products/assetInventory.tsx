@@ -28,7 +28,7 @@ const AssetInventory = () => {
             coreValue: 'Search Engine',
             title: 'Search your assets based on powerful query engine',
             description: 'Search with SpaceONE query engine based on raw resource data SpaceONE collected. SpaceONE provides various data including OS-level metrics, hardware information, connectivity information between cloud services, performance metrics, and tags you customized.',
-            imgSrc: 'img_products_inventory',
+            imgSrc: 'img_products_search',
             hasBg: false,
             isReverse: true,
         },
@@ -36,7 +36,7 @@ const AssetInventory = () => {
             coreValue: 'Monitoring',
             title: 'Integrate monitoring data from cloud service providers',
             description: 'View monitoring data from AWS Cloudwatch, Azure Monitor and GCP Operations suite(formerly Stackdriver) in real-time. Consolidate monitoring features and visualize the data in SpaceONE by pre-built integration feature.',
-            imgSrc: 'img_products_inventory',
+            imgSrc: 'img_products_monitoring',
             hasBg: true,
             isReverse: false,
         },
@@ -44,8 +44,8 @@ const AssetInventory = () => {
             coreValue: 'Change Management',
             title: 'View change histories of cloud resources',
             description: 'Manage changes from cloud resources. SpaceONE records any change in resource data. Change management is essential in fault management and governance.',
-            imgSrc: 'img_products_inventory',
-            hasBg: true,
+            imgSrc: 'img_products_management',
+            hasBg: false,
             isReverse: true,
         },
     ];
@@ -95,7 +95,7 @@ const AssetInventory = () => {
             <FAQSection title="Want to learn more about Asset Inventory?" FAQData={FAQData} />
             <ProductsHelp />
 
-            <ReadySection title="Ready for Asset Inventory to \n Discover Multi-Cloud Resources?" />
+            <ReadySection title={'Ready for Asset Inventory to \n Discover Multi-Cloud Resources?'} />
         </>
     );
 };

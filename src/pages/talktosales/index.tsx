@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form';
 import React from 'react';
 import ROUTE from '@/constants/route';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import device from '@/styles/theme';
 
 const StyledLayout = styled.section`
   ${tw`bg-gray-100`};
@@ -19,6 +20,14 @@ const StyledLayout = styled.section`
     max-width: 1120px;
     margin: 0 auto;
   }
+
+  @media ${device.tablet} {
+    ${tw`bg-violet-300`};
+    .inner {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 40px;
+    }
+  }
 `;
 
 const StyledForm = styled.form`
@@ -28,7 +37,7 @@ const StyledForm = styled.form`
   flex-wrap: wrap;
   column-gap: 12px;
   grid-column: span 8;
-  padding-top: 40px;
+  padding-top: 24px;
   padding-right: 137px;
   padding-bottom: 160px;
   box-shadow: 12px 8px 14px 4px rgba(213, 213, 213, 0.35);
@@ -41,6 +50,16 @@ const StyledForm = styled.form`
     left: -50vw;
     width: 50vw;
     height: 100%;
+  }
+
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+
+  @media ${device.tablet} {
+    grid-column: span 4;
+    padding-left: 24px;
   }
 `;
 
@@ -101,7 +120,10 @@ const StyledCheckbox = styled.div`
 
 const StyledNote = styled.p`
   ${tw`text-sm`};
-  margin-top: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-width: 1px 0;
+  margin-bottom: 14px;
 `;
 
 const StyledSubmit = styled.button`{
@@ -132,6 +154,11 @@ const StyledSupportMsg = styled.div`
       ${tw`font-normal text-xl text-gray-500`};
       margin-top: 8px;
     }
+  }
+
+  @media ${device.laptop} {
+    padding-right: 24px;
+    padding-left: 24px;
   }
 `;
 
@@ -165,6 +192,10 @@ const TalktoSales = () => {
             <StyledLayout>
                 <div className="inner">
                     <StyledForm onSubmit={handleSubmit(onSubmit)}>
+                        <StyledNote>
+                            Non-sales related inquiries submitted through this form are not monitored and will not be responded to. For other inquiries, please visit our
+                            <LinkText href={ROUTE.DEMO} target="_blank">&nbsp; Technical Support&nbsp; </LinkText>
+                        </StyledNote>
                         <Input
                             id="firstName"
                             label="First Name"
@@ -267,12 +298,6 @@ const TalktoSales = () => {
                                 </label>
                             </div>
                         </StyledCheckbox>
-                        <StyledNote>
-                            Non-sales related inquiries submitted through this form are not monitored and will not be responded to.
-                            For other inquiries, please visit our
-                            <LinkText href={ROUTE.DEMO} target="_blank">&nbsp; Technical Support&nbsp; </LinkText>
-                            page.
-                        </StyledNote>
                         <StyledSubmit>Submit</StyledSubmit>
                         {hasError(errors)
                             && <p className="error">Please complete all required fields.</p>}

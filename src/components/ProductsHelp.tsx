@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import LinkText from '@/components/LinkText';
 import { IcArrowRight } from '@/assets/icons';
 import ROUTE from '@/constants/route';
+import device from '@/styles/theme';
 
 const StyledProductHelp = styled.section`
   display: flex;
@@ -18,6 +19,10 @@ const StyledProductHelp = styled.section`
       ${tw`text-6xl font-serif`}
       margin: 12px 0 16px;
     }
+  }
+  
+  @media ${device.mobile} {
+    padding: 0 24px;
   }
 `;
 

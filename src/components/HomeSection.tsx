@@ -2,6 +2,7 @@ import tw from 'twin.macro';
 import styled from 'styled-components';
 import LinkText from '@/components/LinkText';
 import { IcArrowRight } from '@/assets/icons';
+import device from '@/styles/theme';
 
 interface HomeSectionProps {
     imgSrc: string;
@@ -52,7 +53,7 @@ const StyledHomeSection = styled.section<HomeSectionStyle>`
     }
   }
   
-  @media (max-width: 1023px) {
+  @media ${device.tablet} {
     .section {
       grid-template-columns: repeat(4, 1fr);
       column-gap: 24px;
@@ -65,7 +66,7 @@ const StyledHomeSection = styled.section<HomeSectionStyle>`
     }
   }
   
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     .section {
       padding-top: 56px;
       padding-bottom: 56px;
